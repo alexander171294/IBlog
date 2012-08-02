@@ -18,3 +18,11 @@ function autoLoadClass($class)
   else { echo 'Error #1: No existe la clase :'.$target; }
  } // function autoLoadClass();
 
+ // configurar rainTPL
+function RainConfig()
+ {
+  RainTPL::tpl_dir = 'tpl/';
+	RainTPL::cache_dir = 'tmp/';
+	RainTPL::base_url = '';
+	RainTPL::tpl_ext = '';
+ }

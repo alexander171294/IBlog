@@ -5,7 +5,7 @@
  *  archivo principal index.php
  */
 
-// cargamos funciones básicas //
+// cargamos funciones básicas
 require('extras/ext.functions.php');
 
 // iniciamos autoload
@@ -14,6 +14,12 @@ InitAutoLoad();
 // iniciamos la clase core y le mandamos la configuración
 $Core = new Core ( include ( 'extras/ext.settings.php' ) );
 
-// incluimos la configuración general y la mandamos al core //
+// iniciamos el controlador de bases de datos.
+$db = new LittleDB ( $Core->Settings['db_host'] , $Core->Settings['db_user'] , $Core->Settings['db_pass'] , $Core->Settings['db_name'] );
 
-echo $Core->Settings['db'];
+// iniciamos el RAIN TPL
+$rain = new RainTPL ();
+
+// configuramos rain
+RainConfig();
+
