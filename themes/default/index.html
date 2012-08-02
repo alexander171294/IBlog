@@ -48,12 +48,12 @@
 			<div id="left">			
 			{loop="$list"}
          <div class="post">
-         <h2><a href="index.php?action=view_pub&forid={$value.pub_id}">{$value.pub_nombre}</a></h2>
+         <h2><a href="index.php?action=view_pub&id={$value.pub_id}">{$value.pub_nombre}</a></h2>
          <p class="post-info">Posteado por: <a href="index.php?action=view_list&foruser={$value.u_id}">{$value.u_nombre}</a> | Categor&iacute;a: <a href="index.php?action=view_list&forcat={$value.cat_id}">{$value.cat_nombre}</a>  </p>
          <p>{$value.pub_preview}</p>
          <p class="postmeta">
-					<a href="index.php?action=view_pub&forid={$value.pub_id}" class="readmore">Leer M&aacute;s</a> |
-					<a href="index.php?action=view_pub&forid={$value.pub_id}" class="comments">Commentarios ({$value.pub_comentario})</a> |
+					<a href="index.php?action=view_pub&id={$value.pub_id}" class="readmore">Leer M&aacute;s</a> |
+					<a href="index.php?action=view_pub&id={$value.pub_id}" class="comments">Commentarios ({$value.pub_comentario})</a> |
 					<span class="date">{function="date('d/m/Y h:s',$value.pub_fecha)"}</span>
 					</p>
       {/loop}

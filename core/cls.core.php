@@ -32,8 +32,9 @@ Class Core
      $action = isset( $_GET['action'] ) ? $_GET['action'] : 'home' ;
 
      //aciones validas
-     $valid = array (// nombre => nivel de acceso
-                     'home' => '0'
+     $valid = array (// nombre => zona privada = 1
+                     'home' => '0',
+                     'view_list' => '0'
                     );
 
      // que vamos a retornar?
@@ -67,6 +68,12 @@ Class Core
     {
      $pub = new pubs($this->db);
      $this->rain->assign('list',$pub->get_last_pubs($this->mesettings['pubsforpage']));
+    }
+
+   Public Function Set_Pub_for()
+    {
+     $pub = new pubs($this->db);
+     $this->rain->assign('list',$pub->get_last_pubs_for($this->mesettings['pubsforpage']));
     }
 
  }
