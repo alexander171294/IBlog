@@ -36,7 +36,7 @@ $Core->rain = new RainTPL ();
 // configuramos rain
 RainConfig($Core);
 
-// incluimos el controlador necesario
-require ( $Core->loader() );
+// cargamos y ejecutamos el nucleo del sistema
+$Core->boot();
 
 echo('Memoria usada: <b>'.roundsize((memory_get_usage() - $memstart), true).'</b> - Tiempo de ejecucion: <b>'.round(microtime(true)-$timestart, 2).' segundos</b> - Consultas a la db: <b>'.$Core->db->count.'</b>');

@@ -45,7 +45,7 @@ Class Cuenta
      {
        if ($this->db->query('select u_nombre FROM usuarios WHERE u_nombre = ?',array($user),true)===false)
        {
-        $this->db->insert('users',array('u_nombre'=>$user,'u_pass'=>$pass,'u_rango'=>'0'))
+        $this->db->insert('users',array('u_nombre'=>$user,'u_pass'=>$pass,'u_rango'=>'0'));
        }
      }
    }

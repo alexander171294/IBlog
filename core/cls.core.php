@@ -25,28 +25,62 @@ Class Core
     }
 
     //función de carga
-   Public Function loader()
+   Public Function boot()
     {
      //conectamos a la db
      $this->db->connect();
 
      $action = isset( $_GET['action'] ) ? $_GET['action'] : 'home' ;
 
+     // seteamos configuración básica
+     $this->Set_Settings();
+     // seteamos menues
+     $this->Set_Menu();
+
+     //llamamos a la función correspondiente a la acción
+     if ($action == 'home')
+      {
+       $this->Set_Publicaciones();
+      }
+     // login
+     elseif ($action == 'login')
+      {
+       if(isset($_POST['posteado']))
+        {
+         $this->login();
+        }
+      }
+     //registro
+     elseif ($action == 'registro')
+      {
+       $this->registro();
+      }
+     // ver lista de ultimas publicaciones en orden.
+     elseif ($action == 'view_list')
+      {
+       $this->Set_Pub_for();
+      }
+     // ver una publicación
+     elseif ($action == 'view_pub')
+      {
+       $this->get_pub_fid();
+      }
+
      //aciones validas
-     $valid = array (// nombre => zona privada = 1
-                     'home' => '0',
-                     'view_list' => '0',
-                     'view_pub' => '0',
+     $valid = array (// nombre => html
+                     'home' => 'index',
+                     'view_list' => 'index',
+                     'view_pub' => 'view',
                      'admin' => '1',
-                     'login' => '0',
-                     'registro' => '0'
+                     'login' => 'login',
+                     'registro' => 'registro'
                     );
 
-     // que vamos a retornar?  aquí está estructurado de forma que se puedan agregar nuevos rangos.
-     return isset( $valid[$action] ) && Cuenta::Rango() >= $valid[$action] ? 'drivers/bas.'.$action.'.php' : 'drivers/bas.critical.php';
+     // levantamos el archivo de template correspondiente //
+     $this->rain->draw(isset( $valid[$action] ) ? $valid[$action] : 'notfound');
     }
 
-   Public Function Set_Settings()
+   Private Function Set_Settings()
     {
 
      $retorno = $this->db->query('SELECT clave, valor FROM settings',false,false);
@@ -60,7 +94,7 @@ Class Core
      $this->rain->assign('version',$this->version);
     }
 
-   Public Function Set_Menu()
+   Private Function Set_Menu()
     {
      $menu = new Menu($this->db);
      $this->rain->assign('menu_lateral',$menu->get_menu(1));
@@ -69,32 +103,39 @@ Class Core
      $this->rain->assign('menu_inferior',$menu->get_menu(4));
     }
 
-   Public Function Set_Publicaciones()
+   Private Function Set_Publicaciones()
     {
      $pub = new pubs($this->db);
      $this->rain->assign('list',$pub->get_last_pubs($this->mesettings['pubsforpage']));
     }
 
-   Public Function Set_Pub_for()
+   Private Function Set_Pub_for()
     {
      $pub = new pubs($this->db);
      $this->rain->assign('list',$pub->get_last_pubs_for($this->mesettings['pubsforpage']));
     }
 
-   Public Function get_pub_fid()
+   Private Function get_pub_fid()
     {
      $pub = new pubs($this->db);
      $this->rain->assign('pubdata',$pub->get_pub($_GET['id']));
     }
 
-   Public Function login()
+   Private Function login()
     {
      $this->user->login($_POST['user'],$_POST['pass']);
     }
 
-   Public Function registro($captcha)
+   // registro
+   Private Function registro()
     {
-     $this->user->registro($_POST['user'],$_POST['pass'],$_POST['pass2'],$_POST['captcha'],$captcha);
+     $captcha = new Captcha('files/');
+       if(isset($_POST['posteado']))
+        {
+         $this->user->registro($_POST['user'],$_POST['pass'],$_POST['pass2'],$_POST['captcha'],$captcha);
+        }
+       $captcha->set_value();
+       $captcha->create();
+       unset($captcha);
     }
-
  }

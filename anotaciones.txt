@@ -1,1 +1,17 @@
-configuración de rain
+hacer paginado para los listados
+arreglar imagen del captcha
+verificar el if del registro & agregar phpass
+
+falta:
+
+* buscador
+* comentarios
+* footer_box
+* parser_bad_words
+* parser_icons
+* links seo
+
+----------------
+ administración
+---------------- 
+
