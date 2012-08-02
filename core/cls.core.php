@@ -20,8 +20,11 @@ Class Core
      $this->Settings = $Settings;
     }
 
+    //función de carga
    Public Function loader()
     {
+     //conectamos a la db
+     $this->db->connect();
 
      $action = isset( $_GET['action'] ) ? $_GET['action'] : 'home' ;
 
@@ -34,9 +37,16 @@ Class Core
      return isset( $valid[$action] ) ? 'drivers/bas.'.$action.'.php' : 'drivers/bas.critical.php';
     }
 
-   Public Function Get_Settings()
+   Public Function Set_Settings()
     {
 
+     $retorno = $this->db->query('SELECT clave, valor FROM settings',false,false);
+     while ( $valores = $retorno->fetchrow() )
+      {
+       $settings[$valores['clave']] = $valores['valor'];
+      }
+
+     $this->rain->assign('presets',$settings);
     }
 
  }
