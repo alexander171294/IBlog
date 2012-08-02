@@ -1,5 +1,8 @@
 <?php
 
+// versión
+$version = '1.0';
+
 /** @I-blog 1.0
  *  desarrollado por Alexander1712
  *  archivo principal index.php
@@ -23,3 +26,8 @@ $rain = new RainTPL ();
 // configuramos rain
 RainConfig();
 
+// incluimos el controlador necesario
+require ( $Core->loader() );
+
+// borramos lo que está de más.
+UnsetVars();

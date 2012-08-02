@@ -21,8 +21,20 @@ function autoLoadClass($class)
  // configurar rainTPL
 function RainConfig()
  {
-  RainTPL::tpl_dir = 'tpl/';
+  /*RainTPL::tpl_dir = 'tpl/';
 	RainTPL::cache_dir = 'tmp/';
 	RainTPL::base_url = '';
-	RainTPL::tpl_ext = '';
+	RainTPL::tpl_ext = ''; */
+ }
+
+ // función unset
+function UnsetVars()
+ {
+
+  //Clases principales
+  unset($Core);
+  unset($db);
+  unset($rain);
+
+  //Clases secundarias
  }

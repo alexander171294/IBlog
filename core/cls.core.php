@@ -18,4 +18,19 @@ Class Core
      $this->Settings = $Settings;
     }
 
+   Public Function loader()
+    {
+
+     $action = isset( $_GET['action'] ) ? $_GET['action'] : 'home' ;
+
+     //aciones validas
+     $valid = array (// nombre => nivel de acceso
+                     'home' => '0'
+                    );
+
+     // que vamos a retornar?
+     $retorno = isset( $valid[$action] ) ? 'drivers/bas.'.$action.'.php' : 'drivers/bas.critical.php';
+     return $retorno;
+    }
+
  }
