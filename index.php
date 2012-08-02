@@ -1,5 +1,9 @@
 <?php
 
+// contador de recursos
+$timestart = microtime(true);
+$memstart = memory_get_usage();
+
 // versión
 $version = '1.0';
 
@@ -23,6 +27,9 @@ $Core->version = $version;
 // iniciamos el controlador de bases de datos.
 $Core->db = new LittleDB ( $Core->Settings['db_host'] , $Core->Settings['db_user'] , $Core->Settings['db_pass'] , $Core->Settings['db_name'] );
 
+// iniciamos el control de usuarios
+$Core->user = new Cuenta ( $Core->db );
+
 // iniciamos el RAIN TPL
 $Core->rain = new RainTPL ();
 
@@ -32,5 +39,4 @@ RainConfig($Core);
 // incluimos el controlador necesario
 require ( $Core->loader() );
 
-// borramos lo que está de más.
-UnsetVars();
+echo('Memoria usada: <b>'.roundsize((memory_get_usage() - $memstart), true).'</b> - Tiempo de ejecucion: <b>'.round(microtime(true)-$timestart, 2).' segundos</b> - Consultas a la db: <b>'.$Core->db->count.'</b>');

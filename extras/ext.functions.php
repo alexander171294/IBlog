@@ -33,7 +33,22 @@ function UnsetVars()
 
   //Clases principales
 
-  unset($rain);
+  unset($Core);
 
   //Clases secundarias
  }
+
+ // Devuelve el valor redondeado para mejor lectura :P
+function roundsize($size, $full = false)
+ {
+
+  if($full == true) { $ext = array('Bytes', 'Kilo Bytes', 'Mega Bytes', 'Giga Bytes', 'Tera Byte', 'Peta Byte'); }
+  else { $ext = array('b', 'kb', 'mb', 'gb', 'tb', 'pb'); }
+  $i = 0;
+  while(($size/1024)>1)
+   {
+    $size=$size/1024;
+    $i++;
+   }
+  return (round($size,2).' '.$ext[$i]);
+ } // function roundsize();

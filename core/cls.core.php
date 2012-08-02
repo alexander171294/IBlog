@@ -13,6 +13,7 @@ Class Core
    Public $db = null;
    Public $rain = null;
    Public $version = '';
+   Public $user = null;
    // configuración extra sacada de la db
    Protected $mesettings = array();
 
@@ -36,10 +37,13 @@ Class Core
                      'home' => '0',
                      'view_list' => '0',
                      'view_pub' => '0',
+                     'admin' => '1',
+                     'login' => '0',
+                     'registro' => '0'
                     );
 
-     // que vamos a retornar?  agregar && $valid[$action]<=$rango
-     return isset( $valid[$action] ) ? 'drivers/bas.'.$action.'.php' : 'drivers/bas.critical.php';
+     // que vamos a retornar?  aquí está estructurado de forma que se puedan agregar nuevos rangos.
+     return isset( $valid[$action] ) && Cuenta::Rango() >= $valid[$action] ? 'drivers/bas.'.$action.'.php' : 'drivers/bas.critical.php';
     }
 
    Public Function Set_Settings()
@@ -81,6 +85,16 @@ Class Core
     {
      $pub = new pubs($this->db);
      $this->rain->assign('pubdata',$pub->get_pub($_GET['id']));
+    }
+
+   Public Function login()
+    {
+     $this->user->login($_POST['user'],$_POST['pass']);
+    }
+
+   Public Function registro($captcha)
+    {
+     $this->user->registro($_POST['user'],$_POST['pass'],$_POST['pass2'],$_POST['captcha'],$captcha);
     }
 
  }

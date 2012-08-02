@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+
+<title>{$presets.titulo}</title>
+
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="author" content="{$presets.author}" />
+<meta name="description" content="{$presets.description}" />
+<meta name="keywords" content="{$presets.keyword}" />
+<meta name="robots" content="index, follow, all" />
+
+<link rel="stylesheet" type="text/css" media="screen" href="css/screen.css" />
+
+</head>
+
+<body>
+
+<!-- wrap starts here -->
+<div id="wrap">
+
+	<!--header -->
+	<div id="header">			
+				
+		<h1 id="logo-text"><a href="" title="">{$presets.titulo}</a></h1>
+		<p id="slogan">{$presets.subtitulo}</p>
+		
+		<div  id="nav">
+       <ul>
+    {loop="$menu_principal"}
+				<li><a href="/{$value.link}">{$value.nombre}</a></li>
+      {/loop}
+			</ul>
+		</div>	
+		
+		<div id="header-image"></div>
+				
+	<!--header ends-->					
+	</div>
+	
+	<!-- content -->
+	<div id="content-outer" class="clear"><div id="content-wrap">
+	
+		<div id="content">
+		
+			<div id="left">			
+         <div class="post">
+         <h2><a href="index.php">Acceder</a></h2>
+         <p><form method="POST" action="">Accede a tu cuenta completando el formulario:<br>Usuario:<br><input type="text" name="user"><br>Password:<br><input type="password" name="pass"><br><input type="submit" value="acceder" name="posteado"></form></p>
+          </div>
+
+			</div>
+		
+			<div id="right">
+							
+				<div class="sidemenu">	
+					<h3>Menu</h3>
+					<ul>				
+      {loop="$menu_lateral"}
+				<li><a href="/{$value.link}">{$value.nombre}</a></li>
+      {/loop}
+					</ul>	
+				</div>
+      {if="$menu_afiliados"}
+				<div class="sidemenu">
+					<h3>Afiliados</h3>
+                    <ul>
+      {loop="$menu_afiliados"}
+				<li><a href="/{$value.link}">{$value.nombre}</a></li>
+      {/loop}
+					</ul>
+				</div>
+       {/if}
+				
+				<h3>Search</h3>
+			
+				<form id="quick-search" action="index.html" method="get" >
+					<p>
+					<label for="qsearch">Search:</label>
+					<input class="tbox" id="qsearch" type="text" name="qsearch" value="type and hit enter..." title="Start typing and hit ENTER" />
+					<input class="btn" alt="Search" type="image" name="searchsubmit" title="Search" src="images/search.gif" />
+					</p>
+				</form>		
+					
+			</div>		
+		
+		</div>	
+			
+	<!-- content end -->	
+	</div></div>
+			
+	<!-- footer starts here -->	
+	<div id="footer-outer" class="clear"><div id="footer-wrap">
+	
+		<div class="col-a">
+		
+			<h3>Image Gallery </h3>					
+				
+			<p class="thumbs">
+				<a href="index.html"><img src="images/thumb.jpg" width="40" height="40" alt="thumbnail" /></a>
+				<a href="index.html"><img src="images/thumb.jpg" width="40" height="40" alt="thumbnail" /></a>
+				<a href="index.html"><img src="images/thumb.jpg" width="40" height="40" alt="thumbnail" /></a>
+				<a href="index.html"><img src="images/thumb.jpg" width="40" height="40" alt="thumbnail" /></a>
+				<a href="index.html"><img src="images/thumb.jpg" width="40" height="40" alt="thumbnail" /></a>
+				<a href="index.html"><img src="images/thumb.jpg" width="40" height="40" alt="thumbnail" /></a>	
+				<a href="index.html"><img src="images/thumb.jpg" width="40" height="40" alt="thumbnail" /></a>
+				<a href="index.html"><img src="images/thumb.jpg" width="40" height="40" alt="thumbnail" /></a>				
+			</p>	
+			
+			<h3>Lorem ipsum dolor</h3>
+			
+			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. 
+			Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu 
+			posuere nunc justo tempus leo. Donec mattis, purus nec placerat bibendum, dui pede condimentum 
+			odio, ac blandit ante orci ut diam. Cras fringilla magna.  
+		   </p>				
+				
+		</div>
+		
+		<div class="col-a">
+		
+			<h3>Lorem Ipsum</h3>
+			
+			<p>
+			<strong>Lorem ipsum dolor</strong> <br />
+			Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. 
+			Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu 
+			posuere nunc justo tempus leo. Donec mattis, purus nec placerat bibendum, dui pede condimentum 
+			odio, ac blandit ante orci ut diam.</p>
+				
+			<div class="footer-list">
+				<ul>				
+					<li><a href="index.html">consequat molestie</a></li>
+					<li><a href="index.html">sem justo</a></li>
+					<li><a href="index.html">semper</a></li>
+					<li><a href="index.html">magna sed purus</a></li>
+					<li><a href="index.html">tincidunt</a></li>		
+					<li><a href="index.html">consequat molestie</a></li>		
+					<li><a href="index.html">magna sed purus</a></li>					
+				</ul>
+			</div>
+				
+		</div>		
+	
+		<div class="col-b">
+		{if="$presets.about"}
+			<h3>Acerca de nosotros</h3>
+			
+			<p>
+      {$presets.about}
+			</p>
+		{/if}
+		</div>		
+	
+	<!-- footer ends -->		
+	</div></div>
+	
+	<!-- footer-bottom starts -->		
+	<div id="footer-bottom">
+		<div class="bottom-left">
+			<p>
+			&copy; {function="date('Y')"} <strong>{$presets.footer}</strong>&nbsp; &nbsp; &nbsp;
+		   Design by <a href="http://www.styleshout.com/">styleshout</a> - Powered by I-blog {$version}
+			</p>
+		</div>
+	
+		<div class="bottom-right">
+			<p>		
+    {loop="$menu_inferior"}
+				<a href="/{$value.link}">{$value.nombre}</a> |
+      {/loop}
+			</p>
+		</div>
+	<!-- footer-bottom ends -->		
+	</div>
+	
+<!-- wrap ends here -->
+</div>
+
+</body>
+</html>
