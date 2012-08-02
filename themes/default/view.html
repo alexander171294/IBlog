@@ -4,14 +4,13 @@
 
 <head>
 
-<title>Fresh Pick</title>
+<title>{$presets.titulo}</title>
 
 <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
-<meta name="author" content="Erwin Aligam - styleshout.com" />
-<meta name="description" content="Site Description Here" />
-<meta name="keywords" content="keywords, here" />
-<meta name="robots" content="index, follow, noarchive" />
-<meta name="googlebot" content="noarchive" />
+<meta name="author" content="{$presets.author}" />
+<meta name="description" content="{$presets.description}" />
+<meta name="keywords" content="{$pubdata.pub_keys}" />
+<meta name="robots" content="index, follow, all" />
 
 <link rel="stylesheet" type="text/css" media="screen" href="css/screen.css" />
 
@@ -25,18 +24,15 @@
 	<!--header -->
 	<div id="header">			
 				
-		<h1 id="logo-text"><a href="index.html" title="">Freshpick</a></h1>	
-		<p id="slogan">Just Another Styleshout CSS Template... </p>		
+		<h1 id="logo-text"><a href="" title="">{$presets.titulo}</a></h1>
+		<p id="slogan">{$presets.subtitulo}</p>
 		
 		<div  id="nav">
-			<ul>
-				<li class="first"><a href="index.html">Home</a></li>
-				<li><a href="style.html">Style Demo</a></li>
-				<li id="current"><a href="blog.html">Blog</a></li>
-				<li><a href="archives.html">Archives</a></li>
-				<li><a href="index.html">Support</a></li>
-				<li><a href="index.html">About</a></li>		
-			</ul>		
+      <ul>
+    {loop="$menu_principal"}
+				<li><a href="/{$value.link}">{$value.nombre}</a></li>
+      {/loop}
+			</ul>
 		</div>	
 		
 		<div id="header-image"></div>
@@ -53,47 +49,26 @@
 			
 				<div class="post no-bg">
 			
-					<h2><a href="index.html">A Blog Entry</a></h2>
+					<h2><a href="index.php?action=view_pub&id={$pubdata.pub_id}">{$pubdata.pub_nombre}</a></h2>
 					
-					<p class="post-info">Posted by <a href="index.html">erwin</a> | Filed under <a href="index.html">templates</a>, <a href="index.html">internet</a>  </p>
-				
-					<div class="image-section">
-              		<img src="images/img-post.jpg" alt="image post"/>
-         		</div>					
-					
-					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. 
-					Cras id urna. Morbi tincidunt, orci ac <a href="index.html">convallis aliquam</a>, lectus turpis varius lorem, eu 
-					posuere nunc justo tempus leo.</p>
-			
-					<p>Donec mattis, purus nec placerat bibendum, <a href="index.html">dui pede condimentum</a> 
-					odio, ac blandit ante orci ut diam. Cras fringilla magna. Phasellus suscipit, leo a pharetra 
-					condimentum, lorem tellus eleifend magna, <a href="index.html">eget fringilla velit</a> magna id neque. Curabitur vel urna. 
-					In tristique orci porttitor ipsum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. 
-					Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu 
-					posuere nunc justo tempus leo.</p>			
-				
-					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. 
-					Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu 
-					posuere nunc justo tempus leo. Donec mattis, purus nec placerat bibendum, dui pede condimentum 
-					odio, ac blandit ante orci ut diam. Cras fringilla magna. Phasellus suscipit, leo a pharetra 
-					condimentum, lorem tellus eleifend magna, eget fringilla velit magna id neque. Curabitur vel urna. 
-					In tristique orci porttitor ipsum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. 
-					Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu 
-					posuere nunc justo tempus leo.
+          <p class="post-info">Posteado por: <a href="index.php?action=view_list&foruser={$pubdata.u_id}">{$pubdata.u_nombre}</a> | Categor&iacute;a: <a href="index.php?action=view_list&forcat={$pubdata.cat_id}">{$pubdata.cat_nombre}</a>  </p>
+
+          <p>
+          {$pubdata.pub_contenido}
 					</p>
 					
 					<p class="tags">	
-						<strong>Tagged : </strong> 
-						<a href="#">orci</a>, <a href="#">lectus</a>, <a href="#">varius</a>, <a href="#">turpis</a>
+						<strong>Palabras clave : </strong>
+            {$pubdata.pub_keys}
 					</p>
 				
 					<p class="postmeta">		
-					<a href="index.html" class="comments">Comments (3)</a> |		
-					<span class="date">April 20, 2009</span> |		
-					<a href="index.html" class="edit">Edit</a> 
+					<a href="index.html" class="comments">Comments ({$pubdata.pub_comentario})</a> |
+					<span class="date">{function="date('d/m/Y h:s',$pubdata.pub_fecha)"}</span>
+					<a href="index.html" class="edit">Edit</a>
 					</p>
 			
-					<h3 id="comments">3 Responses</h3>
+					<h3 id="comments">{$pubdata.pub_comentario} Responses</h3>
 
 					<ol class="commentlist">
 
@@ -175,36 +150,24 @@
 			<div id="right">
 							
 				<div class="sidemenu">	
-					<h3>Sidebar Menu</h3>
-					<ul>				
-						<li><a href="index.html">Home</a></li>
-						<li><a href="index.html#TemplateInfo">TemplateInfo</a></li>
-						<li><a href="style.html">Style Demo</a></li>
-						<li><a href="blog.html">Blog</a></li>
-						<li><a href="archives.html">Archives</a></li>
-					</ul>	
-				</div>
-							
-				<div class="sidemenu">
-					<h3>Sponsors</h3>
-                    <ul>
-						<li><a href="http://themeforest.net?ref=ealigam" title="Site Templates">ThemeForest <br />
-                            <span>Site Templates, Web &amp; CMS Themes.</span></a>
-                        </li>
-						<li><a href="http://www.4templates.com/?go=228858961" title="Website Templates">4Templates <br />
-                            <span>Low Cost High-Quality Templates</span></a>
-                        </li>
-						<li><a href="http://store.templatemonster.com?aff=ealigam" title="Web Templates">TemplateMonster <br />
-                            <span>Delivering the Best Templates on the Net!</span></a>
-                        </li>
-						<li><a href="http://graphicriver.net?ref=ealigam" title="Stock Graphics">GraphicRiver <br />
-                            <span>Awesome Stock Graphics</span></a>
-                        </li>
-					 	<li><a href="http://www.dreamhost.com/r.cgi?287326|SSHOUT" title="Web Hosting">DreamHost <br />
-                            <span>Premium Webhosting. Use the promocode <strong>sshout</strong> and save <strong>50 USD</strong>. </span></a>
-                        </li>
+     <h3>Menu</h3>
+					<ul>
+      {loop="$menu_lateral"}
+				<li><a href="/{$value.link}">{$value.nombre}</a></li>
+      {/loop}
 					</ul>
 				</div>
+							
+    {if="$menu_afiliados"}
+				<div class="sidemenu">
+					<h3>Afiliados</h3>
+                    <ul>
+      {loop="$menu_afiliados"}
+				<li><a href="/{$value.link}">{$value.nombre}</a></li>
+      {/loop}
+					</ul>
+				</div>
+       {/if}
 				
 				<h3>Search</h3>
 			
@@ -278,19 +241,13 @@
 	
 		<div class="col-b">
 		
-			<h3>About</h3>			
-			
+   {if="$presets.about"}
+			<h3>Acerca de nosotros</h3>
+
 			<p>
-			<a href="index.html"><img src="images/gravatar.jpg" width="40" height="40" alt="firefox" class="float-left" /></a>
-			Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. 
-			Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu 
-			posuere nunc justo tempus leo. Donec mattis, purus nec placerat bibendum, dui pede condimentum 
-			odio, ac blandit ante orci ut diam.</p>
-			
-			<p>
-			Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. 
-			Cras id urna. <a href="index.html">Learn more...</a></p>			
-			
+      {$presets.about}
+			</p>
+		{/if}
 		</div>		
 	
 	<!-- footer ends -->		
@@ -300,23 +257,21 @@
 	<div id="footer-bottom">
 		<div class="bottom-left">
 			<p>
-			&copy; 2011 <strong>Your Copyright Info Here</strong>&nbsp; &nbsp; &nbsp;
-			Design by <a href="http://www.styleshout.com/">styleshout</a>
+   &copy; {function="date('Y')"} <strong>{$presets.footer}</strong>&nbsp; &nbsp; &nbsp;
+		   Design by <a href="http://www.styleshout.com/">styleshout</a> - Powered by I-blog {$version}
 			</p>
 		</div>
-	
+
 		<div class="bottom-right">
-			<p>		
-				<a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> | 
-		   	<a href="http://validator.w3.org/check/referer">XHTML</a>	|			
-				<a href="index.html">Home</a> |
-				<a href="index.html">Sitemap</a> |
-				<a href="index.html">RSS Feed</a>								
+			<p>
+    {loop="$menu_inferior"}
+				<a href="/{$value.link}">{$value.nombre}</a> |
+      {/loop}
 			</p>
 		</div>
-	<!-- footer-bottom ends -->		
+	<!-- footer-bottom ends -->
 	</div>
-	
+
 <!-- wrap ends here -->
 </div>
 

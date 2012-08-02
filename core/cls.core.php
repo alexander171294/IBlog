@@ -34,10 +34,11 @@ Class Core
      //aciones validas
      $valid = array (// nombre => zona privada = 1
                      'home' => '0',
-                     'view_list' => '0'
+                     'view_list' => '0',
+                     'view_pub' => '0',
                     );
 
-     // que vamos a retornar?
+     // que vamos a retornar?  agregar && $valid[$action]<=$rango
      return isset( $valid[$action] ) ? 'drivers/bas.'.$action.'.php' : 'drivers/bas.critical.php';
     }
 
@@ -74,6 +75,12 @@ Class Core
     {
      $pub = new pubs($this->db);
      $this->rain->assign('list',$pub->get_last_pubs_for($this->mesettings['pubsforpage']));
+    }
+
+   Public Function get_pub_fid()
+    {
+     $pub = new pubs($this->db);
+     $this->rain->assign('pubdata',$pub->get_pub($_GET['id']));
     }
 
  }

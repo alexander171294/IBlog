@@ -29,11 +29,11 @@ Class Pubs
 
     if(isset($_GET['foruser']))
      {
-      $result = $this->db->query('SELECT pub_id, c.cat_id, c.cat_nombre, u.u_nombre, u.u_id, p.pub_nombre, p.pub_preview, p.pub_comentario, p.pub_fecha FROM publicaciones AS p LEFT JOIN users AS u ON u.u_id = p.pub_autor LEFT JOIN categorias AS c ON c.cat_id = p.pub_categoria WHERE p.pub_autor = ? LIMIT '.$max,array($_GET['foruser']),false);
+      $result = $this->db->query('SELECT p.pub_id, c.cat_id, c.cat_nombre, u.u_nombre, u.u_id, p.pub_nombre, p.pub_preview, p.pub_comentario, p.pub_fecha FROM publicaciones AS p LEFT JOIN users AS u ON u.u_id = p.pub_autor LEFT JOIN categorias AS c ON c.cat_id = p.pub_categoria WHERE p.pub_autor = ? LIMIT '.$max,array($_GET['foruser']),false);
      }
     elseif (isset($_GET['forcat']))
      {
-      $result = $this->db->query('SELECT pub_id, c.cat_id, c.cat_nombre, u.u_nombre, u.u_id, p.pub_nombre, p.pub_preview, p.pub_comentario, p.pub_fecha FROM publicaciones AS p LEFT JOIN users AS u ON u.u_id = p.pub_autor LEFT JOIN categorias AS c ON c.cat_id = p.pub_categoria WHERE p.pub_categoria = ? LIMIT '.$max,array($_GET['forcat']),false);
+      $result = $this->db->query('SELECT p.pub_id, c.cat_id, c.cat_nombre, u.u_nombre, u.u_id, p.pub_nombre, p.pub_preview, p.pub_comentario, p.pub_fecha FROM publicaciones AS p LEFT JOIN users AS u ON u.u_id = p.pub_autor LEFT JOIN categorias AS c ON c.cat_id = p.pub_categoria WHERE p.pub_categoria = ? LIMIT '.$max,array($_GET['forcat']),false);
      }
 
     while ($values = $result->fetchrow())
@@ -41,6 +41,11 @@ Class Pubs
        $resort[] = $values;
       }
     return $resort;
+   }
+
+  Public Function get_pub($id)
+   {
+    return $this->db->query('SELECT p.pub_nombre, u.u_nombre, u.u_id, c.cat_nombre, c.cat_id, p.pub_contenido, p.pub_keys, p.pub_comentario, p.pub_fecha FROM publicaciones AS p LEFT JOIN users AS u ON u.u_id = p.pub_autor LEFT JOIN categorias AS c ON c.cat_id = p.pub_categoria WHERE p.pub_id = ?',array($id),true);
    }
 
  }
