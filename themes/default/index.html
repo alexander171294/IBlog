@@ -46,30 +46,26 @@
 		<div id="content">
 		
 			<div id="left">			
-			
-				<div class="post">
-			
-					<h2><a href="index.html">A Blog Post</a></h2>
-			
-					<p class="post-info">Posted by <a href="index.html">erwin</a> | Filed under <a href="index.html">templates</a>, <a href="index.html">internet</a>  </p>
-				
-					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. 
-					Cras id urna. Morbi tincidunt, orci ac <a href="index.html">convallis aliquam</a>, lectus turpis varius lorem, eu 
-					posuere nunc justo tempus leo.</p>
-			
-					<p>
-					Donec mattis, purus nec placerat bibendum, <a href="index.html">dui pede condimentum</a> 
-					odio, ac blandit ante orci ut diam. Cras fringilla magna. Phasellus suscipit, leo a pharetra 
-					condimentum, lorem tellus eleifend magna, <a href="index.html">eget fringilla velit</a> magna id neque. Curabitur vel urna. 
-					In tristique orci porttitor ipsum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. 
-					Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu 
-					posuere nunc justo tempus leo.</p>			
-				
-					<p class="postmeta">		
-					<a href="index.html" class="readmore">Read more</a> |
-					<a href="index.html" class="comments">Comments (3)</a> |				
-					<span class="date">April 20, 2009</span>	
+			{loop="$list"}
+         <div class="post">
+         <h2><a href="index.php?action=view_pub&forid={$value.pub_id}">{$value.pub_nombre}</a></h2>
+         <p class="post-info">Posteado por: <a href="index.php?action=view_list&foruser={$value.u_id}">{$value.u_nombre}</a> | Categor&iacute;a: <a href="index.php?action=view_list&forcat={$value.cat_id}">{$value.cat_nombre}</a>  </p>
+         <p>{$value.pub_preview}</p>
+         <p class="postmeta">
+					<a href="index.php?action=view_pub&forid={$value.pub_id}" class="readmore">Leer M&aacute;s</a> |
+					<a href="index.php?action=view_pub&forid={$value.pub_id}" class="comments">Commentarios ({$value.pub_comentario})</a> |
+					<span class="date">{function="date('d/m/Y h:s',$value.pub_fecha)"}</span>
 					</p>
+      {/loop}
+
+			
+
+			
+
+				
+
+
+
 			
 			</div>			
 			

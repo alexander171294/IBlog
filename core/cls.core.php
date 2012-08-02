@@ -13,6 +13,8 @@ Class Core
    Public $db = null;
    Public $rain = null;
    Public $version = '';
+   // configuración extra sacada de la db
+   Protected $mesettings = array();
 
    // funcion de construcción de la clase
    Public Function __construct($Settings)
@@ -48,6 +50,7 @@ Class Core
       }
 
      $this->rain->assign('presets',$settings);
+     $this->mesettings = $settings;
      $this->rain->assign('version',$this->version);
     }
 
@@ -58,6 +61,12 @@ Class Core
      $this->rain->assign('menu_principal',$menu->get_menu(2));
      $this->rain->assign('menu_afiliados',$menu->get_menu(3));
      $this->rain->assign('menu_inferior',$menu->get_menu(4));
+    }
+
+   Public Function Set_Publicaciones()
+    {
+     $pub = new pubs($this->db);
+     $this->rain->assign('list',$pub->get_last_pubs($this->mesettings['pubsforpage']));
     }
 
  }

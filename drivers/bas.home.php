@@ -13,7 +13,7 @@ $Core->Set_Menu();
 
 /////// inicio del código de éste controlador ////////
 
-//***
+$Core->Set_Publicaciones();
 
 /////// carga del diseño de éste controlador /////////
 // dibujamos el diseño
