@@ -32,8 +32,7 @@ function UnsetVars()
  {
 
   //Clases principales
-  unset($Core);
-  unset($db);
+
   unset($rain);
 
   //Clases secundarias

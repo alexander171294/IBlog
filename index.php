@@ -18,10 +18,10 @@ InitAutoLoad();
 $Core = new Core ( include ( 'extras/ext.settings.php' ) );
 
 // iniciamos el controlador de bases de datos.
-$db = new LittleDB ( $Core->Settings['db_host'] , $Core->Settings['db_user'] , $Core->Settings['db_pass'] , $Core->Settings['db_name'] );
+$Core->db = new LittleDB ( $Core->Settings['db_host'] , $Core->Settings['db_user'] , $Core->Settings['db_pass'] , $Core->Settings['db_name'] );
 
 // iniciamos el RAIN TPL
-$rain = new RainTPL ();
+$Core->rain = new RainTPL ();
 
 // configuramos rain
 RainConfig($Core);

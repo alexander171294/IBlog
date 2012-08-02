@@ -10,6 +10,8 @@ Class Core
 
    // variables locales de la clase
    Public $Settings = array();
+   Public $db = null;
+   Public $rain = null;
 
    // funcion de construcción de la clase
    Public Function __construct($Settings)
@@ -30,6 +32,11 @@ Class Core
 
      // que vamos a retornar?
      return isset( $valid[$action] ) ? 'drivers/bas.'.$action.'.php' : 'drivers/bas.critical.php';
+    }
+
+   Public Function Get_Settings()
+    {
+
     }
 
  }
