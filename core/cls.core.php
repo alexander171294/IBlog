@@ -12,6 +12,7 @@ Class Core
    Public $Settings = array();
    Public $db = null;
    Public $rain = null;
+   Public $version = '';
 
    // funcion de construcción de la clase
    Public Function __construct($Settings)
@@ -47,6 +48,16 @@ Class Core
       }
 
      $this->rain->assign('presets',$settings);
+     $this->rain->assign('version',$this->version);
+    }
+
+   Public Function Set_Menu()
+    {
+     $menu = new Menu($this->db);
+     $this->rain->assign('menu_lateral',$menu->get_menu(1));
+     $this->rain->assign('menu_principal',$menu->get_menu(2));
+     $this->rain->assign('menu_afiliados',$menu->get_menu(3));
+     $this->rain->assign('menu_inferior',$menu->get_menu(4));
     }
 
  }
