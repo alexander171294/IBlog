@@ -9,11 +9,13 @@ Class Core
  {
 
    // variables locales de la clase
+
    Public $Settings = array();
    Public $db = null;
    Public $rain = null;
    Public $version = '';
    Public $user = null;
+
    // configuración extra sacada de la db
    Protected $mesettings = array();
 
@@ -80,6 +82,11 @@ Class Core
        $this->set_comment();
        $rain_draw = false; //no hacemos el draw de rain
       }
+     elseif ($action == 'search')
+      {
+       $pubs = new Pubs($this->db);
+       $pubs->search($_POST['texto'],$this->mesettings['pubsforpage']);
+      }
 
      //aciones validas
      $valid = array (// nombre => html
@@ -88,7 +95,8 @@ Class Core
                      'view_pub' => 'view',
                      'admin' => '1',
                      'login' => 'login',
-                     'registro' => 'registro'
+                     'registro' => 'registro',
+                     'search' => 'index'
                     );
 
      // levantamos el archivo de template correspondiente //
@@ -169,4 +177,6 @@ Class Core
      //redireccionamos:
      header('Location: index.php?action=view_pub&id='.$id);
     }
+
+
  }

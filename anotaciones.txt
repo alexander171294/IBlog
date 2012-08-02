@@ -6,7 +6,6 @@ agregar captcha en comentario
 falta:
 
 * buscador
-* comentarios
 * footer_box
 * parser_bad_words
 * parser_icons

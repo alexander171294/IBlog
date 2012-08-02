@@ -131,8 +131,8 @@ class LittleDB
       else
        {
         $return = new Query($query, $this->conn);
+        ++$this->count;
        }
-      ++$this->count;
       return $return;
      }
     else { return false; }
