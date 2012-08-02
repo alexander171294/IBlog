@@ -24,7 +24,7 @@ $db = new LittleDB ( $Core->Settings['db_host'] , $Core->Settings['db_user'] , $
 $rain = new RainTPL ();
 
 // configuramos rain
-RainConfig();
+RainConfig($Core);
 
 // incluimos el controlador necesario
 require ( $Core->loader() );

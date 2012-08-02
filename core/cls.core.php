@@ -29,8 +29,7 @@ Class Core
                     );
 
      // que vamos a retornar?
-     $retorno = isset( $valid[$action] ) ? 'drivers/bas.'.$action.'.php' : 'drivers/bas.critical.php';
-     return $retorno;
+     return isset( $valid[$action] ) ? 'drivers/bas.'.$action.'.php' : 'drivers/bas.critical.php';
     }
 
  }

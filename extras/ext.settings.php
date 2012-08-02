@@ -11,6 +11,11 @@ return array(
             'db_host' => 'localhost',
             'db_user' => 'root',
             'db_pass' => '',
-            'db_name' => 'iblog'
+            'db_name' => 'iblog',
+
+            //configuración extra del sitio
+            'site_path' => '/', //carpeta donde se encuentra tu sitio a partir del raiz
+            'tema' => 'default',
+            'cache' => 'cache'
 
             );

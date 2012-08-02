@@ -19,12 +19,12 @@ function autoLoadClass($class)
  } // function autoLoadClass();
 
  // configurar rainTPL
-function RainConfig()
+function RainConfig($Core)
  {
-  /*RainTPL::tpl_dir = 'tpl/';
-	RainTPL::cache_dir = 'tmp/';
-	RainTPL::base_url = '';
-	RainTPL::tpl_ext = ''; */
+    raintpl::configure('base_url', $Core->Settings['site_path']);
+                                           // cambiar por la clase theme
+    raintpl::configure('tpl_dir', 'themes/'.$Core->Settings['tema'].'/');
+    raintpl::configure('cache_dir', $Core->Settings['cache'].'/'.$Core->Settings['tema'].'/');
  }
 
  // función unset
