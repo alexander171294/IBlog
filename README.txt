@@ -1,0 +1,1 @@
+la configuración está en extras/ext.settings.php
