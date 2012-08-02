@@ -24,15 +24,6 @@ $Core = new Core ( include ( 'extras/ext.settings.php' ) );
 //establecemos la versión
 $Core->version = $version;
 
-// iniciamos el controlador de bases de datos.
-$Core->db = new LittleDB ( $Core->Settings['db_host'] , $Core->Settings['db_user'] , $Core->Settings['db_pass'] , $Core->Settings['db_name'] );
-
-// iniciamos el control de usuarios
-$Core->user = new Cuenta ( $Core->db );
-
-// iniciamos el RAIN TPL
-$Core->rain = new RainTPL ();
-
 // configuramos rain
 RainConfig($Core);
 

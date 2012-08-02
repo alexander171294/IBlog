@@ -22,11 +22,20 @@ Class Core
     {
      //pasamos la configuración a la clase
      $this->Settings = $Settings;
+     // iniciamos el controlador de bases de datos.
+     $this->db = new LittleDB ( $this->Settings['db_host'] , $this->Settings['db_user'] , $this->Settings['db_pass'] , $this->Settings['db_name'] );
+     // iniciamos el control de usuarios
+     $this->user = new Cuenta ( $this->db );
+     // iniciamos el RAIN TPL
+     $this->rain = new RainTPL ();
     }
 
     //función de carga
    Public Function boot()
     {
+     //por defecto hacemos el draw a rain
+     $rain_draw = true;
+
      //conectamos a la db
      $this->db->connect();
 
@@ -65,6 +74,12 @@ Class Core
       {
        $this->get_pub_fid();
       }
+     // comentar una publicación
+     elseif ($action == 'comment')
+      {
+       $this->set_comment();
+       $rain_draw = false; //no hacemos el draw de rain
+      }
 
      //aciones validas
      $valid = array (// nombre => html
@@ -77,7 +92,10 @@ Class Core
                     );
 
      // levantamos el archivo de template correspondiente //
+     if($rain_draw==true)
+     {
      $this->rain->draw(isset( $valid[$action] ) ? $valid[$action] : 'notfound');
+     }
     }
 
    Private Function Set_Settings()
@@ -119,6 +137,7 @@ Class Core
     {
      $pub = new pubs($this->db);
      $this->rain->assign('pubdata',$pub->get_pub($_GET['id']));
+     $this->rain->assign('coments',$pub->get_comments($_GET['id']));
     }
 
    Private Function login()
@@ -137,5 +156,17 @@ Class Core
        $captcha->set_value();
        $captcha->create();
        unset($captcha);
+    }
+
+   Private Function set_comment()
+    {
+     $id = (int) $_POST['id'];
+     // ejecutamos el post
+     if(!empty($_POST['name']) && $id !== 0 && !empty($_POST['email']) && !empty($_POST['message']) && strlen($_POST['name'])>3 && strlen($_POST['email'])>15)
+      {
+       $this->db->insert('comentarios',array('Name' => $_POST['name'], 'email' => $_POST['email'], 'web' => empty($_POST['web']) ? '/' : $_POST['web'], 'coment' => $_POST['message'], 'pub' => $id, 'fecha' => time()));
+      }
+     //redireccionamos:
+     header('Location: index.php?action=view_pub&id='.$id);
     }
  }

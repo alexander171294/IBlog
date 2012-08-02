@@ -45,7 +45,18 @@ Class Pubs
 
   Public Function get_pub($id)
    {
-    return $this->db->query('SELECT p.pub_nombre, u.u_nombre, u.u_id, c.cat_nombre, c.cat_id, p.pub_contenido, p.pub_keys, p.pub_comentario, p.pub_fecha FROM publicaciones AS p LEFT JOIN users AS u ON u.u_id = p.pub_autor LEFT JOIN categorias AS c ON c.cat_id = p.pub_categoria WHERE p.pub_id = ?',array($id),true);
+    return $this->db->query('SELECT p.pub_id, p.pub_nombre, u.u_nombre, u.u_id, c.cat_nombre, c.cat_id, p.pub_contenido, p.pub_keys, p.pub_comentario, p.pub_fecha FROM publicaciones AS p LEFT JOIN users AS u ON u.u_id = p.pub_autor LEFT JOIN categorias AS c ON c.cat_id = p.pub_categoria WHERE p.pub_id = ?',array($id),true);
+   }
+
+  Public Function get_comments($id)
+   {
+    $objeto = $this->db->query('SELECT id, name, email, web, coment, fecha FROM comentarios where pub = ?',array($id),false);
+    echo mysql_error();
+    while ($values = $objeto->fetchrow())
+      {//armamos un array para armar el menu en el html
+       $resort[] = $values;
+      }
+    return $resort;
    }
 
  }

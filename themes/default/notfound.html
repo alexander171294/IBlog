@@ -9,7 +9,7 @@
 <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
 <meta name="author" content="{$presets.author}" />
 <meta name="description" content="{$presets.description}" />
-<meta name="keywords" content="{$pubdata.pub_keys}" />
+<meta name="keywords" content="{$presets.keyword}" />
 <meta name="robots" content="index, follow, all" />
 
 <link rel="stylesheet" type="text/css" media="screen" href="css/screen.css" />
@@ -28,7 +28,7 @@
 		<p id="slogan">{$presets.subtitulo}</p>
 		
 		<div  id="nav">
-      <ul>
+       <ul>
     {loop="$menu_principal"}
 				<li><a href="/{$value.link}">{$value.nombre}</a></li>
       {/loop}
@@ -46,92 +46,23 @@
 		<div id="content">
 		
 			<div id="left">			
-			
-				<div class="post no-bg">
-			
-					<h2><a href="index.php?action=view_pub&id={$pubdata.pub_id}">{$pubdata.pub_nombre}</a></h2>
-					
-          <p class="post-info">Posteado por: <a href="index.php?action=view_list&foruser={$pubdata.u_id}">{$pubdata.u_nombre}</a> | Categor&iacute;a: <a href="index.php?action=view_list&forcat={$pubdata.cat_id}">{$pubdata.cat_nombre}</a>  </p>
-
-          <p>
-          {$pubdata.pub_contenido}
-					</p>
-					
-					<p class="tags">	
-						<strong>Palabras clave : </strong>
-            {$pubdata.pub_keys}
-					</p>
-				
-					<p class="postmeta">		
-					<a href="index.html" class="comments">Comments ({$pubdata.pub_comentario})</a> |
-					<span class="date">{function="date('d/m/Y h:s',$pubdata.pub_fecha)"}</span>
-					<a href="index.html" class="edit">Edit</a>
-					</p>
-			
-					<h3 id="comments">{$pubdata.pub_comentario} Responses</h3>
-
-					<ol class="commentlist">
-            {loop="$coments"}
-						<li class="alt" id="comment-{$value.id}">
-							<cite>
-								<img alt="" src="images/gravatar.jpg" class="avatar" height="40" width="40" />			
-								<a href="\{$value.web}">{$value.name}</a> dijo: <br />
-								<span class="comment-data"><a href="" title="">{function="date('d/m/Y h:s',$value.fecha)"}</a> </span>
-							</cite>
-							
-							<div class="comment-text">
-								<p>{$value.coment}</p>
-							</div>						
-						</li>
-            {/loop}
-					</ol>
-
- 					<h3 id="respond">Responder</h3>
-			
-					<form action="index.php?action=comment" method="post" id="commentform">
-						<input type="hidden" name="id" value="{$pubdata.pub_id}" id="id">
-						<p>	
-							<label for="name">Nombre (requerido)</label><br />
-							<input id="nombre" name="name" value="Your Name" type="text" tabindex="1" />
-						</p>
-			
-						<p>
-							<label for="email">Email</label><br />
-							<input id="email" name="email" value="Your Email" type="text" tabindex="2" />
-						</p>
-				
-						<p>
-							<label for="website">Website</label><br />
-							<input id="website" name="website" value="Your Website" type="text" tabindex="3" />
-						</p>
-					
-						<p>
-							<label for="message">Tu Mensaje</label><br />
-							<textarea id="message" name="message" rows="10" cols="20" tabindex="4"></textarea>
-						</p>	
-			
-						<p class="no-border">
-							<input id="send" class="button" type="submit" value="Submit" tabindex="5" />
-						</p>
-					
-					</form>	
-					
-				</div>	
-				
+         <div class="post">
+         <h2><a href="">Ooops!</a></h2>
+         <p>no encontramos lo que usted busca :/</p>
+         </div>
 			</div>
 		
 			<div id="right">
 							
 				<div class="sidemenu">	
-     <h3>Menu</h3>
-					<ul>
+					<h3>Menu</h3>
+					<ul>				
       {loop="$menu_lateral"}
 				<li><a href="/{$value.link}">{$value.nombre}</a></li>
       {/loop}
-					</ul>
+					</ul>	
 				</div>
-							
-    {if="$menu_afiliados"}
+      {if="$menu_afiliados"}
 				<div class="sidemenu">
 					<h3>Afiliados</h3>
                     <ul>
@@ -150,7 +81,7 @@
 					<input class="tbox" id="qsearch" type="text" name="qsearch" value="type and hit enter..." title="Start typing and hit ENTER" />
 					<input class="btn" alt="Search" type="image" name="searchsubmit" title="Search" src="images/search.gif" />
 					</p>
-				</form>	
+				</form>		
 					
 			</div>		
 		
@@ -158,12 +89,12 @@
 			
 	<!-- content end -->	
 	</div></div>
-		
+			
 	<!-- footer starts here -->	
 	<div id="footer-outer" class="clear"><div id="footer-wrap">
 	
 		<div class="col-a">
-					
+		
 			<h3>Image Gallery </h3>					
 				
 			<p class="thumbs">
@@ -183,7 +114,7 @@
 			Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu 
 			posuere nunc justo tempus leo. Donec mattis, purus nec placerat bibendum, dui pede condimentum 
 			odio, ac blandit ante orci ut diam. Cras fringilla magna.  
-		   </p>			
+		   </p>				
 				
 		</div>
 		
@@ -205,18 +136,17 @@
 					<li><a href="index.html">semper</a></li>
 					<li><a href="index.html">magna sed purus</a></li>
 					<li><a href="index.html">tincidunt</a></li>		
-					<li><a href="index.html">consequat molestie</a></li>			
-					<li><a href="index.html">magna sed purus</a></li>				
+					<li><a href="index.html">consequat molestie</a></li>		
+					<li><a href="index.html">magna sed purus</a></li>					
 				</ul>
 			</div>
 				
 		</div>		
 	
 		<div class="col-b">
-		
-   {if="$presets.about"}
+		{if="$presets.about"}
 			<h3>Acerca de nosotros</h3>
-
+			
 			<p>
       {$presets.about}
 			</p>
@@ -230,21 +160,21 @@
 	<div id="footer-bottom">
 		<div class="bottom-left">
 			<p>
-   &copy; {function="date('Y')"} <strong>{$presets.footer}</strong>&nbsp; &nbsp; &nbsp;
+			&copy; {function="date('Y')"} <strong>{$presets.footer}</strong>&nbsp; &nbsp; &nbsp;
 		   Design by <a href="http://www.styleshout.com/">styleshout</a> - Powered by I-blog {$version}
 			</p>
 		</div>
-
+	
 		<div class="bottom-right">
-			<p>
+			<p>		
     {loop="$menu_inferior"}
 				<a href="/{$value.link}">{$value.nombre}</a> |
       {/loop}
 			</p>
 		</div>
-	<!-- footer-bottom ends -->
+	<!-- footer-bottom ends -->		
 	</div>
-
+	
 <!-- wrap ends here -->
 </div>
 

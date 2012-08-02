@@ -9,7 +9,11 @@ raiz del sitio:
 -
 -->core
 -->extras
+
+--- driver será quitado ---
 -->drivers
+---------------------------
+
 -->files
 -->cache
 -->themes
