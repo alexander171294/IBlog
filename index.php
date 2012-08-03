@@ -19,10 +19,7 @@ require('extras/ext.functions.php');
 InitAutoLoad();
 
 // iniciamos la clase core y le mandamos la configuración
-$Core = new Core ( include ( 'extras/ext.settings.php' ) );
-
-//establecemos la versión
-$Core->version = $version;
+$Core = new Core ( include ( 'extras/ext.settings.php' ), $version );
 
 // configuramos rain
 RainConfig($Core);
