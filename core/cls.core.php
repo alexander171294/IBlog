@@ -32,13 +32,13 @@ Class Core
      $this->rain = new RainTPL ();
      // guardamos la versión
      $this->version = $version;
-    }
-
-    //función de carga
-   Public Function boot()
-    {
      //por defecto hacemos el draw a rain
      $rain_draw = true;
+
+     raintpl::configure('base_url', $this->Settings['site_path']);
+     // cambiar por la clase theme
+     raintpl::configure('tpl_dir', 'themes/'.$this->Settings['tema'].'/');
+     raintpl::configure('cache_dir', $this->Settings['cache'].'/'.$this->Settings['tema'].'/');
 
      //conectamos a la db
      $this->db->connect();

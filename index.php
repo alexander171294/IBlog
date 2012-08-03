@@ -18,14 +18,11 @@ require('extras/ext.functions.php');
 // iniciamos autoload
 InitAutoLoad();
 
+// configuramos rain
+//RainConfig($Core);
+
 // iniciamos la clase core y le mandamos la configuración
 $Core = new Core ( include ( 'extras/ext.settings.php' ), $version );
-
-// configuramos rain
-RainConfig($Core);
-
-// cargamos y ejecutamos el nucleo del sistema
-$Core->boot();
 
 // finalizamos el core
 unset($Core);
