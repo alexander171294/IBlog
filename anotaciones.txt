@@ -6,7 +6,6 @@ reparar buscador
 
 falta:
 
-* footer_box
 * parser_bad_words
 * parser_icons
 * links seo
