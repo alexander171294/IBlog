@@ -35,6 +35,7 @@ Class Core
      //por defecto hacemos el draw a rain
      $rain_draw = true;
 
+     //configuramos rainTPL
      raintpl::configure('base_url', $this->Settings['site_path']);
      // cambiar por la clase theme
      raintpl::configure('tpl_dir', 'themes/'.$this->Settings['tema'].'/');
