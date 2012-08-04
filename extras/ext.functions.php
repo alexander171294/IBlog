@@ -19,29 +19,17 @@ function autoLoadClass($class)
  } // function autoLoadClass();
 
  // configurar rainTPL
-function RainConfig($Core)
+/*function RainConfig($Core)
  {
     raintpl::configure('base_url', $Core->Settings['site_path']);
-                                           // cambiar por la clase theme
+    // cambiar por la clase theme
     raintpl::configure('tpl_dir', 'themes/'.$Core->Settings['tema'].'/');
     raintpl::configure('cache_dir', $Core->Settings['cache'].'/'.$Core->Settings['tema'].'/');
- }
-
- // función unset
-function UnsetVars()
- {
-
-  //Clases principales
-
-  unset($Core);
-
-  //Clases secundarias
- }
+ }*/
 
  // Devuelve el valor redondeado para mejor lectura :P
 function roundsize($size, $full = false)
  {
-
   if($full == true) { $ext = array('Bytes', 'Kilo Bytes', 'Mega Bytes', 'Giga Bytes', 'Tera Byte', 'Peta Byte'); }
   else { $ext = array('b', 'kb', 'mb', 'gb', 'tb', 'pb'); }
   $i = 0;

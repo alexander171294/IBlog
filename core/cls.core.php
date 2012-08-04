@@ -12,15 +12,15 @@ Class Core
 
    Public $Settings = array();
    Public $db = null;
-   Public $rain = null;
-   Public $version = '';
-   Public $user = null;
+   Protected $rain = null;
+   Protected $version = '';
+   Protected $user = null;
 
    // configuración extra sacada de la db
    Protected $mesettings = array();
 
    // funcion de construcción de la clase
-   Public Function __construct($Settings)
+   Public Function __construct($Settings,$version)
     {
      //pasamos la configuración a la clase
      $this->Settings = $Settings;
@@ -30,13 +30,16 @@ Class Core
      $this->user = new Cuenta ( $this->db );
      // iniciamos el RAIN TPL
      $this->rain = new RainTPL ();
-    }
-
-    //función de carga
-   Public Function boot()
-    {
+     // guardamos la versión
+     $this->version = $version;
      //por defecto hacemos el draw a rain
      $rain_draw = true;
+
+     //configuramos rainTPL
+     raintpl::configure('base_url', $this->Settings['site_path']);
+     // cambiar por la clase theme
+     raintpl::configure('tpl_dir', 'themes/'.$this->Settings['tema'].'/');
+     raintpl::configure('cache_dir', $this->Settings['cache'].'/'.$this->Settings['tema'].'/');
 
      //conectamos a la db
      $this->db->connect();
@@ -47,46 +50,6 @@ Class Core
      $this->Set_Settings();
      // seteamos menues
      $this->Set_Menu();
-
-     //llamamos a la función correspondiente a la acción
-     if ($action == 'home')
-      {
-       $this->Set_Publicaciones();
-      }
-     // login
-     elseif ($action == 'login')
-      {
-       if(isset($_POST['posteado']))
-        {
-         $this->login();
-        }
-      }
-     //registro
-     elseif ($action == 'registro')
-      {
-       $this->registro();
-      }
-     // ver lista de ultimas publicaciones en orden.
-     elseif ($action == 'view_list')
-      {
-       $this->Set_Pub_for();
-      }
-     // ver una publicación
-     elseif ($action == 'view_pub')
-      {
-       $this->get_pub_fid();
-      }
-     // comentar una publicación
-     elseif ($action == 'comment')
-      {
-       $this->set_comment();
-       $rain_draw = false; //no hacemos el draw de rain
-      }
-     elseif ($action == 'search')
-      {
-       $pubs = new Pubs($this->db);
-       $pubs->search($_POST['texto'],$this->mesettings['pubsforpage']);
-      }
 
      //aciones validas
      $valid = array (// nombre => html
@@ -99,8 +62,11 @@ Class Core
                      'search' => 'index'
                     );
 
+     //llamamos a la función correspondiente a la acción
+     call_user_func(array('core',isset( $valid[$action] ) ? 'calleable_'.$action : 'calleable_error'));
+
      // levantamos el archivo de template correspondiente //
-     if($rain_draw==true)
+     if($action != 'comment')
      {
      $this->rain->draw(isset( $valid[$action] ) ? $valid[$action] : 'notfound');
      }
@@ -129,32 +95,35 @@ Class Core
      $this->rain->assign('menu_inferior',$menu->get_menu(4));
     }
 
-   Private Function Set_Publicaciones()
+   Private Function calleable_home()
     {
      $pub = new pubs($this->db);
      $this->rain->assign('list',$pub->get_last_pubs($this->mesettings['pubsforpage']));
     }
 
-   Private Function Set_Pub_for()
+   Private Function calleable_view_list()
     {
      $pub = new pubs($this->db);
      $this->rain->assign('list',$pub->get_last_pubs_for($this->mesettings['pubsforpage']));
     }
 
-   Private Function get_pub_fid()
+   Private Function calleable_view_pub()
     {
      $pub = new pubs($this->db);
      $this->rain->assign('pubdata',$pub->get_pub($_GET['id']));
      $this->rain->assign('coments',$pub->get_comments($_GET['id']));
     }
 
-   Private Function login()
+   Private Function calleable_login()
     {
-     $this->user->login($_POST['user'],$_POST['pass']);
+     if(isset($_POST['posteado']))
+        {
+         $this->user->login($_POST['user'],$_POST['pass']);
+        }
     }
 
    // registro
-   Private Function registro()
+   Private Function calleable_registro()
     {
      $captcha = new Captcha('files/');
        if(isset($_POST['posteado']))
@@ -166,7 +135,7 @@ Class Core
        unset($captcha);
     }
 
-   Private Function set_comment()
+   Private Function calleable_comment()
     {
      $id = (int) $_POST['id'];
      // ejecutamos el post
@@ -178,5 +147,15 @@ Class Core
      header('Location: index.php?action=view_pub&id='.$id);
     }
 
+   Private Function calleable_search()
+    {
+     $pubs = new Pubs($this->db);
+     $pubs->search($_POST['texto'],$this->mesettings['pubsforpage']);
+    }
+
+   Private Function calleable_error()
+    {
+     //aquí irá log de error
+    }
 
  }

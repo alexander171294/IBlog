@@ -2,7 +2,7 @@ La idea de este proyecto es hacer un pequeño blog rápido y sencillo.-
 
 
 cls.*.php serán las clases
-bas.*.php serán los controladores
+
 ext.*.php extensión
 
 raiz del sitio:
@@ -10,37 +10,7 @@ raiz del sitio:
 -->core
 -->extras
 
---- driver será quitado ---
--->drivers
----------------------------
-
 -->files
 -->cache
 -->themes
 --->theme
-
-- Core
-cls.captcha.php
-contendrá la construcción del captcha
-
-cls.cuenta.php 
-todo lo referido a cuenta
-
-cls.littledb.php
-cls.raintpl.php
-
-cls.session.php
-
-cls.phpass.php
-
-cls.core.php 
-todo lo referido a variables del nucleo y otras cosas
-
-cls.publicaciones.php
-todo lo que sean páginas y publicaciones
-
-cls.comentarios.php
-todo lo referente a comentarios.
-
-cls.admin.php
-todo lo referido a administración
