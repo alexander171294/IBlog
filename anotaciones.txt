@@ -1,7 +1,7 @@
 hacer paginado para los listados
 contador de respuestas en publicacion
 agregar a los tpls la búsqueda :D
-comentar codigo
+theme por db
 
 falta:
 
@@ -13,3 +13,4 @@ falta:
  administración
 ---------------- 
 
+crear wiki con funciones y agregarlas al código los links
