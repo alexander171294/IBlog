@@ -30,7 +30,7 @@
 		<div  id="nav">
        <ul>
     {loop="$menu_principal"}
-				<li><a href="/{$value.link}">{$value.nombre}</a></li>
+				<li><a href='{$value.link}'>{$value.nombre}</a></li>
       {/loop}
 			</ul>
 		</div>	
@@ -48,12 +48,12 @@
 			<div id="left">			
 			{loop="$list"}
          <div class="post">
-         <h2><a href="index.php?action=view_pub&id={$value.pub_id}">{$value.pub_nombre}</a></h2>
-         <p class="post-info">Posteado por: <a href="index.php?action=view_list&foruser={$value.u_id}">{$value.u_nombre}</a> | Categor&iacute;a: <a href="index.php?action=view_list&forcat={$value.cat_id}">{$value.cat_nombre}</a>  </p>
+         <h2><a href='/index.php?action=view_pub&id={$value.pub_id}'>{$value.pub_nombre}</a></h2>
+         <p class="post-info">Posteado por: <a href='index.php?action=view_list&foruser={$value.u_id}'>{$value.u_nombre}</a> | Categor&iacute;a: <a href='index.php?action=view_list&forcat={$value.cat_id}'>{$value.cat_nombre}</a>  </p>
          <p>{$value.pub_preview}</p>
          <p class="postmeta">
-					<a href="index.php?action=view_pub&id={$value.pub_id}" class="readmore">Leer M&aacute;s</a> |
-					<a href="index.php?action=view_pub&id={$value.pub_id}" class="comments">Commentarios ({$value.pub_comentario})</a> |
+					<a href='/index.php?action=view_pub&id={$value.pub_id}' class="readmore">Leer M&aacute;s</a> |
+					<a href='/index.php?action=view_pub&id={$value.pub_id}' class="comments">Commentarios ({$value.pub_comentario})</a> |
 					<span class="date">{function="date('d/m/Y h:s',$value.pub_fecha)"}</span>
 					</p>
           </div>
@@ -67,7 +67,7 @@
 					<h3>Menu</h3>
 					<ul>				
       {loop="$menu_lateral"}
-				<li><a href="/{$value.link}">{$value.nombre}</a></li>
+				<li><a href='{$value.link}'>{$value.nombre}</a></li>
       {/loop}
 					</ul>	
 				</div>
@@ -76,7 +76,7 @@
 					<h3>Afiliados</h3>
                     <ul>
       {loop="$menu_afiliados"}
-				<li><a href="/{$value.link}">{$value.nombre}</a></li>
+				<li><a href='{$value.link}'>{$value.nombre}</a></li>
       {/loop}
 					</ul>
 				</div>
@@ -148,7 +148,7 @@
 		<div class="bottom-right">
 			<p>		
     {loop="$menu_inferior"}
-				<a href="/{$value.link}">{$value.nombre}</a> |
+				<a href='{$value.link}'>{$value.nombre}</a> |
       {/loop}
 			</p>
 		</div>

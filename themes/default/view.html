@@ -30,7 +30,7 @@
 		<div  id="nav">
       <ul>
     {loop="$menu_principal"}
-				<li><a href="/{$value.link}">{$value.nombre}</a></li>
+				<li><a href='{$value.link}'>{$value.nombre}</a></li>
       {/loop}
 			</ul>
 		</div>	
@@ -75,7 +75,7 @@
 						<li class="alt" id="comment-{$value.id}">
 							<cite>
 								<img alt="" src="images/gravatar.jpg" class="avatar" height="40" width="40" />			
-								<a href="\{$value.web}">{$value.name}</a> dijo: <br />
+								<a href='{$value.web}'>{$value.name}</a> dijo: <br />
 								<span class="comment-data"><a href="" title="">{function="date('d/m/Y h:s',$value.fecha)"}</a> </span>
 							</cite>
 							
@@ -131,7 +131,7 @@
      <h3>Menu</h3>
 					<ul>
       {loop="$menu_lateral"}
-				<li><a href="/{$value.link}">{$value.nombre}</a></li>
+				<li><a href='{$value.link}'>{$value.nombre}</a></li>
       {/loop}
 					</ul>
 				</div>
@@ -141,7 +141,7 @@
 					<h3>Afiliados</h3>
                     <ul>
       {loop="$menu_afiliados"}
-				<li><a href="/{$value.link}">{$value.nombre}</a></li>
+				<li><a href='{$value.link}'>{$value.nombre}</a></li>
       {/loop}
 					</ul>
 				</div>
@@ -214,7 +214,7 @@
 		<div class="bottom-right">
 			<p>
     {loop="$menu_inferior"}
-				<a href="/{$value.link}">{$value.nombre}</a> |
+				<a href='{$value.link}'>{$value.nombre}</a> |
       {/loop}
 			</p>
 		</div>

@@ -30,7 +30,7 @@
 		<div  id="nav">
       <ul>
     {loop="$menu_principal"}
-				<li><a href="/{$value.link}">{$value.nombre}</a></li>
+				<li><a href='{$value.link}'>{$value.nombre}</a></li>
       {/loop}
 			</ul>
 		</div>	
@@ -78,7 +78,7 @@
      <h3>Menu</h3>
 					<ul>
       {loop="$menu_lateral"}
-				<li><a href="/{$value.link}">{$value.nombre}</a></li>
+				<li><a href='{$value.link}'>{$value.nombre}</a></li>
       {/loop}
 					</ul>
 				</div>
@@ -88,7 +88,7 @@
 					<h3>Afiliados</h3>
                     <ul>
       {loop="$menu_afiliados"}
-				<li><a href="/{$value.link}">{$value.nombre}</a></li>
+				<li><a href='{$value.link}'>{$value.nombre}</a></li>
       {/loop}
 					</ul>
 				</div>
@@ -161,7 +161,7 @@
 		<div class="bottom-right">
 			<p>
     {loop="$menu_inferior"}
-				<a href="/{$value.link}">{$value.nombre}</a> |
+				<a href='{$value.link}'>{$value.nombre}</a> |
       {/loop}
 			</p>
 		</div>
