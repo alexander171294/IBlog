@@ -43,9 +43,6 @@ require('extras/ext.functions.php');
 // Iniciamos el proceso de carga automatica de clases para el nucleo.
 spl_autoload_register('autoLoadClass');
 
-// configuramos rain
-//RainConfig($Core);
-
 // iniciamos la clase core y le mandamos la configuración
 $Core = new Core ( include ( 'extras/ext.settings.php' ), $version );
 
