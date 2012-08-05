@@ -140,7 +140,7 @@ Class Cuenta
         // insertamos los valores correspondientes
         $this->db->insert('users',array('u_nombre'=>$user,'u_pass'=>$fpass,'u_rango'=>'0'));
         // realizamos la redirección
-        header('Location: index.php');
+        header('Location: /index.php');
        }
      }
    }

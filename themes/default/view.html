@@ -49,9 +49,9 @@
 			
 				<div class="post no-bg">
 			
-					<h2><a href="index.php?action=view_pub&id={$pubdata.pub_id}">{$pubdata.pub_nombre}</a></h2>
+					<h2><a href='/publicacion/{$pubdata.pub_id}/{$pubdata.seo_title}/'>{$pubdata.pub_nombre}</a></h2>
 					
-          <p class="post-info">Posteado por: <a href="index.php?action=view_list&foruser={$pubdata.u_id}">{$pubdata.u_nombre}</a> | Categor&iacute;a: <a href="index.php?action=view_list&forcat={$pubdata.cat_id}">{$pubdata.cat_nombre}</a>  </p>
+          <p class="post-info">Posteado por: <a href='/usuario/{$pubdata.u_id}/{$pubdata.u_nombre}/'>{$pubdata.u_nombre}</a> | Categor&iacute;a: <a href='/categoria/{$pubdata.cat_id}/{$pubdata.cat_seo}/'>{$pubdata.cat_nombre}</a>  </p>
 
           <p>
           {$pubdata.pub_contenido}
@@ -63,9 +63,9 @@
 					</p>
 				
 					<p class="postmeta">		
-					<a href="index.html" class="comments">Comments ({$pubdata.pub_comentario})</a> |
+					<a href="" class="comments">Comments ({$pubdata.pub_comentario})</a> |
 					<span class="date">{function="date('d/m/Y h:s',$pubdata.pub_fecha)"}</span>
-					<a href="index.html" class="edit">Edit</a>
+					<a href="" class="edit">Edit</a>
 					</p>
 			
 					<h3 id="comments">{$pubdata.pub_comentario} Responses</h3>
@@ -74,7 +74,7 @@
             {loop="$coments"}
 						<li class="alt" id="comment-{$value.id}">
 							<cite>
-								<img alt="" src="images/gravatar.jpg" class="avatar" height="40" width="40" />			
+								<img alt="" src="images/gravatar.jpg" class="avatar" height="40" width="40" />
 								<a href='{$value.web}'>{$value.name}</a> dijo: <br />
 								<span class="comment-data"><a href="" title="">{function="date('d/m/Y h:s',$value.fecha)"}</a> </span>
 							</cite>
@@ -88,7 +88,7 @@
 
  					<h3 id="respond">Responder</h3>
 			
-					<form action="index.php?action=comment" method="post" id="commentform">
+					<form action="/index.php?action=comment" method="post" id="commentform">
 						<input type="hidden" name="id" value="{$pubdata.pub_id}" id="id">
 						<p>	
 							<label for="name">Nombre (requerido)</label><br />
@@ -112,7 +112,7 @@
 
             <p>
               <label for="captcha">Ingresa los caracteres tal cual est&aacute;n abajo</label><br />
-              <img src='files/captcha.jpeg'><br />
+              <img src='/files/captcha.jpeg'><br />
               <input type="text" name="captcha">
 			      </p>
 						<p class="no-border">

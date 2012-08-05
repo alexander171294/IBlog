@@ -65,7 +65,7 @@ Class Pubs
   Public Function get_last_pubs($max)
    {
     // obtenemos las ultimas publicaciones limitando segun el contenido de $max
-    $result = $this->db->query('SELECT pub_id, c.cat_id, c.cat_nombre, u.u_nombre, u.u_id, p.pub_nombre, p.pub_preview, p.pub_comentario, p.pub_fecha FROM publicaciones AS p LEFT JOIN users AS u ON u.u_id = p.pub_autor LEFT JOIN categorias AS c ON c.cat_id = p.pub_categoria LIMIT '.$max,false,false);
+    $result = $this->db->query('SELECT p.pub_id, p.seo_title, c.cat_seo, c.cat_id, c.cat_nombre, u.u_nombre, u.u_id, p.pub_nombre, p.pub_preview, p.pub_comentario, p.pub_fecha FROM publicaciones AS p LEFT JOIN users AS u ON u.u_id = p.pub_autor LEFT JOIN categorias AS c ON c.cat_id = p.pub_categoria LIMIT '.$max,false,false);
     // recorremos el arreglo para agregarle un índice y usarlo con RainTPL
     while ($values = $result->fetchrow())
       {
@@ -105,13 +105,13 @@ Class Pubs
     if(isset($_GET['foruser']))
      {
       // guardamos las últimas publicaciones del usuario
-      $result = $this->db->query('SELECT p.pub_id, c.cat_id, c.cat_nombre, u.u_nombre, u.u_id, p.pub_nombre, p.pub_preview, p.pub_comentario, p.pub_fecha FROM publicaciones AS p LEFT JOIN users AS u ON u.u_id = p.pub_autor LEFT JOIN categorias AS c ON c.cat_id = p.pub_categoria WHERE p.pub_autor = ? LIMIT '.$max,array($_GET['foruser']),false);
+      $result = $this->db->query('SELECT p.pub_id, p.seo_title, c.cat_seo, c.cat_id, c.cat_nombre, u.u_nombre, u.u_id, p.pub_nombre, p.pub_preview, p.pub_comentario, p.pub_fecha FROM publicaciones AS p LEFT JOIN users AS u ON u.u_id = p.pub_autor LEFT JOIN categorias AS c ON c.cat_id = p.pub_categoria WHERE p.pub_autor = ? LIMIT '.$max,array($_GET['foruser']),false);
      }
     // sino, si la variable forcat está definida
     elseif (isset($_GET['forcat']))
      {
       // guardamos las últimas publicaciones de la categoría
-      $result = $this->db->query('SELECT p.pub_id, c.cat_id, c.cat_nombre, u.u_nombre, u.u_id, p.pub_nombre, p.pub_preview, p.pub_comentario, p.pub_fecha FROM publicaciones AS p LEFT JOIN users AS u ON u.u_id = p.pub_autor LEFT JOIN categorias AS c ON c.cat_id = p.pub_categoria WHERE p.pub_categoria = ? LIMIT '.$max,array($_GET['forcat']),false);
+      $result = $this->db->query('SELECT p.pub_id, p.seo_title, c.cat_seo, c.cat_id, c.cat_nombre, u.u_nombre, u.u_id, p.pub_nombre, p.pub_preview, p.pub_comentario, p.pub_fecha FROM publicaciones AS p LEFT JOIN users AS u ON u.u_id = p.pub_autor LEFT JOIN categorias AS c ON c.cat_id = p.pub_categoria WHERE p.pub_categoria = ? LIMIT '.$max,array($_GET['forcat']),false);
      }
     // aquí iría otro tipo de filtro... con un elseif
 
@@ -163,7 +163,7 @@ Class Pubs
   Public Function get_pub($id)
    {
     // retornamos los valores de la publicación con id = $id
-    return $this->db->query('SELECT p.pub_id, p.pub_nombre, u.u_nombre, u.u_id, c.cat_nombre, c.cat_id, p.pub_contenido, p.pub_keys, p.pub_comentario, p.pub_fecha FROM publicaciones AS p LEFT JOIN users AS u ON u.u_id = p.pub_autor LEFT JOIN categorias AS c ON c.cat_id = p.pub_categoria WHERE p.pub_id = ?',array($id),true);
+    return $this->db->query('SELECT p.pub_id, p.seo_title, p.pub_nombre, u.u_nombre, u.u_id, c.cat_nombre, c.cat_id, c.cat_seo, p.pub_contenido, p.pub_keys, p.pub_comentario, p.pub_fecha FROM publicaciones AS p LEFT JOIN users AS u ON u.u_id = p.pub_autor LEFT JOIN categorias AS c ON c.cat_id = p.pub_categoria WHERE p.pub_id = ?',array($id),true);
    }
 
    /**

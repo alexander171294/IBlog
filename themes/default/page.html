@@ -49,9 +49,9 @@
 			
 				<div class="post no-bg">
 			
-					<h2><a href="index.php?action=page&id={$pubdata.pag_id}">{$pubdata.pag_nombre}</a></h2>
+					<h2><a href='/pagina/{$pubdata.pag_id}/{$pubdata.seo_title}/'>{$pubdata.pag_nombre}</a></h2>
 					
-          <p class="post-info">Posteado por: <a href="index.php?action=view_list&foruser={$pubdata.u_id}">{$pubdata.u_nombre}</a></p>
+          <p class="post-info">Posteado por: <a href='/usuario/{$pubdata.u_id}/{$pubdata.u_nombre}/'>{$pubdata.u_nombre}</a></p>
 
           <p>
           {$pubdata.pag_contenido}

@@ -1,0 +1,19 @@
+##################### Rewrite engine #####################
+Options +FollowSymLinks
+RewriteEngine on
+##########################################################
+
+##################### I-BLOG RENAMES #####################
+# acceder:
+Rewriterule ^acceder/$ index.php?action=login
+# registro:
+Rewriterule ^registro/$ index.php?action=registro
+# publicaciones:
+Rewriterule ^publicacion/(.*)/(.*)/$ index.php?action=view_pub&id=$1
+# categoria
+Rewriterule ^categoria/(.*)/(.*)/$ index.php?action=view_list&forcat=$1
+# usuario
+Rewriterule ^usuario/(.*)/(.*)/$ index.php?action=view_list&foruser=$1
+# páginas
+Rewriterule ^pagina/(.*)/(.*)/$ index.php?action=page&id=$1
+##########################################################

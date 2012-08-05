@@ -64,7 +64,7 @@ Class Pages
   Public Function get_pag($id)
    {
     // retornamos los valores de la página con id = $id
-    return $this->db->query('SELECT p.pag_id, p.pag_nombre, u.u_nombre, u.u_id, p.pag_contenido, p.pag_keys, p.pag_fecha FROM paginas AS p LEFT JOIN users AS u ON u.u_id = p.pag_autor WHERE p.pag_id = ?',array($id),true);
+    return $this->db->query('SELECT p.pag_id, p.seo_title, p.pag_nombre, u.u_nombre, u.u_id, p.pag_contenido, p.pag_keys, p.pag_fecha FROM paginas AS p LEFT JOIN users AS u ON u.u_id = p.pag_autor WHERE p.pag_id = ?',array($id),true);
    }
 
  }
