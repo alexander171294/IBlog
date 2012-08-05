@@ -332,6 +332,8 @@ Class Core
      $pubs = new Pubs($this->db);
      // asignamos el listado de publicaciones encontradas
      $this->rain->assign('list',$pubs->search($_POST['texto'],$this->mesettings['pubsforpage']));
+     // asignamos el paginado para que no de errores
+     $this->rain->assign('paginate','');
     }
 
     /**
