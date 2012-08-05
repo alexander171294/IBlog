@@ -1,8 +1,32 @@
 <?php
 
- /** @I-Blog 1.0
-  *  archivo de funciones
-  */
+/**
+ * I-Blog
+ *
+ * PHP Version 5.3
+ *
+ * I-Blog es un proyecto Open Source desarrollado para ser rápido, y sencillo.
+ *
+ * El repositorio oficial del proyecto lo puedes encontrar un poco más abajo,
+ * iblog fué diseñado para blogs alojados en servidores pequeños
+ * que no cuenten con tantos recursos para tener un blog pesado como son otros
+ * sistemas de blog. .
+ *
+ * @author    Alexander Eberle Renzulli <alexander171294@live.com>
+ * @copyright 2012 AlEb Corporation / (http://www.alebcorp.com.ar)
+ * @license   http://www.gnu.org/copyleft/gpl.html
+ * @link      https://github.com/alexander171294/IBlog
+ */
+
+/**
+ * ext.functions.php
+ *
+ * archivo que guarda funciones escenciales para el funcionamiento del script
+ *
+ * @author  Alexander1712 <alexander171294@live.com>
+ * @license http://www.gnu.org/copyleft/gpl.html
+ * @link    https://github.com/alexander171294/IBlog
+ */
 
 function InitAutoLoad()
  {
@@ -17,15 +41,6 @@ function autoLoadClass($class)
   if(file_exists($target)) { require($target); }
   else { echo 'Error #1: No existe la clase :'.$target; }
  } // function autoLoadClass();
-
- // configurar rainTPL
-/*function RainConfig($Core)
- {
-    raintpl::configure('base_url', $Core->Settings['site_path']);
-    // cambiar por la clase theme
-    raintpl::configure('tpl_dir', 'themes/'.$Core->Settings['tema'].'/');
-    raintpl::configure('cache_dir', $Core->Settings['cache'].'/'.$Core->Settings['tema'].'/');
- }*/
 
  // Devuelve el valor redondeado para mejor lectura :P
 function roundsize($size, $full = false)

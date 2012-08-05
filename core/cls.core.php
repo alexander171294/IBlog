@@ -111,7 +111,7 @@ Class Core
      call_user_func(array('core',isset( $valid[$action] ) ? 'calleable_'.$action : 'calleable_error'));
 
      // dibujamos el archivo correspondiente a la sección siempre que no sea comentario
-     if($action != 'comment')
+     if($action != 'comment') //* cambiar *//
       {
        $this->rain->draw(isset( $valid[$action] ) ? $valid[$action] : 'notfound');
       }
@@ -217,7 +217,7 @@ Class Core
      // obtenemos la cantidad de páginas:
      $cont = $pub->paginate_last_pubs_for();
      // guardamos la url segun el tipo de listado
-     $forq = isset($_GET['foruser']) ?  '&foruser='.$_GET['foruser'] : '&forcat='.$_GET['forcat'];
+     $forq = isset($_GET['foruser']) ? '&foruser='.$_GET['foruser'] : '&forcat='.$_GET['forcat'];
      // asignamos la paginación
      $this->rain->assign('paginate',$this->paginate($this->mesettings['pubsforpage'],$cont,'/index.php?action=view_list'.$forq));
     }
@@ -247,7 +247,7 @@ Class Core
      // lo creamos
      $captcha->create();
      // destruimos la instancia de la clase captcha
-     unset($captcha);
+     unset($captcha); //* cambiar *//
     }
 
     /**
@@ -293,7 +293,7 @@ Class Core
        // creamos la imagen final
        $captcha->create();
        // destruimos la instancia de la clase
-       unset($captcha);
+       unset($captcha); //* cambiar *//
     }
 
    /**
@@ -308,7 +308,7 @@ Class Core
      * @return void
      */
    Private Function calleable_comment()
-    {
+    {    //* cambiar *//
      Parser::$BBCN = array(
                           '[b]'=>'<b>',
                           '[/b]'=>'</b>'
@@ -335,9 +335,9 @@ Class Core
        */
       }
      // destruimos la clase captcha
-     unset($captcha);
+     unset($captcha); //* cambiar *//
      //redireccionamos:
-     //header('Location: index.php?action=view_pub&id='.$id);
+     header('Location: index.php?action=view_pub&id='.$id);
     }
 
     /**
