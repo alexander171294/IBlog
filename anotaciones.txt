@@ -1,5 +1,4 @@
 ** ajustarlo con LittleDB (contador de respuestas en publicacion)
-theme por db
 
 falta:
 

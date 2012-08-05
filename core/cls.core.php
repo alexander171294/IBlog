@@ -185,11 +185,15 @@ Class Core
      $pub = new pubs($this->db);
      // listamos y mandamos a rain, las ultimas publicaciones
      $this->rain->assign('list',$pub->get_last_pubs($this->pag_limit($this->mesettings['pubsforpage'])));
-     // asignamos el paginado:
-     // demo del paginado: (está comentado a propósito porque si se descomenta asume que hay 17 páginas, es para mostrar su funcionamiento)
-     //$this->rain->assign('paginate',$this->paginate(3,50,'http://localhost/index.php?action=home'));
-     // recuerda que para activar este demo tienes que deshabilitar el paginado de las siguientes lineas
+
+     /* asignamos el paginado:
+        demo del paginado: (está comentado a propósito porque si se descomenta asume que hay 17 páginas, es para mostrar su funcionamiento)
+        $this->rain->assign('paginate',$this->paginate(3,50,'http://localhost/index.php?action=home'));
+        recuerda que para activar este demo tienes que deshabilitar el paginado de las siguientes lineas */
+
+     // obtenemos la cantidad de páginas
      $cont = $pub->paginate_last_pubs();
+     // asignamos la paginación
      $this->rain->assign('paginate',$this->paginate($this->mesettings['pubsforpage'],$cont,'/index.php?action=home'));
     }
 
@@ -210,9 +214,11 @@ Class Core
      $pub = new pubs($this->db);
      // asignamos la lista de publicaciones de la categoría o usuario que se pidió
      $this->rain->assign('list',$pub->get_last_pubs_for($this->pag_limit($this->mesettings['pubsforpage'])));
-     // asignamos el paginado:
+     // obtenemos la cantidad de páginas:
      $cont = $pub->paginate_last_pubs_for();
+     // guardamos la url segun el tipo de listado
      $forq = isset($_GET['foruser']) ?  '&foruser='.$_GET['foruser'] : '&forcat='.$_GET['forcat'];
+     // asignamos la paginación
      $this->rain->assign('paginate',$this->paginate($this->mesettings['pubsforpage'],$cont,'/index.php?action=view_list'.$forq));
     }
 
