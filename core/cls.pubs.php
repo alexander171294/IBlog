@@ -215,4 +215,55 @@ Class Pubs
      return $resort;
     }
 
+   /**
+     * agrega un nuevo comentario.
+     *
+     * @link WIKI NO DISPONIBLE POR EL MOMENTO
+     *
+     * @return void
+     */
+  Public Function set_comment()
+   {
+    // seteamos el bbcode
+    $this->set_bbcode();
+    // creamos una instancia de la clase captcha
+    $captcha = new Captcha('files/');
+    // filtramos el id que ingresa
+    $id = (int) $_POST['id'];
+    // si los datos son correctos
+    if(!empty($_POST['name']) && $id !== 0 && !empty($_POST['email']) && !empty($_POST['message']) && strlen($_POST['name'])>3 && strlen($_POST['email'])>15 && $captcha->check($_POST['captcha'])===true)
+     {
+      // ejecutamos la consulta para registrar un nuevo usuario
+      $this->db->insert('comentarios',array('Name' => $_POST['name'], 'email' => $_POST['email'], 'web' => empty($_POST['web']) ? '/' : $_POST['web'], 'coment' => nl2br(Parser::Parsear_bbcc(Parser::Parsear_bbcn(htmlspecialchars($_POST['message'])))), 'pub' => $id, 'fecha' => time()));
+      // actualizamos el contador de comentarios
+      mysql_query('UPDATE publicaciones SET pub_comentario = pub_comentario + 1 WHERE pub_id = '.$id);
+      /*
+      Aclaración:
+       No uso littleDB porque no se como hacer
+       pub_comentario = pub_comentario + 1 sin realizar dos consultas.
+       lo hablaré con Cody Roodaka para que me aconceje.
+      */
+     }
+    //redireccionamos:
+    header('Location: index.php?action=view_pub&id='.$id);
+   }
+
+   /**
+     * Configura los BBcode para los comentarios y demaces.
+     *
+     * @link WIKI NO DISPONIBLE POR EL MOMENTO
+     *
+     * @return void
+     */
+  Private Function set_bbcode()
+   {
+    Parser::$BBCN = array(
+                          '[b]'=>'<b>',
+                          '[/b]'=>'</b>'
+                          );
+    Parser::$BBCC = array(
+                          '[url=?]?[/url]'=>'<a href="$1">$2</a>',
+                         );
+   }
+
  }
