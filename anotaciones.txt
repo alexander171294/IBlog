@@ -1,13 +1,10 @@
 ** ajustarlo con LittleDB (contador de respuestas en publicacion)
 
-falta:
-
-* links seo
-
-mover la funcion de comentarios a pubs.
-
 ----------------
  administración
 ---------------- 
+----------------
+  instalación
+----------------
 
 crear wiki con funciones y agregarlas al código los links
