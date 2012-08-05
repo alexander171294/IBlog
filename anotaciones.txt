@@ -1,11 +1,8 @@
 ** ajustarlo con LittleDB (contador de respuestas en publicacion)
-filtrar comentarios y demás para evitar xss
-
 
 falta:
 
 * links seo
-* hacer páginas fijas :P
 
 mover la funcion de comentarios a pubs.
 

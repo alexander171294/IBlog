@@ -127,6 +127,8 @@ Class Cuenta
    {
     // creamos una instancia de la clase phpass
     $phpass = new PHPass(8, FALSE);
+    // filtramos html
+    $user = htmlspecialchars($user);
     // guardamos el hash de la password
     $fpass = $phpass->HashPassword($pass);
     // validamos si los datos son correctos

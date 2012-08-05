@@ -233,8 +233,8 @@ Class Pubs
     // si los datos son correctos
     if(!empty($_POST['name']) && $id !== 0 && !empty($_POST['email']) && !empty($_POST['message']) && strlen($_POST['name'])>3 && strlen($_POST['email'])>15 && $captcha->check($_POST['captcha'])===true)
      {
-      // ejecutamos la consulta para registrar un nuevo usuario
-      $this->db->insert('comentarios',array('Name' => $_POST['name'], 'email' => $_POST['email'], 'web' => empty($_POST['web']) ? '/' : $_POST['web'], 'coment' => nl2br(Parser::Parsear_bbcc(Parser::Parsear_bbcn(htmlspecialchars($_POST['message'])))), 'pub' => $id, 'fecha' => time()));
+      // ejecutamos la consulta para agregar un comentario
+      $this->db->insert('comentarios',array('Name' => htmlspecialchars($_POST['name']), 'email' => htmlspecialchars($_POST['email']), 'web' => empty($_POST['web']) ? '/' : htmlspecialchars($_POST['web']), 'coment' => nl2br(Parser::Parsear_bbcc(Parser::Parsear_bbcn(htmlspecialchars($_POST['message'])))), 'pub' => $id, 'fecha' => time()));
       // actualizamos el contador de comentarios
       mysql_query('UPDATE publicaciones SET pub_comentario = pub_comentario + 1 WHERE pub_id = '.$id);
       /*

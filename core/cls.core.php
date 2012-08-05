@@ -102,7 +102,8 @@ Class Core
                      'login' => 'login',
                      'registro' => 'registro',
                      'search' => 'index',
-                     'comment' => ''
+                     'comment' => '',
+                     'page' => 'page'
                     );
 
      // lista de páginas a ignorar draw
@@ -417,6 +418,23 @@ Class Core
      $comienzo = ($actual-1) * $max;
      // devolvemos desde donde tiene que empezar y hasta donde tiene que terminar.
      return $comienzo.','.$max;
+    }
+
+   /**
+     * Ésta función se ejecuta cuando se requiere ver una página fija
+     *
+     * @see cls.pages.php
+     *
+     * @link WIKI NO DISPONIBLE POR EL MOMENTO
+     *
+     * @return void
+     */
+   Private Function calleable_page()
+    {
+     // creamos la instancia de la clase pasandole la db
+     $page = new pages($this->db);
+     // asignamos los datos de la publicación
+     $this->rain->assign('pubdata',$page->get_pag($_GET['id']));
     }
 
  }
