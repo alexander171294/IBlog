@@ -184,7 +184,13 @@ Class Core
      // creamos una clase para las publicaciones
      $pub = new pubs($this->db);
      // listamos y mandamos a rain, las ultimas publicaciones
-     $this->rain->assign('list',$pub->get_last_pubs($this->mesettings['pubsforpage']));
+     $this->rain->assign('list',$pub->get_last_pubs($this->pag_limit($this->mesettings['pubsforpage'])));
+     // asignamos el paginado:
+     // demo del paginado: (está comentado a propósito porque si se descomenta asume que hay 17 páginas, es para mostrar su funcionamiento)
+     //$this->rain->assign('paginate',$this->paginate(3,50,'http://localhost/index.php?action=home'));
+     // recuerda que para activar este demo tienes que deshabilitar el paginado de las siguientes lineas
+     $cont = $pub->paginate_last_pubs();
+     $this->rain->assign('paginate',$this->paginate($this->mesettings['pubsforpage'],$cont,'/index.php?action=home'));
     }
 
     /**
@@ -203,7 +209,11 @@ Class Core
      // creamos la instancia de la clase pasandole la db
      $pub = new pubs($this->db);
      // asignamos la lista de publicaciones de la categoría o usuario que se pidió
-     $this->rain->assign('list',$pub->get_last_pubs_for($this->mesettings['pubsforpage']));
+     $this->rain->assign('list',$pub->get_last_pubs_for($this->pag_limit($this->mesettings['pubsforpage'])));
+     // asignamos el paginado:
+     $cont = $pub->paginate_last_pubs_for();
+     $forq = isset($_GET['foruser']) ?  '&foruser='.$_GET['foruser'] : '&forcat='.$_GET['forcat'];
+     $this->rain->assign('paginate',$this->paginate($this->mesettings['pubsforpage'],$cont,'/index.php?action=view_list'.$forq));
     }
 
     /**
@@ -349,6 +359,77 @@ Class Core
    Private Function calleable_error()
     {
      // aquí irá log de error
+    }
+
+   /**
+     * Ésta función se ejecuta en los listados y generalmente se asigna a la
+     * variable Paginate.
+     * tira un listado de páginas
+     *
+     * @param (int) $max máximo de publicaciones por página
+     * @param (int) $cantidad cantidad de publicaciones a mostrar
+     * @param string $url url del sitio para generar links
+     *        ejemplo:
+     *        http://miweb.com/ o http://miweb.com/alex.php
+     *        o http://miweb.com/alex.php?asd=kasd
+     *
+     * @link WIKI NO DISPONIBLE POR EL MOMENTO
+     *
+     * @return string/HTML
+     */
+   Private Function paginate ( $max, $cantidad, $url )
+    {
+     //@advance: la cantidad de páginas siguientes y anteriores a mostrar
+     $advance = 3;
+     // guardamos la página por la que está, y si no existe tal página ponemos 1
+     $actual = isset($_GET['p-id']) ? $_GET['p-id'] : 1;
+     // obtenemos la cantidad de páginas
+     $pags = ceil($cantidad/$max);
+     // si no hay páginas mostramos que es la número 1...
+     if($pags == 0) {$pags = 1;}
+     // seteamos @next vacío
+     $next = ''; $pn = $actual+1;
+     // obtenemos las siguientes páginas
+     while ($pn<=$actual+$advance && $pn<=$pags)
+      {
+       $next .= ' <a href="'.$url.'&p-id='.$pn.'">['.$pn.']</a>';
+       $pn++;
+      }
+     /* si hay más páginas para mostrar osea que si la actual menos la cantidad
+        total es mayor a la cantidad a mostrar agregamos puntos suspensivos    */
+     if($pags-$actual>$advance) { $next .= '...'; }
+     // seteamos @prev vacío
+     $prev = ''; $pv = $actual-1;
+     // obtenemos las previas
+     while ($pv>=$actual-$advance && $pv>0)
+      {
+       $prev = ' <a href="'.$url.'&p-id='.$pv.'">['.$pv.']</a>'.$prev;
+       $pv--;
+      }
+     // si el numero actual de página es mayor a las paginas que se muestran entonces poner puntos suspensivos
+     if($actual>$advance+1) { $prev = '...'.$prev; }
+     // retornamos el listado
+     return '<a href="'.$url.'&p-id=1" title="Primera P&aacute;gina">[<]</a> '.$prev.' ['.$actual.'] '.$next.' <a href="'.$url.'&p-id='.$pags.'" title="&Uacute;ltima P&aacute;gina">[>]</a>';
+    }
+
+    /**
+     * Ésta función se ejecuta en los listados y se utiliza para obtener el
+     * limit correspondiente para solicitar la lista de publicaciones
+     *
+     * @param (int) $max máximo de publicaciones por página
+     *
+     * @link WIKI NO DISPONIBLE POR EL MOMENTO
+     *
+     * @return string/HTML
+     */
+   Public function pag_limit ( $max )
+    {
+     // guardamos la página por la que está, y si no existe tal página ponemos 0
+     $actual = isset($_GET['p-id']) ? $_GET['p-id'] : 1;
+     // sacamos la cuenta de cuanto es lo que llevamos mostrado
+     $comienzo = ($actual-1) * $max;
+     // devolvemos desde donde tiene que empezar y hasta donde tiene que terminar.
+     return $comienzo.','.$max;
     }
 
  }

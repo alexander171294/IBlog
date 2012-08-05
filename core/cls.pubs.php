@@ -76,6 +76,21 @@ Class Pubs
    }
 
    /**
+     * obtiene la cantidad de publicaciones para armar el paginado del home.
+     *
+     * @param (int) $max valor máximo de publicaciones a listar.
+     *
+     * @link WIKI NO DISPONIBLE POR EL MOMENTO
+     *
+     * @return (int)
+     */
+   Public Function paginate_last_pubs()
+    {
+     $result = $this->db->query('SELECT count(pub_id) FROM publicaciones',false,true);
+     return $result['count(pub_id)'];
+    }
+
+   /**
      * obtiene las últimas publicaciones de un usuario o categoría.
      *
      * @param (int) $max valor máximo de publicaciones a listar.
@@ -110,6 +125,33 @@ Class Pubs
    }
 
    /**
+     * obtiene la cantidad de publicaciones para armar el paginado del home.
+     *
+     * @param (int) $max valor máximo de publicaciones a listar.
+     *
+     * @link WIKI NO DISPONIBLE POR EL MOMENTO
+     *
+     * @return (int)
+     */
+  Public Function paginate_last_pubs_for()
+   {
+    // si la variable foruser está definida
+    if(isset($_GET['foruser']))
+     {
+      // obtenemos la cantidad de publicaciones del usuario
+      $result = $this->db->query('SELECT count(pub_id) FROM publicaciones WHERE pub_autor = ?',array($_GET['foruser']),true);
+     }
+    // sino, si la variable forcat está definida
+    elseif (isset($_GET['forcat']))
+     {
+      // obtenemos la cantidad de publicaciones de la categoría
+      $result = $this->db->query('SELECT count(pub_id) FROM publicaciones WHERE pub_categoria = ?',array($_GET['forcat']),true);
+     }
+    // aquí iría otro tipo de filtro... con un elseif
+    return $result['count(pub_id)'];
+  }
+
+   /**
      * obtiene una publicación específica.
      *
      * @param (int) $id id de la publicación.
@@ -137,6 +179,8 @@ Class Pubs
    {
     // obtenemos la lista de comentarios
     $objeto = $this->db->query('SELECT id, name, email, web, coment, fecha FROM comentarios where pub = ?',array($id),false);
+    // establecemos resort a nada
+    $resort = '';
     // recorremos el array resultante agregandole un índice
     while ($values = $objeto->fetchrow())
       {

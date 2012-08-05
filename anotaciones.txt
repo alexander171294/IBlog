@@ -1,6 +1,4 @@
-hacer paginado para los listados
 ** ajustarlo con LittleDB (contador de respuestas en publicacion)
-agregar a los tpls la búsqueda :D
 theme por db
 
 falta:
