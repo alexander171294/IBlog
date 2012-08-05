@@ -58,7 +58,7 @@ Class Parser
     // recorremos el array
     foreach ($bbc as $key => $item)
      {
-      //reemplazamos los códigos
+      // reemplazamos los códigos
       $texto = str_replace($key,$item,$texto);
      }
     // retornamos el texto parseado
@@ -82,8 +82,43 @@ Class Parser
     // recorremos el array
     foreach ($bbc as $key => $item)
      {
+      // reemplazamos los códigos
       $texto = preg_replace('#'.str_replace(array('[',']'),array('\[','\]'),str_replace('?','(.+)',$key)).'#i', $item, $texto);
      }
+    return $texto;
+   }
+
+   /**
+   * parsea bbcode simple, y devuelve el texto parseado, el bbcode, se obtiene
+   * de una base de datos, y debe pasarse como argumento un array compuesto
+   * por el nombre de la tabla, el campo a buscar, y el campo a reemplazar.
+   * previa conección hecha.
+   *
+   * EXAMPLE:
+   * DB_BBCN_Parse ('lalalla', array(
+   *                                'table'=>'censura',
+   *                                'column_search'=>'bad',
+   *                                'column_replace'=>'good'
+   *                                ));
+   *
+   * @param string $texto texto a parsear.
+   * @param array $bbcn datos de la db.
+   *
+   * @link WIKI NO DISPONIBLE POR EL MOMENTO
+   *
+   * @return string
+   */
+  Static Function DB_BBCN_Parser ($texto, $bbcn)
+   {
+    // obtenemos el listados de códigos a reemplazar
+    $result = mysql_query('SELECT '.$bbcn['column_search'].', '.$bbcn['column_replace'].' FROM '.$bbcn['table']);
+    // recorremos los resultados
+    while ($array = mysql_fetch_array($result))
+     {
+     // reemplazamos los códigos
+     $texto = str_replace($array[$bbcn['column_search']],$array[$bbcn['column_replace']],$texto);
+     }
+    // retornamos el texto parseado
     return $texto;
    }
 

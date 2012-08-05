@@ -108,12 +108,11 @@ Class Core
 
      // lista de páginas a ignorar draw
      $draw_ignore = array (
-                           'comment' => null
+                           'comment' => 'not_draw'
                           );
 
      // llamamos a la función correspondiente a la acción si es válida
      call_user_func(array('core',isset( $valid[$action] ) ? 'calleable_'.$action : 'calleable_error'));
-
      // dibujamos el archivo correspondiente a la sección siempre que no sea comentario
      if(!isset($draw_ignore[$action]))
       {

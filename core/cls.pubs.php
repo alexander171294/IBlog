@@ -233,8 +233,22 @@ Class Pubs
     // si los datos son correctos
     if(!empty($_POST['name']) && $id !== 0 && !empty($_POST['email']) && !empty($_POST['message']) && strlen($_POST['name'])>3 && strlen($_POST['email'])>15 && $captcha->check($_POST['captcha'])===true)
      {
+      // filtramos y parseamos bbcode
+      $message = nl2br(Parser::Parsear_bbcc(Parser::Parsear_bbcn(htmlspecialchars($_POST['message']))));
+      // pasamos la censura de palabras desde la db
+      $message = Parser::DB_BBCN_Parser ($message, array(
+                                   'table'=>'censura',
+                                   'column_search'=>'bad',
+                                   'column_replace'=>'good'
+                                   ));
+      // pasamos emoticonos desde la db
+      $message = Parser::DB_BBCN_Parser ($message, array(
+                                   'table'=>'emoticonos',
+                                   'column_search'=>'bbc',
+                                   'column_replace'=>'html'
+                                   ));
       // ejecutamos la consulta para agregar un comentario
-      $this->db->insert('comentarios',array('Name' => htmlspecialchars($_POST['name']), 'email' => htmlspecialchars($_POST['email']), 'web' => empty($_POST['web']) ? '/' : htmlspecialchars($_POST['web']), 'coment' => nl2br(Parser::Parsear_bbcc(Parser::Parsear_bbcn(htmlspecialchars($_POST['message'])))), 'pub' => $id, 'fecha' => time()));
+      $this->db->insert('comentarios',array('Name' => htmlspecialchars($_POST['name']), 'email' => htmlspecialchars($_POST['email']), 'web' => empty($_POST['web']) ? '/' : htmlspecialchars($_POST['web']), 'coment' => $message, 'pub' => $id, 'fecha' => time()));
       // actualizamos el contador de comentarios
       mysql_query('UPDATE publicaciones SET pub_comentario = pub_comentario + 1 WHERE pub_id = '.$id);
       /*
@@ -245,7 +259,7 @@ Class Pubs
       */
      }
     // redireccionamos:
-    header('Location: index.php?action=view_pub&id='.$id);
+    //header('Location: index.php?action=view_pub&id='.$id);
    }
 
    /**
