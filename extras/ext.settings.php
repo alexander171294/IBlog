@@ -31,15 +31,15 @@
 //retornamos la configuración
 return array(
 
-            // datos de la db
-            'db_host' => 'localhost',
-            'db_user' => 'root',
-            'db_pass' => '',
-            'db_name' => 'iblog',
+            // datos de la db //
+            'db_host' => 'localhost', // servidor de la base de datos
+            'db_user' => 'root', // usuario de la base de datos
+            'db_pass' => '', // contraseña de la base de datos
+            'db_name' => 'iblog', // nombre de la base de datos
 
-            //configuración extra del sitio
-            'site_path' => '/', //carpeta donde se encuentra tu sitio a partir del raiz
-            'tema' => 'default',
-            'cache' => 'cache'
+            // configuración general //
+            'site_path' => '/', // carpeta donde se encuentra tu sitio a partir del raiz
+            'tema' => 'default', // diseño del sitio
+            'cache' => 'cache' // carpeta donde se guardará el caché
 
             );

@@ -75,8 +75,6 @@ Class Core
      $this->rain = new RainTPL ();
      // guardamos la versión
      $this->version = $version;
-     // por defecto hacemos el draw a rain
-     $rain_draw = true;
 
      // configuramos rainTPL
      raintpl::configure('base_url', $this->Settings['site_path']);
@@ -107,11 +105,16 @@ Class Core
                      'comment' => ''
                     );
 
+     // lista de páginas a ignorar draw
+     $draw_ignore = array (
+                           'comment' => null
+                          );
+
      // llamamos a la función correspondiente a la acción si es válida
      call_user_func(array('core',isset( $valid[$action] ) ? 'calleable_'.$action : 'calleable_error'));
 
      // dibujamos el archivo correspondiente a la sección siempre que no sea comentario
-     if($action != 'comment') //* cambiar *//
+     if(!isset($draw_ignore[$action]))
       {
        $this->rain->draw(isset( $valid[$action] ) ? $valid[$action] : 'notfound');
       }
@@ -156,7 +159,7 @@ Class Core
      * @return void
      */
    Private Function Set_Menu()
-    {
+    { // *** esto lo acomodaría por una función sola que retorne un array así no hacer 4 llamadas
      // crear una instancia de la clase (recordar que tenemos autocarga de clases activado)
      $menu = new Menu($this->db);
      // asignamos el menu lateral
@@ -246,8 +249,6 @@ Class Core
      $captcha->set_value();
      // lo creamos
      $captcha->create();
-     // destruimos la instancia de la clase captcha
-     unset($captcha); //* cambiar *//
     }
 
     /**
@@ -292,8 +293,6 @@ Class Core
        $captcha->set_value();
        // creamos la imagen final
        $captcha->create();
-       // destruimos la instancia de la clase
-       unset($captcha); //* cambiar *//
     }
 
    /**

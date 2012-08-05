@@ -244,7 +244,7 @@ Class Pubs
        lo hablaré con Cody Roodaka para que me aconceje.
       */
      }
-    //redireccionamos:
+    // redireccionamos:
     header('Location: index.php?action=view_pub&id='.$id);
    }
 
@@ -257,10 +257,12 @@ Class Pubs
      */
   Private Function set_bbcode()
    {
+    // establecemos los bbc a parsear
     Parser::$BBCN = array(
                           '[b]'=>'<b>',
                           '[/b]'=>'</b>'
                           );
+    // establecemos los bbc complejos a parsear
     Parser::$BBCC = array(
                           '[url=?]?[/url]'=>'<a href="$1">$2</a>',
                          );

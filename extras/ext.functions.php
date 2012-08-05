@@ -28,12 +28,6 @@
  * @link    https://github.com/alexander171294/IBlog
  */
 
-function InitAutoLoad()
- {
-  // Iniciamos el proceso de carga automatica de librerias.
-  spl_autoload_register('autoLoadClass');
- }
-
 // autor: @Cody Roodaka.
 function autoLoadClass($class)
  {

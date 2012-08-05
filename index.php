@@ -15,8 +15,8 @@ $version = '1.0';
 // cargamos funciones básicas
 require('extras/ext.functions.php');
 
-// iniciamos autoload
-InitAutoLoad();
+// Iniciamos el proceso de carga automatica de clases para el nucleo.
+spl_autoload_register('autoLoadClass');
 
 // configuramos rain
 //RainConfig($Core);
