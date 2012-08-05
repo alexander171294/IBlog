@@ -150,7 +150,7 @@ Class Core
    Private Function calleable_search()
     {
      $pubs = new Pubs($this->db);
-     $pubs->search($_POST['texto'],$this->mesettings['pubsforpage']);
+     $this->rain->assign('list',$pubs->search($_POST['texto'],$this->mesettings['pubsforpage']));
     }
 
    Private Function calleable_error()
