@@ -302,6 +302,14 @@ Class Core
       {
        // ejecutamos la consulta para registrar un nuevo usuario
        $this->db->insert('comentarios',array('Name' => $_POST['name'], 'email' => $_POST['email'], 'web' => empty($_POST['web']) ? '/' : $_POST['web'], 'coment' => nl2br($_POST['message']), 'pub' => $id, 'fecha' => time()));
+       // actualizamos el contador de comentarios
+       mysql_query('UPDATE publicaciones SET pub_comentario = pub_comentario + 1 WHERE pub_id = '.$id);
+       /*
+       Aclaración:
+        No uso littleDB porque no se como hacer
+        pub_comentario = pub_comentario + 1 sin realizar dos consultas.
+        lo hablaré con Cody Roodaka para que me aconceje.
+       */
       }
      // destruimos la clase captcha
      unset($captcha);
