@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 05-08-2012 a las 22:57:55
+-- Tiempo de generación: 05-08-2012 a las 23:32:46
 -- Versión del servidor: 5.5.8
 -- Versión de PHP: 5.3.5
 
@@ -74,19 +74,34 @@ CREATE TABLE IF NOT EXISTS `comentarios` (
   `pub` int(10) NOT NULL,
   `fecha` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
 --
 -- Volcar la base de datos para la tabla `comentarios`
 --
 
 INSERT INTO `comentarios` (`id`, `Name`, `email`, `web`, `coment`, `pub`, `fecha`) VALUES
-(7, 'Alexander', 'alexandereberle94@hotmail.com', '/', 'sadasdasd', 1, 1344149545),
-(8, 'Alexander', 'alexandereberle94@hotmail.com', '/', '<b>Hola cabrÃ³n</b>', 1, 1344149576),
-(9, 'Alexander', 'alexandereberle94@hotmail.com', '/', '', 1, 1344150373),
-(10, 'Alexander', 'alexandereberle94@hotmail.com', '/', 'asd <a href="http://google.com">fsd</a><br />\r\nsdf<br />\r\n<br />\r\n', 1, 1344150484),
-(11, 'asdasd', 'alexander171294@live.com', '/', 'asdasdsad prueba <b>Hola</b>', 1, 1344187757),
-(12, 'prueba con seo', 'asereje a deje dejede tu dejede seiu noua', '/', 'feos todos feos', 1, 1344199176);
+(1, 'alexander1712', 'axelander_xd@live.com.ar', '/', 'probando todo el parser<br />\r\n<br />\r\n<b>censura:</b><br />\r\n<br />\r\n[CENSURADO]<br />\r\n<br />\r\n<b>emoticonos:</b><br />\r\n<br />\r\n<img src="http://i.imgur.com/cZDvF.jpg" width="50" height="50" /><br />\r\n<br />\r\n<b>bbc complejo: </b><br />\r\n<br />\r\n<a href="http://littleforum.com.ar">Little Forum</a>', 1, 1344202150);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `emoticonos`
+--
+
+CREATE TABLE IF NOT EXISTS `emoticonos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `bbc` varchar(50) NOT NULL,
+  `html` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Volcar la base de datos para la tabla `emoticonos`
+--
+
+INSERT INTO `emoticonos` (`id`, `bbc`, `html`) VALUES
+(1, '-lol', '<img src="http://i.imgur.com/cZDvF.jpg" width="50" height="50" />');
 
 -- --------------------------------------------------------
 
@@ -162,7 +177,7 @@ CREATE TABLE IF NOT EXISTS `publicaciones` (
 --
 
 INSERT INTO `publicaciones` (`pub_id`, `pub_keys`, `pub_nombre`, `pub_preview`, `pub_contenido`, `pub_autor`, `pub_comentario`, `pub_categoria`, `pub_fecha`, `seo_title`) VALUES
-(1, '', 'Prueba', 'prueba preview', 'prueba completa', 1, 7, 1, 1343889618, 'prueba');
+(1, '', 'Prueba', 'prueba preview', 'prueba completa', 1, 14, 1, 1343889618, 'prueba');
 
 -- --------------------------------------------------------
 
