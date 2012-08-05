@@ -309,6 +309,13 @@ Class Core
      */
    Private Function calleable_comment()
     {
+     Parser::$BBCN = array(
+                          '[b]'=>'<b>',
+                          '[/b]'=>'</b>'
+                          );
+     Parser::$BBCC = array(
+                          '[url=?]?[/url]'=>'<a href="$1">$2</a>',
+                         );
      // creamos una instancia de la clase captcha
      $captcha = new Captcha('files/');
      // filtramos el id que ingresa
@@ -317,7 +324,7 @@ Class Core
      if(!empty($_POST['name']) && $id !== 0 && !empty($_POST['email']) && !empty($_POST['message']) && strlen($_POST['name'])>3 && strlen($_POST['email'])>15 && $captcha->check($_POST['captcha'])===true)
       {
        // ejecutamos la consulta para registrar un nuevo usuario
-       $this->db->insert('comentarios',array('Name' => $_POST['name'], 'email' => $_POST['email'], 'web' => empty($_POST['web']) ? '/' : $_POST['web'], 'coment' => nl2br($_POST['message']), 'pub' => $id, 'fecha' => time()));
+       $this->db->insert('comentarios',array('Name' => $_POST['name'], 'email' => $_POST['email'], 'web' => empty($_POST['web']) ? '/' : $_POST['web'], 'coment' => nl2br(Parser::Parsear_bbcc(Parser::Parsear_bbcn(htmlspecialchars($_POST['message'])))), 'pub' => $id, 'fecha' => time()));
        // actualizamos el contador de comentarios
        mysql_query('UPDATE publicaciones SET pub_comentario = pub_comentario + 1 WHERE pub_id = '.$id);
        /*
@@ -330,7 +337,7 @@ Class Core
      // destruimos la clase captcha
      unset($captcha);
      //redireccionamos:
-     header('Location: index.php?action=view_pub&id='.$id);
+     //header('Location: index.php?action=view_pub&id='.$id);
     }
 
     /**
@@ -428,7 +435,7 @@ Class Core
      *
      * @return string/HTML
      */
-   Public function pag_limit ( $max )
+   Private function pag_limit ( $max )
     {
      // guardamos la página por la que está, y si no existe tal página ponemos 0
      $actual = isset($_GET['p-id']) ? $_GET['p-id'] : 1;

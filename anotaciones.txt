@@ -1,9 +1,10 @@
 ** ajustarlo con LittleDB (contador de respuestas en publicacion)
+filtrar comentarios y demás para evitar xss
+
 
 falta:
 
-* parser_bad_words
-* parser_icons
+* parser por db, y moverlo a la clase pubs.
 * links seo
 
 ----------------
