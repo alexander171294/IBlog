@@ -4,11 +4,8 @@ filtrar comentarios y demás para evitar xss
 
 falta:
 
-* parser por db, y moverlo a la clase pubs.
 * links seo
-* agregar control de ip en los comentarios.
 * hacer páginas fijas :P
-
 
 mover la funcion de comentarios a pubs.
 
