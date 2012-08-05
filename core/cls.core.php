@@ -59,9 +59,11 @@ Class Core
                      'admin' => '1',
                      'login' => 'login',
                      'registro' => 'registro',
-                     'search' => 'index'
+                     'search' => 'index',
+                     'comment' => ''
                     );
 
+      echo $valid[$action];
      //llamamos a la función correspondiente a la acción
      call_user_func(array('core',isset( $valid[$action] ) ? 'calleable_'.$action : 'calleable_error'));
 
@@ -110,8 +112,12 @@ Class Core
    Private Function calleable_view_pub()
     {
      $pub = new pubs($this->db);
+     $captcha = new Captcha('files/');
      $this->rain->assign('pubdata',$pub->get_pub($_GET['id']));
      $this->rain->assign('coments',$pub->get_comments($_GET['id']));
+     $captcha->set_value();
+     $captcha->create();
+     unset($captcha);
     }
 
    Private Function calleable_login()
@@ -137,12 +143,15 @@ Class Core
 
    Private Function calleable_comment()
     {
+     $captcha = new Captcha('files/');
      $id = (int) $_POST['id'];
      // ejecutamos el post
-     if(!empty($_POST['name']) && $id !== 0 && !empty($_POST['email']) && !empty($_POST['message']) && strlen($_POST['name'])>3 && strlen($_POST['email'])>15)
+     if(!empty($_POST['name']) && $id !== 0 && !empty($_POST['email']) && !empty($_POST['message']) && strlen($_POST['name'])>3 && strlen($_POST['email'])>15 && $captcha->check($_POST['captcha'])===true)
       {
-       $this->db->insert('comentarios',array('Name' => $_POST['name'], 'email' => $_POST['email'], 'web' => empty($_POST['web']) ? '/' : $_POST['web'], 'coment' => $_POST['message'], 'pub' => $id, 'fecha' => time()));
+       $this->db->insert('comentarios',array('Name' => $_POST['name'], 'email' => $_POST['email'], 'web' => empty($_POST['web']) ? '/' : $_POST['web'], 'coment' => nl2br($_POST['message']), 'pub' => $id, 'fecha' => time()));
       }
+     unset($captcha);
+     echo 'hola';
      //redireccionamos:
      header('Location: index.php?action=view_pub&id='.$id);
     }

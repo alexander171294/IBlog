@@ -1,7 +1,8 @@
 hacer paginado para los listados
-verificar el if del registro & agregar phpass
-agregar captcha en comentario
+verificar el if del registro & agregar phpass.
+contador de respuestas en publicacion
 agregar a los tpls la búsqueda :D
+comentar codigo
 
 falta:
 
