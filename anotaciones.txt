@@ -11,6 +11,3 @@ mover la funcion de comentarios a pubs.
 ---------------- 
 
 crear wiki con funciones y agregarlas al código los links
-
-hacer trim a usuarios y strtolower
-hacer cat_seo
