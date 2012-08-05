@@ -16,7 +16,7 @@ Class Cuenta
     session_start();
    }
 
-  Static Function IsLoggued()
+  Static Function IsLogged()
    {
     return isset($_SESSION['nick']) ? true : false ;
    }
@@ -32,20 +32,24 @@ Class Cuenta
     $query = $this->db->query('SELECT u_pass, u_rango, u_id, u_nombre FROM users WHERE u_nombre = ? ',array($user),true);
     if($phpass->CheckPassword($pass,$query['u_pass']) == true)
      {
-      $_SESSION['u_rango']=$query['u_rango'];
-      $_SESSION['u_id']=$query['u_id'];
-      $_SESSION['u_nick']=$query['u_nombre'];
+      $_SESSION['rango']=$query['u_rango'];
+      $_SESSION['id']=$query['u_id'];
+      $_SESSION['nick']=$query['u_nombre'];
       header('Location: index.php');
      }
    }
 
   Public Function registro($user, $pass, $pass2, $captcha, $clscaptcha)
    {
+    $phpass = new PHPass(8, FALSE);
+    // pasamos a phpass la pass :P
+    $fpass = $phpass->HashPassword($pass);
     if(!empty($user) && !empty($pass) && !empty($pass2) && !empty($captcha) && $pass == $pass2 && $clscaptcha->check($captcha)===true)
      {
-       if ($this->db->query('select u_nombre FROM usuarios WHERE u_nombre = ?',array($user),true)===false)
+       if ($this->db->query('select u_nombre FROM users WHERE u_nombre = ?',array($user),true)===false)
        {
-        $this->db->insert('users',array('u_nombre'=>$user,'u_pass'=>$pass,'u_rango'=>'0'));
+        $this->db->insert('users',array('u_nombre'=>$user,'u_pass'=>$fpass,'u_rango'=>'0'));
+        header('Location: index.php');
        }
      }
    }

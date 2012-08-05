@@ -63,7 +63,6 @@ Class Core
                      'comment' => ''
                     );
 
-      echo $valid[$action];
      //llamamos a la función correspondiente a la acción
      call_user_func(array('core',isset( $valid[$action] ) ? 'calleable_'.$action : 'calleable_error'));
 
