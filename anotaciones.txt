@@ -1,7 +1,7 @@
 hacer paginado para los listados
-arreglar imagen del captcha
 verificar el if del registro & agregar phpass
 agregar captcha en comentario
+agregar a los tpls la búsqueda :D
 
 falta:
 
@@ -12,3 +12,4 @@ falta:
 ----------------
  administración
 ---------------- 
+
