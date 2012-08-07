@@ -1,8 +1,6 @@
 ** ajustarlo con LittleDB (contador de respuestas en publicacion)
 
-badwords.
 funcion set_seo
-funcion specific_BBCN_parser
 
 ----------------
  administración

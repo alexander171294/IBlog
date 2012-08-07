@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Instalacion de I-Blog</title>
+<meta name="keywords" content="single, slider, free templates, website templates, CSS, HTML" />
+<meta name="description" content="Single Slider is a free CSS template provided by templatemo.com" />
+<link href="css/templatemo_style.css" rel="stylesheet" type="text/css" />
+<!-- {literal} -->
+<script src="js/jquery-1.2.6.min.js" type="text/javascript"></script>
+<script src="js/jquery.easing.1.3.js" type="text/javascript"></script>
+<script src="js/jquery.kwicks-1.5.1.pack.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+	$().ready(function() {  
+		$('.kwicks').kwicks({  
+			max : 710,  
+			spacing : 0,  
+			sticky: true,
+		});  
+	}); 
+</script>
+
+<script type="text/javascript" src="js/jquery-1-4-2.min.js"></script>
+<link rel="stylesheet" href="css/slimbox2.css" type="text/css" media="screen" />
+<script type="text/JavaScript" src="js/slimbox2.js"></script>
+<!-- {/literal} -->
+</head>
+
+<body>
+
+<div id="templatemo_wrapper">
+	<div id="templatemo_main">
+	
+		<div id="site_title">
+			<h1><a href='https://github.com/alexander171294/IBlog'>I-Blog Repository</a></h1>
+		</div>
+		
+		<div id="templatemo_content">
+			<ul class="kwicks">
+			
+				<li id="home"><span class="header"></span>
+					<div class="inner">
+						<h2>Bienvenido a la instalaci&oacute;n de I-Blog</h2>
+						<p><em>&Eacute;ste es el asistente de instalaci&oacute;n de I-Blog. A lo largo de la instalaci&oacute;n ver&aacute; algunos aspectos del CMS I-Blog.</em></p>
+              <div>
+							<p><a href='https://github.com/alexander171294/IBlog'>I-Blog Repo.</a> ah&iacute; encontrar&aacute; los &uacte;ltimos archivos de i-blog actualizados al d&iacute;. Revise por favor si se encuentra actualizado. </p>
+							<h3>Diferencias</h3>
+							<ul class="templatemo_list">
+								<li>Blog liviano y r&aacute;pido que consume pocos recursos en su servidor.</li>
+								<li>F&aacute;cil de instalar y configurar.</li>
+								<li>Con un panel de administraci&oacute;n simple.</li>
+								<li>M&aacute;xima seguridad, I-Blog utiliza en su c&oaucte;digo las funciones m&aacute;s seguras.</li>
+								<li>C&oacute;digo totalmente comentado para entenderlo m&aacute;s f&aacute;cil</li>
+							</ul>
+						</div>
+					</div>
+				</li>
+			
+				<li id="about"><span class="header"></span>
+					<div class="inner">
+						<h2>Licencia</h2>
+						<p> I-Blog es un proyecto Open Source desarrollado para ser rápido, y sencillo.<br />
+                El repositorio oficial del proyecto lo puedes encontrar un poco más abajo, <br />
+                iblog fué diseñado para blogs alojados en servidores pequeños            <br />
+                que no cuenten con tantos recursos para tener un blog pesado como son otros <br />
+                sistemas de blog.</p>
+            <p>
+                @author    <b>Alexander Eberle Renzulli</b> &lt;alexander171294@live.com&gt;   <br />
+                @copyright <b>2012 AlEb Corporation</b> / (http://www.alebcorp.com.ar)   <br />
+                @license   <b>http://www.gnu.org/copyleft/gpl.html</b>            <br />
+                @link      <b>https://github.com/alexander171294/IBlog.</b>   <br />
+            </p>
+					</div>
+				</li>
+			
+				<li id="social"><span class="header"></span>
+					<div class="inner">
+						<h2>Enlaces</h2>
+						<p><em>aqu&iacute; encontrar&aacute; la lista de links interesantes.</em></p>
+						<ul>
+							<li><a href="https://github.com/alexander171294/IBlog" class="Repositorio">Repositorio</a></li>
+              <li><a href="http://alebcorp.com.ar" class="Soporte">AlEb Corporation</a></li>
+              <li><a href="#" class="Soporte">Foro De Soporte</a></li>
+							<li><a href="http://littleforum.com.ar" class="Little Forum">Little Forum</a></li>
+							<li><a href="http://littlechat.org" class="Little Chat">Little Chat</a></li>
+						</ul>
+					</div>
+				</li>
+			
+				<li id="portfolio"><span class="header"></span>
+					<div class="inner">
+						<h2>Requisitos para hacer funcionar I-Blog</h2>
+						<ul>
+							<li>Una base de datos vacía.</li>
+							<li>PHP5 actualizado</li>
+							<li>El consumo de I-Blog no excede los 500kb de consumo de memoria</li>
+							<li>Ninguna librería especial</li>
+							<li>3 MegaBytes de espacio en disco</li>
+						</ul>
+					</div>
+				</li>
+				
+				<li id="contact"><span class="header"></span>
+					<div class="inner">
+						<h2>Datos del usuario</h2>
+						<p>Por favor deje a continuaci&oacute;n los datos para acceder luego a la administraci&oacute;n de su blog</p>
+						<h4>Configuraci&oacute;nes</h4>
+						<div id="contact_form"  class="col_w280 float_l">
+							<form method="post" name="contact" action="/index.php">
+							
+								<label for="author">Nombre:</label> <input type="text" id="name" name="nombre" class="required input_field" />
+								<div class="cleaner h10"></div>
+								<label for="email">Contrase&ntilde;a:</label> <input type="text" id="pwd" name="pwd" class="required input_field" />
+								<div class="cleaner h10"></div>
+                <label for="email">Titulo:</label> <input type="text" id="titulo" name="tit" class="required input_field" />
+                <div class="cleaner h10"></div>
+                <label for="email">SubTitulo:</label> <input type="text" id="subtitulo" name="subtit" class="required input_field" />
+                <div class="cleaner h10"></div>
+                <label for="email">Footer:</label> <input type="text" id="footer" name="footer" class="required input_field" />
+                <div class="cleaner h10"></div>
+                <input type="submit" value="Instalar" id="submit" name="submit" class="submit_btn float_l" />
+								<input type="reset" value="Resetear" id="reset" name="reset" class="submit_btn float_r" />
+								
+							</form>
+						</div>
+						
+					</div>
+				</li>
+			
+			</ul>
+			
+		</div> <!-- END of content -->
+	</div> <!-- END of templatemo_main -->
+    <div id="templatemo_footer">Copyright © AlEb Corporation - IBlog Proyect | Designed by <a href="http://www.templatemo.com" target="_parent">TemplateMo</a></div>
+</div> <!-- END of templatemo_wrapper -->
+
+</body>
+</html>

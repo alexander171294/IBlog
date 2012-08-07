@@ -259,7 +259,7 @@ Class Pubs
       */
      }
     // redireccionamos:
-    //header('Location: index.php?action=view_pub&id='.$id);
+    header('Location: index.php?action=view_pub&id='.$id);
    }
 
    /**

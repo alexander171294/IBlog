@@ -65,8 +65,10 @@ Class Core
      */
    Public Function __construct($Settings,$version)
     {
-     //pasamos la configuración a la clase
+     // pasamos la configuración a la clase
      $this->Settings = $Settings;
+     // verificamos que el archivo de configuración esté armado
+     if(empty($Settings['db_host'])) { die ('Debe configurar el archivo ext.settings.php'); }
      // iniciamos el controlador de bases de datos.
      $this->db = new LittleDB ( $this->Settings['db_host'] , $this->Settings['db_user'] , $this->Settings['db_pass'] , $this->Settings['db_name'] );
      // iniciamos el control de usuarios
@@ -76,25 +78,30 @@ Class Core
      // guardamos la versión
      $this->version = $version;
 
-     // configuramos rainTPL
+     // configuramos rainTPL //
+
+     // la url base
      raintpl::configure('base_url', $this->Settings['site_path']);
-     // hay que cambiar esto por la variable contenedora del theme
+     // la dirección del theme
      raintpl::configure('tpl_dir', 'themes/'.$this->Settings['tema'].'/');
+     // la dirección del caché del theme
      raintpl::configure('cache_dir', $this->Settings['cache'].'/'.$this->Settings['tema'].'/');
 
      // conectamos a la db
      $this->db->connect();
+     // devuelve true si está instalado y false si no, ademá si devuelve false ejecuta el instalador
+     if($this->install())
+      {
+       // guardamos la acción en una variable, y si no existe ponemos home.
+       $action = isset( $_GET['action'] ) ? $_GET['action'] : 'home' ;
 
-     // guardamos la acción en una variable, y si no existe ponemos home.
-     $action = isset( $_GET['action'] ) ? $_GET['action'] : 'home' ;
+       // seteamos configuración básica
+       $this->Set_Settings();
+       // seteamos menues
+       $this->Set_Menu();
 
-     // seteamos configuración básica
-     $this->Set_Settings();
-     // seteamos menues
-     $this->Set_Menu();
-
-     // aciones validas definidas en un array
-     $valid = array ( // nombre => html
+       // aciones validas definidas en un array
+       $valid = array ( // nombre => html
                      'home' => 'index',
                      'view_list' => 'index',
                      'view_pub' => 'view',
@@ -104,19 +111,20 @@ Class Core
                      'search' => 'index',
                      'comment' => '',
                      'page' => 'page'
-                    );
+                      );
 
-     // lista de páginas a ignorar draw
-     $draw_ignore = array (
+       // lista de páginas a ignorar draw
+       $draw_ignore = array (
                            'comment' => 'not_draw'
                           );
 
-     // llamamos a la función correspondiente a la acción si es válida
-     call_user_func(array('core',isset( $valid[$action] ) ? 'calleable_'.$action : 'calleable_error'));
-     // dibujamos el archivo correspondiente a la sección siempre que no sea comentario
-     if(!isset($draw_ignore[$action]))
-      {
-       $this->rain->draw(isset( $valid[$action] ) ? $valid[$action] : 'notfound');
+       // llamamos a la función correspondiente a la acción si es válida
+       call_user_func(array('core',isset( $valid[$action] ) ? 'calleable_'.$action : 'calleable_error'));
+       // dibujamos el archivo correspondiente a la sección siempre que no sea comentario
+       if(!isset($draw_ignore[$action]))
+        {
+         $this->rain->draw(isset( $valid[$action] ) ? $valid[$action] : 'notfound');
+        }
       }
     }
 
@@ -438,4 +446,38 @@ Class Core
      $this->rain->assign('pubdata',$page->get_pag($_GET['id']));
     }
 
+   /**
+     * Ésta función se ejecuta cuando se verifica la instalación
+     *
+     * @link WIKI NO DISPONIBLE POR EL MOMENTO
+     *
+     * @return boolean
+     */
+    Private Function install()
+     {
+      // listamos todas las tablas y si existe alguna tabla damos por hecho que se instaló
+      if ($this->db->query('SHOW TABLES',false,true))
+       {
+        //retornamos true
+        return true;
+       }
+      // como no salió de la función, no hay tablas y hay que instalar
+
+      // si se hizo el post iniciamos la instalación
+      if(isset($_POST['tit']))
+       {
+        //pasos de la instalación aquí:
+        #...
+        header('Location: index.php');
+        die();
+       }
+
+      // configuramos la ruta del diseño para instalación
+      raintpl::configure('tpl_dir', 'themes/install/');
+      // configuramos la ruta de caché para la instalación
+      raintpl::configure('cache_dir', $this->Settings['cache'].'/install/');
+
+      $this->rain->draw('index');
+
+     }
  }

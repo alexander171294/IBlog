@@ -35,7 +35,7 @@ $timestart = microtime(true);
 $memstart = memory_get_usage();
 
 // versión
-$version = '1.0';
+define('IBLOGVERSION', '1.0');
 
 // cargamos funciones básicas
 require('extras/ext.functions.php');
@@ -44,7 +44,7 @@ require('extras/ext.functions.php');
 spl_autoload_register('autoLoadClass');
 
 // iniciamos la clase core y le mandamos la configuración
-$Core = new Core ( include ( 'extras/ext.settings.php' ), $version );
+$Core = new Core ( include ( 'extras/ext.settings.php' ), IBLOGVERSION );
 
 // finalizamos el core
 unset($Core);

@@ -32,14 +32,28 @@
 return array(
 
             // datos de la db //
+
             'db_host' => 'localhost', // servidor de la base de datos
+            # 'db_host' => 'localhost',
+
             'db_user' => 'root', // usuario de la base de datos
+            # 'db_user' => 'root',
+
             'db_pass' => '', // contraseña de la base de datos
-            'db_name' => 'iblog', // nombre de la base de datos
+            # 'db_pass' => 'pasword',
+
+            'db_name' => 'test', // nombre de la base de datos
+            # 'db_name' => 'iblog',
 
             // configuración general //
+
             'site_path' => '/', // carpeta donde se encuentra tu sitio a partir del raiz
+            # 'site_path' => '/',
+
             'tema' => 'default', // diseño del sitio
+            # 'tema' => 'default',
+
             'cache' => 'cache' // carpeta donde se guardará el caché
+            # 'cache' => 'cache'
 
             );
