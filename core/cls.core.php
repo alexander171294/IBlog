@@ -466,9 +466,11 @@ Class Core
       // si se hizo el post iniciamos la instalación
       if(isset($_POST['tit']))
        {
-        //pasos de la instalación aquí:
+        // pasos de la instalación aquí:
         #...
+        // redirección al inicio, blog ya instalado.
         header('Location: index.php');
+        // finalizamos el script aquí.
         die();
        }
 
@@ -477,7 +479,7 @@ Class Core
       // configuramos la ruta de caché para la instalación
       raintpl::configure('cache_dir', $this->Settings['cache'].'/install/');
 
+      // dibujamos la plantilla index del instalador
       $this->rain->draw('index');
-
      }
  }
