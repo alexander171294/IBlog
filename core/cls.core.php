@@ -63,69 +63,20 @@ Class Core
      *
      * @return void
      */
-   Public Function __construct($Settings,$version)
+   Public Function __construct($rain, $cuenta, $Settings, $db, $version)
     {
      // pasamos la configuración a la clase
      $this->Settings = $Settings;
      // verificamos que el archivo de configuración esté armado
      if(empty($Settings['db_host'])) { die ('Debe configurar el archivo ext.settings.php'); }
      // iniciamos el controlador de bases de datos.
-     $this->db = new LittleDB ( $this->Settings['db_host'] , $this->Settings['db_user'] , $this->Settings['db_pass'] , $this->Settings['db_name'] );
+     $this->db = $db;
      // iniciamos el control de usuarios
-     $this->user = new Cuenta ( $this->db );
+     $this->user = $cuenta;
      // iniciamos el RAIN TPL
-     $this->rain = new RainTPL ();
+     $this->rain = $rain;
      // guardamos la versión
      $this->version = $version;
-
-     // configuramos rainTPL //
-
-     // la url base
-     raintpl::configure('base_url', $this->Settings['site_path']);
-     // la dirección del theme
-     raintpl::configure('tpl_dir', 'themes/'.$this->Settings['tema'].'/');
-     // la dirección del caché del theme
-     raintpl::configure('cache_dir', $this->Settings['cache'].'/'.$this->Settings['tema'].'/');
-
-     // conectamos a la db
-     $this->db->connect();
-     // devuelve true si está instalado y false si no, ademá si devuelve false ejecuta el instalador
-     if($this->install())
-      {
-       // guardamos la acción en una variable, y si no existe ponemos home.
-       $action = isset( $_GET['action'] ) ? $_GET['action'] : 'home' ;
-
-       // seteamos configuración básica
-       $this->Set_Settings();
-       // seteamos menues
-       $this->Set_Menu();
-
-       // aciones validas definidas en un array
-       $valid = array ( // nombre => html
-                     'home' => 'index',
-                     'view_list' => 'index',
-                     'view_pub' => 'view',
-                     'admin' => '1',
-                     'login' => 'login',
-                     'registro' => 'registro',
-                     'search' => 'index',
-                     'comment' => '',
-                     'page' => 'page'
-                      );
-
-       // lista de páginas a ignorar draw
-       $draw_ignore = array (
-                           'comment' => 'not_draw'
-                          );
-
-       // llamamos a la función correspondiente a la acción si es válida
-       call_user_func(array('core',isset( $valid[$action] ) ? 'calleable_'.$action : 'calleable_error'));
-       // dibujamos el archivo correspondiente a la sección siempre que no sea comentario
-       if(!isset($draw_ignore[$action]))
-        {
-         $this->rain->draw(isset( $valid[$action] ) ? $valid[$action] : 'notfound');
-        }
-      }
     }
 
     /**
@@ -197,10 +148,10 @@ Class Core
      // listamos y mandamos a rain, las ultimas publicaciones
      $this->rain->assign('list',$pub->get_last_pubs($this->pag_limit($this->mesettings['pubsforpage'])));
 
-     /* asignamos el paginado:
-        demo del paginado: (está comentado a propósito porque si se descomenta asume que hay 17 páginas, es para mostrar su funcionamiento)
-        $this->rain->assign('paginate',$this->paginate(3,50,'http://localhost/index.php?action=home'));
-        recuerda que para activar este demo tienes que deshabilitar el paginado de las siguientes lineas */
+      //asignamos el paginado:
+        //demo del paginado: (está comentado a propósito porque si se descomenta asume que hay 17 páginas, es para mostrar su funcionamiento)
+        //$this->rain->assign('paginate',$this->paginate(3,50,'http://localhost/index.php?action=home'));
+        //recuerda que para activar este demo tienes que deshabilitar el paginado de las siguientes lineas */
 
      // obtenemos la cantidad de páginas
      $cont = $pub->paginate_last_pubs();
@@ -453,7 +404,7 @@ Class Core
      *
      * @return boolean
      */
-    Private Function install()
+    Public Function install()
      {
       // listamos todas las tablas y si existe alguna tabla damos por hecho que se instaló
       if ($this->db->query('SHOW TABLES',false,true))
