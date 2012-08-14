@@ -106,7 +106,7 @@ Class Cuenta
       // guardamos el nick
       $_SESSION['nick']=$query['u_nombre'];
       // realizamos una redirección al inicio.
-      header('Location: index.php');
+      header('Location: /index.php');
      }
    }
 
