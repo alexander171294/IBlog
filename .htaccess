@@ -6,6 +6,8 @@ RewriteEngine on
 ##################### I-BLOG RENAMES #####################
 # acceder:
 Rewriterule ^acceder/$ index.php?action=login
+# salir:
+Rewriterule ^salir/$ index.php?action=logout
 # registro:
 Rewriterule ^registro/$ index.php?action=registro
 # publicaciones:

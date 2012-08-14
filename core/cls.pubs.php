@@ -66,6 +66,7 @@ Class Pubs
    {
     // obtenemos las ultimas publicaciones limitando segun el contenido de $max
     $result = $this->db->query('SELECT p.pub_id, p.seo_title, c.cat_seo, c.cat_id, c.cat_nombre, u.u_nombre, u.u_id, p.pub_nombre, p.pub_preview, p.pub_comentario, p.pub_fecha FROM publicaciones AS p LEFT JOIN users AS u ON u.u_id = p.pub_autor LEFT JOIN categorias AS c ON c.cat_id = p.pub_categoria LIMIT '.$max,false,false);
+    // declaramos la variable por si no se encuentran resultados
     $resort = '';
     // recorremos el arreglo para agregarle un índice y usarlo con RainTPL
     while ($values = $result->fetchrow())
@@ -207,6 +208,8 @@ Class Pubs
      $tword = mysql_real_escape_string($buscar);
      // obtener la lista de publicaciones que contienen el texto a buscar
      $result = $this->db->query('SELECT p.pub_id, p.seo_title, c.cat_seo, c.cat_id, c.cat_nombre, u.u_nombre, u.u_id, p.pub_nombre, p.pub_preview, p.pub_comentario, p.pub_fecha FROM publicaciones AS p LEFT JOIN users AS u ON u.u_id = p.pub_autor LEFT JOIN categorias AS c ON c.cat_id = p.pub_categoria WHERE p.pub_contenido LIKE \'%'.$tword.'%\' LIMIT '.$max,false,false);
+     // declaramos la variable por si no se encuentran resultados
+     $resort = '';
      // recorremos el listado y le agregamos un índice para el RainTPL
      while ($values = $result->fetchrow())
       {

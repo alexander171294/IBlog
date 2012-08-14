@@ -64,6 +64,11 @@ $db->connect();
 if($Core->install())
  {
 
+  // islogged
+  $rain->assign('islogged',$cuenta->IsLogged());
+  // rango
+  $rain->assign('rango',$cuenta->Rango());
+
   // configuramos rainTPL //
   // la url base
   raintpl::configure( 'base_url', $Core->Settings['site_path'] );
@@ -88,12 +93,14 @@ if($Core->install())
                      'registro' => 'registro',
                      'search' => 'index',
                      'comment' => '',
-                     'page' => 'page'
+                     'page' => 'page',
+                     'logout' => ''
                  );
 
   // lista de páginas a ignorar draw
   $draw_ignore = array (
-                           'comment' => 'not_draw'
+                           'comment' => 'not_draw',
+                           'logout' => 'not_draw'
                        );
 
   // seleccionamos un driver válido
