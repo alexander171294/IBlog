@@ -3,8 +3,10 @@
 funcion set_seo
 
 
-acceso al panel a la derecha.
+? acceso al panel a la derecha. ?
 mover menú administrativo a todos los html del diseño
+botones de edicion
+terminar instalación
 nombre y datos del usuario en administración
 
 ----------------
