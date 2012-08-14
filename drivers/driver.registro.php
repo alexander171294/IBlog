@@ -46,9 +46,17 @@ $rain->assign('menu_inferior',$menu->get_menu(4));
 unset($menu);
 //////////////////////////////////////////////////////////
 
-// creamos una instancia de la clase pubs
-$pubs = new Pubs($db);
-// guardamos el comentario
-$pubs->set_comment();
-// borramos la variable que contiene la instancia de la clase pub
-unset ($pub);
+// creamos la instancia de la clase captcha
+$captcha = new Captcha('files/');
+// si se hiso el submit del formulario de registro
+if(isset($_POST['posteado']))
+ {
+  // intentamos registrarnos
+  $cuenta->registro($_POST['user'],$_POST['pass'],$_POST['pass2'],$_POST['captcha'],$captcha);
+ }
+// seteamos un nuevo captcha
+$captcha->set_value();
+// creamos la imagen final
+$captcha->create();
+// borramos las variables que contienen las instancias de captcha
+unset($captcha);

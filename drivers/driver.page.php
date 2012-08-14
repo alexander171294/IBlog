@@ -46,9 +46,7 @@ $rain->assign('menu_inferior',$menu->get_menu(4));
 unset($menu);
 //////////////////////////////////////////////////////////
 
-// creamos una instancia de la clase pubs
-$pubs = new Pubs($db);
-// guardamos el comentario
-$pubs->set_comment();
-// borramos la variable que contiene la instancia de la clase pub
-unset ($pub);
+// creamos la instancia de la clase pasandole la db
+$page = new pages($db);
+// asignamos los datos de la publicación
+$rain->assign('pubdata',$page->get_pag($_GET['id']));

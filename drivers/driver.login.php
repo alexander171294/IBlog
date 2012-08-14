@@ -46,9 +46,9 @@ $rain->assign('menu_inferior',$menu->get_menu(4));
 unset($menu);
 //////////////////////////////////////////////////////////
 
-// creamos una instancia de la clase pubs
-$pubs = new Pubs($db);
-// guardamos el comentario
-$pubs->set_comment();
-// borramos la variable que contiene la instancia de la clase pub
-unset ($pub);
+// si se hizo el submit del formulario
+if(isset($_POST['posteado']))
+ {
+  // intentamos ingresar con los datos recividos
+  $cuenta->login($_POST['user'],$_POST['pass']);
+ }

@@ -43,8 +43,6 @@ Class Core
    Public $rain = null;
    // @version: variable que guarda la versión del sistema.
    Private $version = '';
-   // @user: variable que guarda la instancia de la clase user.
-   Protected $user = null;
    // @mesettings: configuración extra sacada de la db
    Public $mesettings = array();
 
@@ -59,7 +57,7 @@ Class Core
      *
      * @return void
      */
-   Public Function __construct($rain, $cuenta, $Settings, $db, $version)
+   Public Function __construct($rain, $Settings, $db, $version)
     {
      // pasamos la configuración a la clase
      $this->Settings = $Settings;
@@ -67,8 +65,6 @@ Class Core
      if(empty($Settings['db_host'])) { die ('Debe configurar el archivo ext.settings.php'); }
      // iniciamos el controlador de bases de datos.
      $this->db = $db;
-     // iniciamos el control de usuarios
-     $this->user = $cuenta;
      // iniciamos el RAIN TPL
      $this->rain = $rain;
      // guardamos la versión
@@ -101,49 +97,6 @@ Class Core
      $this->mesettings = $settings;
      // asignamos la versión ya que estamos
      $this->rain->assign('version',$this->version);
-    }
-
-    /**
-     * Ésta función se ejecuta cuando uno se encuentra en ver una categoría
-     * o ver las publicaciones de un usuario.
-     * Se ejecuta cuando la acción es view_list
-     *
-     * @see cls.pubs.php
-     *
-     * @link WIKI NO DISPONIBLE POR EL MOMENTO
-     *
-     * @return void
-     */
-   Private Function calleable_view_list()
-    {
-     // creamos la instancia de la clase pasandole la db
-     $pub = new pubs($this->db);
-     // asignamos la lista de publicaciones de la categoría o usuario que se pidió
-     $this->rain->assign('list',$pub->get_last_pubs_for($this->pag_limit($this->mesettings['pubsforpage'])));
-     // obtenemos la cantidad de páginas:
-     $cont = $pub->paginate_last_pubs_for();
-     // guardamos la url segun el tipo de listado
-     $forq = isset($_GET['foruser']) ? '&foruser='.$_GET['foruser'] : '&forcat='.$_GET['forcat'];
-     // asignamos la paginación
-     $this->rain->assign('paginate',$this->paginate($this->mesettings['pubsforpage'],$cont,'/index.php?action=view_list'.$forq));
-    }
-
-    /**
-     * Ésta función se ejecuta cuando se decea ingresar a la cuenta
-     * Se ejecuta cuando la variable @action que ingresa por get es login
-     *
-     * @link WIKI NO DISPONIBLE POR EL MOMENTO
-     *
-     * @return void
-     */
-   Private Function calleable_login()
-    {
-     // si se hizo el submit del formulario
-     if(isset($_POST['posteado']))
-        {
-         // intentamos ingresar con los datos recividos
-         $this->user->login($_POST['user'],$_POST['pass']);
-        }
     }
 
    /**
@@ -215,23 +168,6 @@ Class Core
      $comienzo = ($actual-1) * $max;
      // devolvemos desde donde tiene que empezar y hasta donde tiene que terminar.
      return $comienzo.','.$max;
-    }
-
-   /**
-     * Ésta función se ejecuta cuando se requiere ver una página fija
-     *
-     * @see cls.pages.php
-     *
-     * @link WIKI NO DISPONIBLE POR EL MOMENTO
-     *
-     * @return void
-     */
-   Private Function calleable_page()
-    {
-     // creamos la instancia de la clase pasandole la db
-     $page = new pages($this->db);
-     // asignamos los datos de la publicación
-     $this->rain->assign('pubdata',$page->get_pag($_GET['id']));
     }
 
    /**

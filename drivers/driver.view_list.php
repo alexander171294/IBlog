@@ -46,9 +46,15 @@ $rain->assign('menu_inferior',$menu->get_menu(4));
 unset($menu);
 //////////////////////////////////////////////////////////
 
-// creamos una instancia de la clase pubs
-$pubs = new Pubs($db);
-// guardamos el comentario
-$pubs->set_comment();
-// borramos la variable que contiene la instancia de la clase pub
-unset ($pub);
+// creamos la instancia de la clase pasandole la db
+$pub = new pubs($db);
+// asignamos la lista de publicaciones de la categoría o usuario que se pidió
+$rain->assign('list',$pub->get_last_pubs_for($Core->pag_limit($Core->mesettings['pubsforpage'])));
+// obtenemos la cantidad de páginas:
+$cont = $pub->paginate_last_pubs_for();
+// guardamos la url segun el tipo de listado
+$forq = isset($_GET['foruser']) ? '&foruser='.$_GET['foruser'] : '&forcat='.$_GET['forcat'];
+// asignamos la paginación
+$rain->assign('paginate',$Core->paginate($Core->mesettings['pubsforpage'],$cont,'/index.php?action=view_list'.$forq));
+// borramos la variable que contiene la instancia de la clase pubs
+unset($pub);

@@ -55,7 +55,7 @@ $cuenta = new Cuenta ( $db );
 $rain = new RainTPL ();
 
 // iniciamos la clase core y le mandamos la configuración
-$Core = new Core ( $rain, $cuenta, $Settings , $db , IBLOGVERSION );
+$Core = new Core ( $rain, $Settings , $db , IBLOGVERSION );
 
 // conectamos a la db
 $db->connect();
