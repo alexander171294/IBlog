@@ -60,19 +60,28 @@ $Core = new Core ( $rain, $cuenta, $settings , $db , IBLOGVERSION );
 // conectamos a la db
 $db->connect();
 
+// configuramos rainTPL //
+// la url base
+raintpl::configure( 'base_url', $Core->Settings['site_path'] );
+// la dirección del theme
+raintpl::configure( 'tpl_dir', 'themes/'.$Core->Settings['tema'].'/' );
+// la dirección del caché del theme
+raintpl::configure( 'cache_dir', $Core->Settings['cache'].'/'.$Core->Settings['tema'].'/' );
+
 // devuelve true si está instalado y false si no, ademá si devuelve false ejecuta el instalador
 if($core->install())
  {
   // guardamos la acción en una variable, y si no existe ponemos home.
-       $action = isset( $_GET['action'] ) ? $_GET['action'] : 'home' ;
+  $action = isset( $_GET['action'] ) ? $_GET['action'] : 'home' ;
 
-       // seteamos configuración básica
-       $this->Set_Settings();
-       // seteamos menues
-       $this->Set_Menu();
+  // seteamos configuración básica
+  $this->Set_Settings();
+  // seteamos menues
+  # pasarlo a controlador o parte de los controladores porque en admin no se requiere
+  $this->Set_Menu();
 
-       // aciones validas definidas en un array
-       $valid = array ( // nombre => html
+  // aciones validas definidas en un array
+  $valid = array ( // nombre => html
                      'home' => 'index',
                      'view_list' => 'index',
                      'view_pub' => 'view',
@@ -82,34 +91,28 @@ if($core->install())
                      'search' => 'index',
                      'comment' => '',
                      'page' => 'page'
-                      );
+                 );
 
-       // lista de páginas a ignorar draw
-       $draw_ignore = array (
+  // lista de páginas a ignorar draw
+  $draw_ignore = array (
                            'comment' => 'not_draw'
-                          );
+                       );
 
-       // llamamos a la función correspondiente a la acción si es válida
-       call_user_func(array('core',isset( $valid[$action] ) ? 'calleable_'.$action : 'calleable_error'));
-       // dibujamos el archivo correspondiente a la sección siempre que no sea comentario
-       if(!isset($draw_ignore[$action]))
-        {
-         $this->rain->draw(isset( $valid[$action] ) ? $valid[$action] : 'notfound');
-        }
+  // llamamos a la función correspondiente a la acción si es válida
+  require(array('core',isset( $valid[$action] ) ? 'driver.'.$action.'.php' : 'driver.error.php'));
 
-// configuramos rainTPL //
-// la url base
-raintpl::configure( 'base_url', $Core->Settings['site_path'] );
-// la dirección del theme
-raintpl::configure( 'tpl_dir', 'themes/'.$Core->Settings['tema'].'/' );
-// la dirección del caché del theme
-raintpl::configure( 'cache_dir', $Core->Settings['cache'].'/'.$Core->Settings['tema'].'/' );
+  // dibujamos el archivo correspondiente a la sección siempre que no sea comentario
+  if(!isset($draw_ignore[$action]))
+   {
+    $this->rain->draw(isset( $valid[$action] ) ? $valid[$action] : 'notfound');
+   }
+ }
 
-// finalizamos el core
+# pasarlos a archivo driver.destruct.php
 unset($Core);
 unset($db);
 unset($cuenta);
-
+unset($rain);
 
 // mostramos el consumo.
 echo('<div class="clear" />Memoria usada: <b>'.roundsize((memory_get_usage() - $memstart), true).'</b> - Tiempo de ejecucion: <b>'.round(microtime(true)-$timestart, 2).' segundos</b></div>');
