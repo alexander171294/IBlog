@@ -43,10 +43,10 @@ require( 'extras/ext.functions.php' );
 // Iniciamos el proceso de carga automatica de clases para el nucleo.
 spl_autoload_register( 'autoLoadClass' );
 
-$settings = include ( 'extras/ext.settings.php' );
+$Settings = include ( 'extras/ext.settings.php' );
 
 // creamos una instancia de la db
-$db = new LittleDB ( $settingsings['db_host'] , $Settings['db_user'] , $Settings['db_pass'] , $Settings['db_name'] );
+$db = new LittleDB ( $Settings['db_host'] , $Settings['db_user'] , $Settings['db_pass'] , $Settings['db_name'] );
 
 // creamos la instancia para manejar las cuentas de usuario
 $cuenta = new Cuenta ( $db );
@@ -55,30 +55,28 @@ $cuenta = new Cuenta ( $db );
 $rain = new RainTPL ();
 
 // iniciamos la clase core y le mandamos la configuración
-$Core = new Core ( $rain, $cuenta, $settings , $db , IBLOGVERSION );
+$Core = new Core ( $rain, $cuenta, $Settings , $db , IBLOGVERSION );
 
 // conectamos a la db
 $db->connect();
 
-// configuramos rainTPL //
-// la url base
-raintpl::configure( 'base_url', $Core->Settings['site_path'] );
-// la dirección del theme
-raintpl::configure( 'tpl_dir', 'themes/'.$Core->Settings['tema'].'/' );
-// la dirección del caché del theme
-raintpl::configure( 'cache_dir', $Core->Settings['cache'].'/'.$Core->Settings['tema'].'/' );
-
-// devuelve true si está instalado y false si no, ademá si devuelve false ejecuta el instalador
-if($core->install())
+// $core->install devuelve true si está instalado y false si no.
+if($Core->install())
  {
+
+  // configuramos rainTPL //
+  // la url base
+  raintpl::configure( 'base_url', $Core->Settings['site_path'] );
+  // la dirección del theme
+  raintpl::configure( 'tpl_dir', 'themes/'.$Core->Settings['tema'].'/' );
+  // la dirección del caché del theme
+  raintpl::configure( 'cache_dir', $Core->Settings['cache'].'/'.$Core->Settings['tema'].'/' );
+
   // guardamos la acción en una variable, y si no existe ponemos home.
   $action = isset( $_GET['action'] ) ? $_GET['action'] : 'home' ;
 
   // seteamos configuración básica
-  $this->Set_Settings();
-  // seteamos menues
-  # pasarlo a controlador o parte de los controladores porque en admin no se requiere
-  $this->Set_Menu();
+  $Core->Set_Settings();
 
   // aciones validas definidas en un array
   $valid = array ( // nombre => html
@@ -98,14 +96,21 @@ if($core->install())
                            'comment' => 'not_draw'
                        );
 
-  // llamamos a la función correspondiente a la acción si es válida
-  require(array('core',isset( $valid[$action] ) ? 'driver.'.$action.'.php' : 'driver.error.php'));
+  // seleccionamos un driver válido
+  $driver = isset( $valid[$action] ) ? 'driver.'.$action.'.php' : 'driver.error.php';
+  // lo cargamos
+  require( 'drivers/'.$driver );
 
   // dibujamos el archivo correspondiente a la sección siempre que no sea comentario
   if(!isset($draw_ignore[$action]))
    {
-    $this->rain->draw(isset( $valid[$action] ) ? $valid[$action] : 'notfound');
+    $rain->draw(isset( $valid[$action] ) ? $valid[$action] : 'notfound');
    }
+ }
+else
+ {
+  // inicia la instalación
+  require ( 'drivers/driver.install.php' );
  }
 
 # pasarlos a archivo driver.destruct.php

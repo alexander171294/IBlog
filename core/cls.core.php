@@ -25,10 +25,6 @@
  * el sistema de blogs, es el núcleo del mismo y clase principal.
  * Ésta clase contiene la carga de distintas secciones, y otras clases.
  *
- * A tener en cuenta, todas las funciones con prefijo calleable son funciones
- * llamadas por la función __construct según la sección del blog en que el
- * usuario se encuentre.
- *
  * @author  Alexander1712 <alexander171294@live.com>
  * @license http://www.gnu.org/copyleft/gpl.html
  * @link    https://github.com/alexander171294/IBlog
@@ -44,13 +40,13 @@ Class Core
    // @db: variable que guarda la instancia del controlador de bases de datos littledb.
    Public $db = null;
    // @rain: variable que guarda la instancia del gestor de plantillas RainTPL.
-   Protected $rain = null;
+   Public $rain = null;
    // @version: variable que guarda la versión del sistema.
-   Protected $version = '';
+   Private $version = '';
    // @user: variable que guarda la instancia de la clase user.
    Protected $user = null;
    // @mesettings: configuración extra sacada de la db
-   Protected $mesettings = array();
+   Public $mesettings = array();
 
    /**
      * construye la clase, generando instancias necesarias y luego carga la
@@ -88,7 +84,7 @@ Class Core
      *
      * @return array(clave=>valor);
      */
-   Private Function Set_Settings()
+   Public Function Set_Settings()
     {
      // ejecutamos la consulta de la tabla settings y guardamos una instancia de objeto de littleDB.
      $retorno = $this->db->query('SELECT clave, valor FROM settings',false,false);
@@ -105,58 +101,6 @@ Class Core
      $this->mesettings = $settings;
      // asignamos la versión ya que estamos
      $this->rain->assign('version',$this->version);
-    }
-
-    /**
-     * obtiene los 4 tipos de menu de la báse de datos
-     * los asigna para luego tenerlos en la plantilla.
-     *
-     * @see cls.menu.php
-     *
-     * @link WIKI NO DISPONIBLE POR EL MOMENTO
-     *
-     * @return void
-     */
-   Private Function Set_Menu()
-    { // *** esto lo acomodaría por una función sola que retorne un array así no hacer 4 llamadas
-     // crear una instancia de la clase (recordar que tenemos autocarga de clases activado)
-     $menu = new Menu($this->db);
-     // asignamos el menu lateral
-     $this->rain->assign('menu_lateral',$menu->get_menu(1));
-     // asignamos el menu principal
-     $this->rain->assign('menu_principal',$menu->get_menu(2));
-     // asignamos el menu de afiliados
-     $this->rain->assign('menu_afiliados',$menu->get_menu(3));
-     // asignamos el menu inferior
-     $this->rain->assign('menu_inferior',$menu->get_menu(4));
-    }
-
-   /**
-     * Ésta función se ejecuta cuando no hay acción o la variable @action
-     * que ingresa por get, tiene el valor de home.
-     *
-     * @see cls.pubs.php
-     *
-     * @link WIKI NO DISPONIBLE POR EL MOMENTO
-     *
-     * @return void
-     */
-   Private Function calleable_home()
-    {
-     // creamos una clase para las publicaciones
-     $pub = new pubs($this->db);
-     // listamos y mandamos a rain, las ultimas publicaciones
-     $this->rain->assign('list',$pub->get_last_pubs($this->pag_limit($this->mesettings['pubsforpage'])));
-
-      //asignamos el paginado:
-        //demo del paginado: (está comentado a propósito porque si se descomenta asume que hay 17 páginas, es para mostrar su funcionamiento)
-        //$this->rain->assign('paginate',$this->paginate(3,50,'http://localhost/index.php?action=home'));
-        //recuerda que para activar este demo tienes que deshabilitar el paginado de las siguientes lineas */
-
-     // obtenemos la cantidad de páginas
-     $cont = $pub->paginate_last_pubs();
-     // asignamos la paginación
-     $this->rain->assign('paginate',$this->paginate($this->mesettings['pubsforpage'],$cont,'/index.php?action=home'));
     }
 
     /**
@@ -182,32 +126,6 @@ Class Core
      $forq = isset($_GET['foruser']) ? '&foruser='.$_GET['foruser'] : '&forcat='.$_GET['forcat'];
      // asignamos la paginación
      $this->rain->assign('paginate',$this->paginate($this->mesettings['pubsforpage'],$cont,'/index.php?action=view_list'.$forq));
-    }
-
-    /**
-     * Ésta función se ejecuta cuando se requiere ver una publicación en específico
-     *
-     * @see cls.pubs.php
-     * @see cls.captcha.php
-     *
-     * @link WIKI NO DISPONIBLE POR EL MOMENTO
-     *
-     * @return void
-     */
-   Private Function calleable_view_pub()
-    {
-     // creamos la instancia de la clase pasandole la db
-     $pub = new pubs($this->db);
-     // creamos una instancia para el captcha para los comentarios
-     $captcha = new Captcha('files/');
-     // asignamos los datos de la publicación
-     $this->rain->assign('pubdata',$pub->get_pub($_GET['id']));
-     // asignamos la lista de comentarios
-     $this->rain->assign('coments',$pub->get_comments($_GET['id']));
-     // seteamos un nuevo captcha
-     $captcha->set_value();
-     // lo creamos
-     $captcha->create();
     }
 
     /**
@@ -325,7 +243,7 @@ Class Core
      *
      * @return string/HTML
      */
-   Private Function paginate ( $max, $cantidad, $url )
+   Public Function paginate ( $max, $cantidad, $url )
     {
      //@advance: la cantidad de páginas siguientes y anteriores a mostrar
      $advance = 3;
@@ -370,7 +288,7 @@ Class Core
      *
      * @return string/HTML
      */
-   Private function pag_limit ( $max )
+   Public function pag_limit ( $max )
     {
      // guardamos la página por la que está, y si no existe tal página ponemos 0
      $actual = isset($_GET['p-id']) ? $_GET['p-id'] : 1;
@@ -409,28 +327,13 @@ Class Core
       // listamos todas las tablas y si existe alguna tabla damos por hecho que se instaló
       if ($this->db->query('SHOW TABLES',false,true))
        {
-        //retornamos true
+        // retornamos true
         return true;
        }
-      // como no salió de la función, no hay tablas y hay que instalar
-
-      // si se hizo el post iniciamos la instalación
-      if(isset($_POST['tit']))
+      else
        {
-        // pasos de la instalación aquí:
-        #...
-        // redirección al inicio, blog ya instalado.
-        header('Location: index.php');
-        // finalizamos el script aquí.
-        die();
+        // retornamos false
+        return false;
        }
-
-      // configuramos la ruta del diseño para instalación
-      raintpl::configure('tpl_dir', 'themes/install/');
-      // configuramos la ruta de caché para la instalación
-      raintpl::configure('cache_dir', $this->Settings['cache'].'/install/');
-
-      // dibujamos la plantilla index del instalador
-      $this->rain->draw('index');
      }
  }
