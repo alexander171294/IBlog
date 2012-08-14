@@ -19,7 +19,7 @@
  */
 
 /**
- * driver.view_pub.php
+ * driver.home.php
  *
  * Éste controlador se encarga de iniciar lo necesario para cargar el home del
  * sistema

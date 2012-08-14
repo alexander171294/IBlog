@@ -2,7 +2,7 @@
 
 funcion set_seo
 
-arreglar comentarios iniciales en el driver
+revisar las url al comentar
 
 ----------------
  administración

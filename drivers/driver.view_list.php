@@ -19,10 +19,10 @@
  */
 
 /**
- * driver.view_pub.php
+ * driver.view_list.php
  *
- * Éste controlador se encarga de iniciar lo necesario para cargar el home del
- * sistema
+ * Éste controlador se encarga de listar las publicaciónes según lo seleccionado
+ * por el usuario
  *
  * @author  Alexander1712 <alexander171294@live.com>
  * @license http://www.gnu.org/copyleft/gpl.html

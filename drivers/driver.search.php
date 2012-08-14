@@ -19,10 +19,9 @@
  */
 
 /**
- * driver.view_pub.php
+ * driver.search.php
  *
- * Éste controlador se encarga de iniciar lo necesario para cargar el home del
- * sistema
+ * Éste controlador se encarga de buscar....
  *
  * @author  Alexander1712 <alexander171294@live.com>
  * @license http://www.gnu.org/copyleft/gpl.html

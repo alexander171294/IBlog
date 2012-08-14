@@ -19,10 +19,9 @@
  */
 
 /**
- * driver.view_pub.php
+ * driver.registro.php
  *
- * Éste controlador se encarga de iniciar lo necesario para cargar el home del
- * sistema
+ * Éste controlador se encarga del registro
  *
  * @author  Alexander1712 <alexander171294@live.com>
  * @license http://www.gnu.org/copyleft/gpl.html
