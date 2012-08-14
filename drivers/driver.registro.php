@@ -45,6 +45,9 @@ $rain->assign('menu_inferior',$menu->get_menu(4));
 unset($menu);
 //////////////////////////////////////////////////////////
 
+// si ya está loggueado
+if($cuenta->IsLogged() === true) { header('Location: /index.php'); }
+
 // creamos la instancia de la clase captcha
 $captcha = new Captcha('files/');
 // si se hiso el submit del formulario de registro

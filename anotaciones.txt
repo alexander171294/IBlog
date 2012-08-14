@@ -2,7 +2,7 @@
 
 funcion set_seo
 
-no poder logguearse o registrarse si ya estás loggueado
+
 acceso al panel a la derecha.
 mover menú administrativo a todos los html del diseño
 nombre y datos del usuario en administración

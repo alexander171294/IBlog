@@ -45,6 +45,9 @@ $rain->assign('menu_inferior',$menu->get_menu(4));
 unset($menu);
 //////////////////////////////////////////////////////////
 
+// si ya está loggueado
+if($cuenta->IsLogged() === true) { header('Location: /index.php'); }
+
 // si se hizo el submit del formulario
 if(isset($_POST['posteado']))
  {
