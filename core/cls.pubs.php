@@ -66,6 +66,7 @@ Class Pubs
    {
     // obtenemos las ultimas publicaciones limitando segun el contenido de $max
     $result = $this->db->query('SELECT p.pub_id, p.seo_title, c.cat_seo, c.cat_id, c.cat_nombre, u.u_nombre, u.u_id, p.pub_nombre, p.pub_preview, p.pub_comentario, p.pub_fecha FROM publicaciones AS p LEFT JOIN users AS u ON u.u_id = p.pub_autor LEFT JOIN categorias AS c ON c.cat_id = p.pub_categoria LIMIT '.$max,false,false);
+    $resort = '';
     // recorremos el arreglo para agregarle un índice y usarlo con RainTPL
     while ($values = $result->fetchrow())
       {
