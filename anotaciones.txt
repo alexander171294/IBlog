@@ -3,6 +3,8 @@
 funcion set_seo
 
 revisar las url al comentar
+no poder logguearse o registrarse si ya estás loggueado
+acceso al panel a la derecha.
 
 ----------------
  administración

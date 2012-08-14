@@ -145,4 +145,16 @@ Class Cuenta
      }
    }
 
+  Public Function registro_light($user, $pass)
+   {
+    // creamos una instancia de la clase phpass
+    $phpass = new PHPass(8, FALSE);
+    // filtramos html
+    $user = htmlspecialchars(strtolower(trim($user)));
+    // guardamos el hash de la password
+    $fpass = $phpass->HashPassword($pass);
+   // insertamos los valores correspondientes
+   $this->db->insert('users',array('u_nombre'=>$user,'u_pass'=>$fpass,'u_rango'=>'3'));
+   }
+
  }
