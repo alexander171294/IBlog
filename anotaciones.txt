@@ -2,6 +2,8 @@
 
 funcion set_seo
 
+arreglar comentarios iniciales en el driver
+
 ----------------
  administración
 ---------------- 

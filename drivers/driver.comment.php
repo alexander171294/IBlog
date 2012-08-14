@@ -46,19 +46,9 @@ $rain->assign('menu_inferior',$menu->get_menu(4));
 unset($menu);
 //////////////////////////////////////////////////////////
 
-// creamos una clase para las publicaciones
-$pub = new pubs($db);
-// listamos y mandamos a rain, las ultimas publicaciones
-$rain->assign('list',$pub->get_last_pubs($Core->pag_limit($Core->mesettings['pubsforpage'])));
-
-// asignamos el paginado:
-// demo del paginado: (está comentado a propósito porque si se descomenta asume que hay 17 páginas, es para mostrar su funcionamiento)
-# $this->rain->assign('paginate',$Core->paginate(3,50,'http://localhost/index.php?action=home'));
-// recuerda que para activar este demo tienes que deshabilitar el paginado de las siguientes lineas */
-
-// obtenemos la cantidad de páginas
-$cont = $pub->paginate_last_pubs();
-// asignamos la paginación
-$rain->assign('paginate',$Core->paginate($Core->mesettings['pubsforpage'],$cont,'/index.php?action=home'));
-// borramos la variable que contiene la instancia de pub
-unset($pub);
+// creamos una instancia de la clase pubs
+$pubs = new Pubs($this->db);
+// guardamos el comentario
+$pubs->set_comment();
+// borramos la variable que contiene la instancia de la clase pub
+unset ($pub);
