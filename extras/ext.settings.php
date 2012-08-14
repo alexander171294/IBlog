@@ -28,6 +28,9 @@
  * @link    https://github.com/alexander171294/IBlog
  */
 
+// versión
+define( 'IBLOGVERSION', '1.0' );
+
 //retornamos la configuración
 return array(
 

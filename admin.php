@@ -1,5 +1,4 @@
 <?php
-
 /**
  * I-Blog
  *
@@ -19,11 +18,9 @@
  */
 
 /**
- * index.php
+ * admin.php
  *
- * Éste archivo es el cargador, se encarga de cargar la clase core, incluir la
- * configuración, las funciones extras, la versión, y cuenta el tiempo de
- * ejecución. además activa la autocarga de clases.
+ * Éste archivo es el cargador, de la sección de administración.
  *
  * @author  Alexander1712 <alexander171294@live.com>
  * @license http://www.gnu.org/copyleft/gpl.html
@@ -51,57 +48,43 @@ $cuenta = new Cuenta ( $db );
 // creamos la instancia de rainTPL
 $rain = new RainTPL ();
 
-// iniciamos la clase core y le mandamos la configuración
-$Core = new Core ( $rain, $Settings , $db , IBLOGVERSION );
+// iniciamos la clase AdminCore y le mandamos la configuración
+$Core = new AdminCore ( $Settings );
 
 // conectamos a la db
 $db->connect();
 
-// $core->install devuelve true si está instalado y false si no.
-if($Core->install())
- {
 
-  // islogged
-  $rain->assign('islogged',$cuenta->IsLogged());
-  // rango
-  $rain->assign('rango',$cuenta->Rango());
+  // si no se encuentra loggueado o el rango no coincide
+  if($cuenta->IsLogged() === false || $cuenta->Rango() < 3 ) { header('Location: /index.php'); die(); }
 
   // configuramos rainTPL //
   // la url base
   raintpl::configure( 'base_url', $Core->Settings['site_path'] );
   // la dirección del theme
-  raintpl::configure( 'tpl_dir', 'themes/'.$Core->Settings['tema'].'/' );
+  raintpl::configure( 'tpl_dir', 'themes/admin/' );
   // la dirección del caché del theme
-  raintpl::configure( 'cache_dir', $Core->Settings['cache'].'/'.$Core->Settings['tema'].'/' );
+  raintpl::configure( 'cache_dir', $Core->Settings['cache'].'/admin/' );
 
   // guardamos la acción en una variable, y si no existe ponemos home.
   $action = isset( $_GET['action'] ) ? $_GET['action'] : 'home' ;
 
-  // seteamos configuración básica
-  $Core->Set_Settings();
-
   // aciones validas definidas en un array
   $valid = array ( // nombre => html
-                     'home' => 'index',
-                     'view_list' => 'index',
-                     'view_pub' => 'view',
-                     'admin' => '1',
-                     'login' => 'login',
-                     'registro' => 'registro',
-                     'search' => 'index',
-                     'comment' => '',
-                     'page' => 'page',
-                     'logout' => ''
+                     'home' => 'home',
                  );
 
   // lista de páginas a ignorar draw
   $draw_ignore = array (
-                           'comment' => 'not_draw',
-                           'logout' => 'not_draw'
+                        'undefined'=>'undefined',
                        );
 
   // seleccionamos un driver válido
-  $driver = isset( $valid[$action] ) ? 'driver.'.$action.'.php' : 'driver.error.php';
+  $driver = isset( $valid[$action] ) ? 'driver.adm.'.$action.'.php' : 'driver.error.php';
+
+  // asignamos la acción para saber la ubicación
+  $rain->assign('action',$action);
+
   // lo cargamos
   require( 'drivers/'.$driver );
 
@@ -110,15 +93,9 @@ if($Core->install())
    {
     $rain->draw(isset( $valid[$action] ) ? $valid[$action] : 'notfound');
    }
- }
-else
- {
-  // inicia la instalación
-  require ( 'drivers/driver.install.php' );
- }
 
 // requerimos el driver.destruct.php para borrar lo que está de mas
 require( 'drivers/driver.destruct.php' );
 
 // mostramos el consumo.
-echo('<div class="clear" />Memoria usada: <b>'.roundsize((memory_get_usage() - $memstart), true).'</b> - Tiempo de ejecucion: <b>'.round(microtime(true)-$timestart, 2).' segundos</b></div>');
+#echo('<div class="clear" />Memoria usada: <b>'.roundsize((memory_get_usage() - $memstart), true).'</b> - Tiempo de ejecucion: <b>'.round(microtime(true)-$timestart, 2).' segundos</b></div>');
