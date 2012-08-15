@@ -81,6 +81,19 @@ Class Cuenta
    }
 
    /**
+     * Ésta función devuelve el nombre del usuario.
+     *
+     * @link WIKI NO DISPONIBLE POR EL MOMENTO
+     *
+     * @return Array
+     */
+  Public Function Get_Name()
+   {
+    // si existe la variable de sessión, rango, devolvemos el valor, sino 0
+    return $this->db->query('Select u_nombre FROM users where u_id = '.$_SESSION['id'],false,true);
+   }
+
+   /**
      * Realiza la acción de iniciar sesión.
      *
      * @param string $user nick del usuario

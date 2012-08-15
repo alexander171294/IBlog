@@ -8,13 +8,9 @@ mover menú administrativo a todos los html del diseño
 botones de edicion
 terminar instalación
 validar la versión
-nombre y datos del usuario en administración
 
 ----------------
  administración
 ---------------- 
-----------------
-  instalación
-----------------
 
 crear wiki con funciones y agregarlas al código los links

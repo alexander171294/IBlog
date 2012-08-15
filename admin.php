@@ -58,6 +58,9 @@ $db->connect();
   // si no se encuentra loggueado o el rango no coincide
   if($cuenta->IsLogged() === false || $cuenta->Rango() < 3 ) { header('Location: /index.php'); die(); }
 
+  // asignamos el nombre
+  $rain->assign('UName',$cuenta->Get_Name());
+
   // configuramos rainTPL //
   // la url base
   raintpl::configure( 'base_url', $Core->Settings['site_path'] );
