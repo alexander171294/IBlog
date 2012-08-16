@@ -35,7 +35,7 @@ Class AdminCore
   // definimos la variable de la clase
   Public $Settings = array();
 
-  Public Function __Construct($settings)
+  Public Function __construct($settings)
    {
     $this->Settings = $settings;
    }
