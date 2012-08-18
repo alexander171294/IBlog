@@ -136,14 +136,12 @@ $(document).ready(function()	{
 					</a>       
 				</li>
 				
-				<li> 
-					<a class="nav-top-item {if="$action=='new' || $action=='articles' || $action=='comments' || $action=='cats'"}current{/if}"> <!-- Add the class "current" to current menu item -->
+        <li>
+					<a class="nav-top-item {if="$action=='new' || $action=='edit-art' || $action=='cats'"}current{/if}"> <!-- Add the class "current" to current menu item -->
 					Articulos
 					</a>
 					<ul>
-						<li><a href='/admin/new/' {if="$action=='new'"}class="current"{/if}>Escribir un art&iacute;culo</a></li>
-						<li><a href='/admin/articles/' {if="$action=='articles'"}class="current"{/if}>Administrar art&iacute;culos</a></li> <!-- Add class "current" to sub menu items also -->
-						<li><a href='/admin/comments/' {if="$action=='comments'"}class="current"{/if}>Administrar Comentarios</a></li>
+						<li><a href='/admin/new/' {if="$action=='new' || $action=='edit-art'"}class="current"{/if}>Escribir un art&iacute;culo</a></li>
 						<li><a href='/admin/cats/' {if="$action=='cats'"}class="current"{/if}>Administrar Categorias</a></li>
 					</ul>
 				</li>
@@ -154,11 +152,10 @@ $(document).ready(function()	{
 					</a>
 					<ul>
 						<li><a href='/admin/add-page/' {if="$action=='add-page'"}class="current"{/if}>Crear una nueva P&aacute;gina</a></li>
-						<li><a href='/admin/admin-pages/' {if="$action=='admin-pages'"}class="current"{/if}>Administrar P&aacute;gina</a></li>
 					</ul>
 				</li>
 				
-				<li>
+        <li>
 					<a class="nav-top-item {if="$action=='add-menu' || $action=='edit-menu' || $action=='del-menu'"}current{/if}">
             Men&uacute;
 					</a>

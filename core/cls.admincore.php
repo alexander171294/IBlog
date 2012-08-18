@@ -84,6 +84,8 @@ Class AdminCore
      * @link WIKI NO DISPONIBLE POR EL MOMENTO
      *
      * @return string
+     *
+     * Agradecimientos a Ignacio Daniel Rostagno.
      */
   Public Function set_seo($string)
    {
