@@ -64,13 +64,30 @@ Class Pubs
      */
   Public Function get_last_pubs($max)
    {
+    // seteamos el bbcode
+    $this->set_bbcode();
     // obtenemos las ultimas publicaciones limitando segun el contenido de $max
-    $result = $this->db->query('SELECT p.pub_id, p.seo_title, c.cat_seo, c.cat_id, c.cat_nombre, u.u_nombre, u.u_id, p.pub_nombre, p.pub_preview, p.pub_comentario, p.pub_fecha FROM publicaciones AS p LEFT JOIN users AS u ON u.u_id = p.pub_autor LEFT JOIN categorias AS c ON c.cat_id = p.pub_categoria LIMIT '.$max,false,false);
+    $result = $this->db->query('SELECT p.pub_id, p.seo_title, c.cat_seo, c.cat_id, c.cat_nombre, u.u_nombre, u.u_id, p.pub_nombre, p.pub_preview, p.pub_comentario, p.pub_fecha FROM publicaciones AS p LEFT JOIN users AS u ON u.u_id = p.pub_autor LEFT JOIN categorias AS c ON c.cat_id = p.pub_categoria ORDER BY pub_id DESC LIMIT '.$max,false,false);
+
     // declaramos la variable por si no se encuentran resultados
     $resort = '';
     // recorremos el arreglo para agregarle un índice y usarlo con RainTPL
     while ($values = $result->fetchrow())
       {
+      // filtramos y parseamos bbcode
+      $values['pub_preview'] = nl2br(Parser::Parsear_bbcc(Parser::Parsear_bbcn($values['pub_preview'])));
+      // pasamos la censura de palabras desde la db
+      $values['pub_preview'] = Parser::DB_BBCN_Parser ($values['pub_preview'], array(
+                                   'table'=>'censura',
+                                   'column_search'=>'bad',
+                                   'column_replace'=>'good'
+                                   ));
+      // pasamos emoticonos desde la db
+      $values['pub_preview'] = Parser::DB_BBCN_Parser ($values['pub_preview'], array(
+                                   'table'=>'emoticonos',
+                                   'column_search'=>'bbc',
+                                   'column_replace'=>'html'
+                                   ));
        $resort[] = $values;
       }
     // retornamos dicho array.
@@ -103,23 +120,39 @@ Class Pubs
      */
   Public Function get_last_pubs_for($max)
    {
+    // seteamos el bbcode
+    $this->set_bbcode();
     // si la variable foruser está definida
     if(isset($_GET['foruser']))
      {
       // guardamos las últimas publicaciones del usuario
-      $result = $this->db->query('SELECT p.pub_id, p.seo_title, c.cat_seo, c.cat_id, c.cat_nombre, u.u_nombre, u.u_id, p.pub_nombre, p.pub_preview, p.pub_comentario, p.pub_fecha FROM publicaciones AS p LEFT JOIN users AS u ON u.u_id = p.pub_autor LEFT JOIN categorias AS c ON c.cat_id = p.pub_categoria WHERE p.pub_autor = ? LIMIT '.$max,array($_GET['foruser']),false);
+      $result = $this->db->query('SELECT p.pub_id, p.seo_title, c.cat_seo, c.cat_id, c.cat_nombre, u.u_nombre, u.u_id, p.pub_nombre, p.pub_preview, p.pub_comentario, p.pub_fecha FROM publicaciones AS p LEFT JOIN users AS u ON u.u_id = p.pub_autor LEFT JOIN categorias AS c ON c.cat_id = p.pub_categoria WHERE p.pub_autor = ? ORDER BY pub_id DESC LIMIT '.$max,array($_GET['foruser']),false);
      }
     // sino, si la variable forcat está definida
     elseif (isset($_GET['forcat']))
      {
       // guardamos las últimas publicaciones de la categoría
-      $result = $this->db->query('SELECT p.pub_id, p.seo_title, c.cat_seo, c.cat_id, c.cat_nombre, u.u_nombre, u.u_id, p.pub_nombre, p.pub_preview, p.pub_comentario, p.pub_fecha FROM publicaciones AS p LEFT JOIN users AS u ON u.u_id = p.pub_autor LEFT JOIN categorias AS c ON c.cat_id = p.pub_categoria WHERE p.pub_categoria = ? LIMIT '.$max,array($_GET['forcat']),false);
+      $result = $this->db->query('SELECT p.pub_id, p.seo_title, c.cat_seo, c.cat_id, c.cat_nombre, u.u_nombre, u.u_id, p.pub_nombre, p.pub_preview, p.pub_comentario, p.pub_fecha FROM publicaciones AS p LEFT JOIN users AS u ON u.u_id = p.pub_autor LEFT JOIN categorias AS c ON c.cat_id = p.pub_categoria WHERE p.pub_categoria = ? ORDER BY pub_id DESC LIMIT '.$max,array($_GET['forcat']),false);
      }
     // aquí iría otro tipo de filtro... con un elseif
 
     // recorremos la lista de publicaciones para agregarle un índice
     while ($values = $result->fetchrow())
       {
+      // filtramos y parseamos bbcode
+      $values['pub_preview'] = nl2br(Parser::Parsear_bbcc(Parser::Parsear_bbcn($values['pub_preview'])));
+      // pasamos la censura de palabras desde la db
+      $values['pub_preview'] = Parser::DB_BBCN_Parser ($values['pub_preview'], array(
+                                   'table'=>'censura',
+                                   'column_search'=>'bad',
+                                   'column_replace'=>'good'
+                                   ));
+      // pasamos emoticonos desde la db
+      $values['pub_preview'] = Parser::DB_BBCN_Parser ($values['pub_preview'], array(
+                                   'table'=>'emoticonos',
+                                   'column_search'=>'bbc',
+                                   'column_replace'=>'html'
+                                   ));
        $resort[] = $values;
       }
     // devolvemos el array resultante.
@@ -164,8 +197,26 @@ Class Pubs
      */
   Public Function get_pub($id)
    {
+    // seteamos el bbcode
+    $this->set_bbcode();
     // retornamos los valores de la publicación con id = $id
-    return $this->db->query('SELECT p.pub_id, p.seo_title, p.pub_nombre, u.u_nombre, u.u_id, c.cat_nombre, c.cat_id, c.cat_seo, p.pub_contenido, p.pub_keys, p.pub_comentario, p.pub_fecha FROM publicaciones AS p LEFT JOIN users AS u ON u.u_id = p.pub_autor LEFT JOIN categorias AS c ON c.cat_id = p.pub_categoria WHERE p.pub_id = ?',array($id),true);
+    $retorno = $this->db->query('SELECT p.pub_id, p.seo_title, p.pub_nombre, u.u_nombre, u.u_id, c.cat_nombre, c.cat_id, c.cat_seo, p.pub_contenido, p.pub_keys, p.pub_comentario, p.pub_fecha FROM publicaciones AS p LEFT JOIN users AS u ON u.u_id = p.pub_autor LEFT JOIN categorias AS c ON c.cat_id = p.pub_categoria WHERE p.pub_id = ?',array($id),true);
+    // filtramos y parseamos bbcode
+    $retorno['pub_contenido'] = nl2br(Parser::Parsear_bbcc(Parser::Parsear_bbcn($retorno['pub_contenido'])));
+    // pasamos la censura de palabras desde la db
+    $retorno['pub_contenido'] = Parser::DB_BBCN_Parser ($retorno['pub_contenido'], array(
+                                   'table'=>'censura',
+                                   'column_search'=>'bad',
+                                   'column_replace'=>'good'
+                                   ));
+    // pasamos emoticonos desde la db
+    $retorno['pub_contenido'] = Parser::DB_BBCN_Parser ($retorno['pub_contenido'], array(
+                                   'table'=>'emoticonos',
+                                   'column_search'=>'bbc',
+                                   'column_replace'=>'html'
+                                   ));
+    // retornamos el valor
+    return $retorno;
    }
 
    /**
@@ -278,12 +329,33 @@ Class Pubs
     // establecemos los bbc a parsear
     Parser::$BBCN = array(
                           '[b]'=>'<b>',
-                          '[/b]'=>'</b>'
+                          '[/b]'=>'</b>',
+                          '[strong]'=>'<b>',
+                          '[/strong]'=>'</b>',
+                          '[del]'=>'<del>',
+                          '[/del]'=>'</del>'
                           );
     // establecemos los bbc complejos a parsear
     Parser::$BBCC = array(
-                          '[url=?]?[/url]'=>'<a href="$1">$2</a>',
+                          '[url=?]?[/url]'=>'<a href=\'$1\'>$2</a>',
+                          '[img]?[/img]'=>'<img src=\'$1\'>'
                          );
+   }
+
+   /**
+     * crea una nueva publicación.
+     *
+     * @param string $tags, string $title, string $seotitle, string $contenido
+     * string $categoria
+     *
+     * @link WIKI NO DISPONIBLE POR EL MOMENTO
+     *
+     * @return int
+     */
+  Public Function insert($tags, $title, $seotitle, $contenido, $categoria)
+   {
+    // insertamos el nuevo artículo y devolvemos su id
+    return $this->db->insert('publicaciones',array('pub_keys' => $tags, 'pub_nombre' => htmlentities($title), 'pub_preview' => substr(htmlentities($contenido),1,600), 'pub_contenido' => htmlentities($contenido), 'pub_autor' => $_SESSION['id'], 'pub_categoria' => (int) $categoria, 'pub_fecha' => time(), 'seo_title' => $seotitle),true);
    }
 
  }

@@ -61,5 +61,32 @@ Class AdminCore
      *
      * @return string
      */
+  Public Function get_cats_select()
+   {
+    // realizamos la consulta para obtener las categorías
+    $obj = $this->db->query('SELECT cat_id, cat_nombre FROM categorias',false,false);
+    // seteamos la variable
+    $retorno = '';
+    // obtenemos cada uno de los registros (categorías) y agregamos los tags html
+    while($value = $obj->fetchrow())
+     {
+      $retorno .= '<option value="'.$value['cat_id'].'">'.$value['cat_nombre'].'</option>';
+     }
+    // retornamos el listado en html.
+    return $retorno;
+   }
 
+   /**
+     * devuelve la versión SEO del texto entregado.
+     *
+     * @param string $string texto a paresear
+     *
+     * @link WIKI NO DISPONIBLE POR EL MOMENTO
+     *
+     * @return string
+     */
+  Public Function set_seo($string)
+   {
+    return preg_replace('/[^\-a-zA-Z0-9]/', '', preg_replace('/\s+/', '-',$string));
+   }
  }

@@ -49,7 +49,7 @@ $cuenta = new Cuenta ( $db );
 $rain = new RainTPL ();
 
 // iniciamos la clase AdminCore y le mandamos la configuración
-$Core = new AdminCore ( $Settings );
+$Core = new AdminCore ( $Settings, $db );
 
 // conectamos a la db
 $db->connect();
