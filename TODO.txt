@@ -1,9 +1,5 @@
 ** ajustarlo con LittleDB (contador de respuestas en publicacion)
 
-funcion set_seo
-
-
-? acceso al panel a la derecha. ?
 botones de edicion rápida
 terminar instalación
 
