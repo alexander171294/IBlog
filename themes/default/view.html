@@ -65,7 +65,7 @@
 					<p class="postmeta">		
 					<a href="" class="comments">Comments ({$pubdata.pub_comentario})</a> |
 					<span class="date">{function="date('d/m/Y h:s',$pubdata.pub_fecha)"}</span>
-					<a href="" class="edit">Edit</a>
+					{if="$rango==3"}<a href="" class="edit">Modificar</a> | <a href="" class="edit">Borrar</a>{/if}
 					</p>
 			
 					<h3 id="comments">{$pubdata.pub_comentario} Responses</h3>
@@ -76,7 +76,7 @@
 							<cite>
 								<img alt="" src="images/gravatar.jpg" class="avatar" height="40" width="40" />
 								<a href='{$value.web}'>{$value.name}</a> dijo: <br />
-								<span class="comment-data"><a href="" title="">{function="date('d/m/Y h:s',$value.fecha)"}</a> </span>
+								<span class="comment-data"><a href="" title="">{function="date('d/m/Y h:s',$value.fecha)"}</a> {if="$rango==3"}| <a href="" class="edit">Borrar</a>{/if}</span>
 							</cite>
 							
 							<div class="comment-text">

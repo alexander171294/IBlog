@@ -64,7 +64,7 @@
 				
 					<p class="postmeta">		
 					<span class="date">{function="date('d/m/Y h:s',$pubdata.pag_fecha)"}</span>
-					<a href="index.html" class="edit">Edit</a>
+          {if="$rango==3"}<a href="" class="edit">Modificar</a> | <a href="" class="edit">Borrar</a>{/if}
 					</p>
 			
 
@@ -73,7 +73,7 @@
 			</div>
 		
 			<div id="right">
-			{if="$islogged"}
+   {if="$islogged"}
       <div class="sidemenu">
 					<h3>Acciones</h3>
 					<ul>
