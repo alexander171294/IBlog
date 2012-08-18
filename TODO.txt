@@ -4,7 +4,6 @@ funcion set_seo
 
 
 ? acceso al panel a la derecha. ?
-mover menú administrativo a todos los html del diseño
 botones de edicion rápida
 terminar instalación
 
@@ -12,7 +11,6 @@ terminar instalación
  administración
 ---------------- 
 validar la versión
-escribir un articulo
 administrar articulos
  - borrar
  - modificar
