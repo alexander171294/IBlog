@@ -126,7 +126,17 @@
 			</div>
 		
 			<div id="right">
-							
+			{if="$islogged"}
+      <div class="sidemenu">
+					<h3>Acciones</h3>
+					<ul>
+				   {if="$rango==3"}<li><a href='/admin/'>Administraci&oacute;n</a></li>
+           <li><a href='/admin/new/'>Nueva publicaci&oacute;n</a></li>
+           {/if}
+           <li><a href='/salir/'>Salir</a></li>
+					</ul>
+				</div>
+      {/if}
 				<div class="sidemenu">	
      <h3>Menu</h3>
 					<ul>
