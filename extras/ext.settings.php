@@ -29,7 +29,7 @@
  */
 
 // versión
-define( 'IBLOGVERSION', '1.0' );
+define( 'IBLOGVERSION', '1.0-a2' );
 
 //retornamos la configuración
 return array(

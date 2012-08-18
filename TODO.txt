@@ -5,12 +5,34 @@ funcion set_seo
 
 ? acceso al panel a la derecha. ?
 mover menú administrativo a todos los html del diseño
-botones de edicion
+botones de edicion rápida
 terminar instalación
-validar la versión
 
 ----------------
  administración
 ---------------- 
+validar la versión
+escribir un articulo
+administrar articulos
+ - borrar
+ - modificar
+administrar comentarios
+ - borrar
+administrar categorias
+ - crear nueva
+ - modificar
+ - borrar
+crear nueva página
+administrar páginas
+ - modificar
+ - borrar
+nuevo menú
+editar menú
+borrar menú
+Subir imagenes
+borrar imágenes
+configuracion general
+configuración de shoutbox
+configuración de SEO
 
 crear wiki con funciones y agregarlas al código los links

@@ -34,10 +34,32 @@ Class AdminCore
 
   // definimos la variable de la clase
   Public $Settings = array();
+  Private $db = null;
 
-  Public Function __construct($settings)
+  /**
+     * construye la clase, generando instancias necesarias y luego carga la
+     * función correspondiente a la sección del blog abierta.
+     *
+     * @param array $Settings la configuración del sitio (archivo ext.settings.php)
+     * @param instance $db la instancia de littledb
+     *
+     * @link WIKI NO DISPONIBLE POR EL MOMENTO
+     *
+     * @return void
+     */
+  Public Function __construct($settings, $db)
    {
     $this->Settings = $settings;
+    $this->db = $db;
    }
+
+    /**
+     * devuelve una lista para meter dentro de un select, de las categorías del
+     * blog :D.
+     *
+     * @link WIKI NO DISPONIBLE POR EL MOMENTO
+     *
+     * @return string
+     */
 
  }

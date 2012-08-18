@@ -73,8 +73,9 @@ $db->connect();
   $action = isset( $_GET['action'] ) ? $_GET['action'] : 'home' ;
 
   // aciones validas definidas en un array
-  $valid = array ( // nombre => html
+  $valid = array ( // nombre => php
                      'home' => 'home',
+                     'new' => 'new'
                  );
 
   // lista de páginas a ignorar draw

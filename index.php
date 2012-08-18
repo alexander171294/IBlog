@@ -81,7 +81,7 @@ if($Core->install())
   $Core->Set_Settings();
 
   // aciones validas definidas en un array
-  $valid = array ( // nombre => html
+  $valid = array ( // nombre => php
                      'home' => 'index',
                      'view_list' => 'index',
                      'view_pub' => 'view',

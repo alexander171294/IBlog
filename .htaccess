@@ -9,7 +9,7 @@ Rewriterule ^acceder/$ /index.php?action=login
 # Administracion:
 Rewriterule ^admin/$ /admin.php
 # accion administrativa:
-Rewriterule ^admin/(.*)/$ /index.php?action=$1
+Rewriterule ^admin/(.*)/$ /admin.php?action=$1
 # salir:
 Rewriterule ^salir/$ /index.php?action=logout
 # registro:
