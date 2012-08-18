@@ -355,7 +355,7 @@ Class Pubs
   Public Function insert($tags, $title, $seotitle, $contenido, $categoria)
    {
     // insertamos el nuevo artículo y devolvemos su id
-    return $this->db->insert('publicaciones',array('pub_keys' => $tags, 'pub_nombre' => htmlentities($title), 'pub_preview' => substr(htmlentities($contenido),1,600), 'pub_contenido' => htmlentities($contenido), 'pub_autor' => $_SESSION['id'], 'pub_categoria' => (int) $categoria, 'pub_fecha' => time(), 'seo_title' => $seotitle),true);
+    return $this->db->insert('publicaciones',array('pub_keys' => $tags, 'pub_nombre' => htmlentities($title), 'pub_preview' => substr(htmlentities($contenido),0,600), 'pub_contenido' => htmlentities($contenido), 'pub_autor' => $_SESSION['id'], 'pub_categoria' => (int) $categoria, 'pub_fecha' => time(), 'seo_title' => $seotitle),true);
    }
 
  }
