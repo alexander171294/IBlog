@@ -50,7 +50,7 @@ $pub = new pubs($db);
 // creamos una instancia para el captcha para los comentarios
 $captcha = new Captcha('files/');
 // asignamos los datos de la publicación
-$rain->assign('pubdata',$pub->get_pub($_GET['id']));
+$rain->assign('pubdata',$pub->get_pub($_GET['id'], TRUE));
 // asignamos la lista de comentarios
 $rain->assign('coments',$pub->get_comments($_GET['id']));
 // seteamos un nuevo captcha

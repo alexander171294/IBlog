@@ -195,29 +195,34 @@ Class Pubs
      *
      * @return array( valores de la db )
      */
-  Public Function get_pub($id)
+  Public Function get_pub($id, $return_parsers)
    {
-    // seteamos el bbcode
-    $this->set_bbcode();
     // retornamos los valores de la publicación con id = $id
     $retorno = $this->db->query('SELECT p.pub_id, p.seo_title, p.pub_nombre, u.u_nombre, u.u_id, c.cat_nombre, c.cat_id, c.cat_seo, p.pub_contenido, p.pub_keys, p.pub_comentario, p.pub_fecha FROM publicaciones AS p LEFT JOIN users AS u ON u.u_id = p.pub_autor LEFT JOIN categorias AS c ON c.cat_id = p.pub_categoria WHERE p.pub_id = ?',array($id),true);
-    // filtramos y parseamos bbcode
-    $retorno['pub_contenido'] = nl2br(Parser::Parsear_bbcc(Parser::Parsear_bbcn($retorno['pub_contenido'])));
-    // pasamos la censura de palabras desde la db
-    $retorno['pub_contenido'] = Parser::DB_BBCN_Parser ($retorno['pub_contenido'], array(
+    if ( $return_parsers == TRUE )
+     {
+      // seteamos el bbcode
+      $this->set_bbcode();
+      // filtramos y parseamos bbcode
+      $retorno['pub_contenido'] = nl2br(Parser::Parsear_bbcc(Parser::Parsear_bbcn($retorno['pub_contenido'])));
+      // pasamos la censura de palabras desde la db
+      $retorno['pub_contenido'] = Parser::DB_BBCN_Parser ($retorno['pub_contenido'], array(
                                    'table'=>'censura',
                                    'column_search'=>'bad',
                                    'column_replace'=>'good'
                                    ));
-    // pasamos emoticonos desde la db
-    $retorno['pub_contenido'] = Parser::DB_BBCN_Parser ($retorno['pub_contenido'], array(
+      // pasamos emoticonos desde la db
+      $retorno['pub_contenido'] = Parser::DB_BBCN_Parser ($retorno['pub_contenido'], array(
                                    'table'=>'emoticonos',
                                    'column_search'=>'bbc',
                                    'column_replace'=>'html'
                                    ));
+     }
     // retornamos el valor
     return $retorno;
    }
+
+
 
    /**
      * obtiene comentarios de una publicación.
@@ -374,4 +379,23 @@ Class Pubs
     // borramos la publicación
     $this->db->delete('publicaciones', array('pub_id' => $id), false);
    }
+
+   /**
+     * edita una publicación.
+     *
+     * @param string $tags los tags de la publicación
+     * @param string $title el titulo de la publicación
+     * @param string $seo el titulo en formato amigable para links
+     * @param string $cont el contenido de la publicación
+     * @param int $cat la categoría de la publicación (id de la categoría)
+     * @param int $target el id de la publicación a editar.
+     *
+     * @link WIKI NO DISPONIBLE POR EL MOMENTO
+     *
+     * @return void
+     */
+   Public Function edit($tags, $title, $seo, $cont, $cat, $target)
+    {
+     $this->db->update('publicaciones',array('pub_keys'=>$tags, 'pub_nombre' => htmlentities($title), 'pub_preview'  => substr(htmlentities($cont),0,600) , 'pub_contenido' => htmlentities($cont), 'pub_categoria' => (int) $cat, 'pub_fecha' => time(), 'seo_title' => $seo), array('pub_id' => $target));
+    }
  }
