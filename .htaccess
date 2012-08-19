@@ -10,6 +10,8 @@ Rewriterule ^acceder/$ /index.php?action=login
 Rewriterule ^admin/$ /admin.php
 # accion administrativa:
 Rewriterule ^admin/(.*)/$ /admin.php?action=$1
+# accion administrativa con valor:
+Rewriterule ^admin/(.*)/(.*).php$ /admin.php?action=$1&target=$2
 # salir:
 Rewriterule ^salir/$ /index.php?action=logout
 # registro:

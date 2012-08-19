@@ -346,7 +346,7 @@ Class Pubs
      * crea una nueva publicación.
      *
      * @param string $tags, string $title, string $seotitle, string $contenido
-     * string $categoria
+     * string $categoria - datos del post
      *
      * @link WIKI NO DISPONIBLE POR EL MOMENTO
      *
@@ -358,4 +358,20 @@ Class Pubs
     return $this->db->insert('publicaciones',array('pub_keys' => $tags, 'pub_nombre' => htmlentities($title), 'pub_preview' => substr(htmlentities($contenido),0,600), 'pub_contenido' => htmlentities($contenido), 'pub_autor' => $_SESSION['id'], 'pub_categoria' => (int) $categoria, 'pub_fecha' => time(), 'seo_title' => $seotitle),true);
    }
 
+   /**
+     * borra una publicación.
+     *
+     * @param int $id id de la publicación a eliminar
+     *
+     * @link WIKI NO DISPONIBLE POR EL MOMENTO
+     *
+     * @return void
+     */
+  Public Function delete($id)
+   {
+    // borramos todos los comentarios de la publicación
+    $this->db->delete('comentarios', array('pub' => $id),false);
+    // borramos la publicación
+    $this->db->delete('publicaciones', array('pub_id' => $id), false);
+   }
  }

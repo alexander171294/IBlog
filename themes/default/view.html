@@ -65,7 +65,7 @@
 					<p class="postmeta">		
 					<a href="" class="comments">Comments ({$pubdata.pub_comentario})</a> |
 					<span class="date">{function="date('d/m/Y h:s',$pubdata.pub_fecha)"}</span>
-					{if="$rango==3"}<a href="" class="edit">Modificar</a> | <a href="" class="edit">Borrar</a>{/if}
+					{if="$rango==3"}<a href='/admin/art-edit/{$pubdata.pub_id}.php' class="edit">Modificar</a> | <a href='/admin/art-delete/{$pubdata.pub_id}.php' class="edit">Borrar</a>{/if}
 					</p>
 			
 					<h3 id="comments">{$pubdata.pub_comentario} Responses</h3>

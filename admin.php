@@ -75,7 +75,9 @@ $db->connect();
   // aciones validas definidas en un array
   $valid = array ( // nombre => php
                      'home' => 'home',
-                     'new' => 'new'
+                     'new' => 'new',
+                     'art-delete' => '',
+                     'art-edit' => 'new'
                  );
 
   // lista de páginas a ignorar draw
