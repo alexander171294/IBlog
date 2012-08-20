@@ -64,7 +64,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
         // insertamos un nuevo articulo
         $pubs->edit($_POST['tags'], $_POST['titulo'], $seo, $_POST['contenido'], $_POST['categoria'], $_GET['target']);
         // redirigimos al artículo
-        header('Location: /publicacion/'.$_POST['target'].'/'.$seo.'/');
+        header('Location: /publicacion/'.$_GET['target'].'/'.$seo.'/');
        }
       else
        {

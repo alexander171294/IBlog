@@ -76,6 +76,58 @@ Class AdminCore
     return $retorno;
    }
 
+    /**
+     * devuelve un array con las categorías para ordenarlas con un loop en
+     * el html gestionado por rain.     .
+     *
+     * @link WIKI NO DISPONIBLE POR EL MOMENTO
+     *
+     * @return array
+     */
+  Public Function get_cats_list()
+   {
+    // realizamos la consulta para obtener las categorías
+    $obj = $this->db->query('SELECT cat_id, cat_nombre, cat_seo FROM categorias',false,false);
+    // seteamos la variable
+    $retorno = array();
+    // obtenemos cada uno de los registros (categorías) y agregamos los tags html
+    while($value = $obj->fetchrow())
+     {
+      $retorno[]=$value;
+     }
+    // retornamos el listado en html.
+    return $retorno;
+   }
+
+
+   /**
+     * borra de la báse de datos una categoría.     .
+     *
+     * @param: int $target: id de la categoría a borrar.
+     *
+     * @link WIKI NO DISPONIBLE POR EL MOMENTO
+     *
+     * @return void
+     */
+  Public Function cat_delete ($target)
+   {
+    $this->db->delete('categorias', array('cat_id' => $target), false);
+   }
+
+   /**
+     * agrega una nueva categoría.     .
+     *
+     * @param: string $nombre: nombre de la nueva categoría.
+     *
+     * @link WIKI NO DISPONIBLE POR EL MOMENTO
+     *
+     * @return void
+     */
+  Public Function cat_add ($nombre)
+   {
+    $this->db->insert('categorias', array('cat_nombre' => $nombre, 'cat_seo' => $this->set_seo($nombre)), false);
+   }
+
    /**
      * devuelve la versión SEO del texto entregado.
      *

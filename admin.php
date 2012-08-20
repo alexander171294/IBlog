@@ -77,7 +77,10 @@ $db->connect();
                      'home' => 'home',
                      'new' => 'new',
                      'art-delete' => '',
-                     'art-edit' => 'edit-art'
+                     'art-edit' => 'edit-art',
+                     'cats' => 'categorias',
+                     'cats-del' => '',
+                     'cats-new' => ''
                  );
 
   // lista de páginas a ignorar draw
