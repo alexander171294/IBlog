@@ -76,7 +76,7 @@
 							<cite>
 								<img alt="" src="images/gravatar.jpg" class="avatar" height="40" width="40" />
 								<a href='{$value.web}'>{$value.name}</a> dijo: <br />
-								<span class="comment-data"><a href="" title="">{function="date('d/m/Y h:s',$value.fecha)"}</a> {if="$rango==3"}| <a href="" class="edit">Borrar</a>{/if}</span>
+								<span class="comment-data"><a href="" title="">{function="date('d/m/Y h:s',$value.fecha)"}</a> {if="$rango==3"}| <a href='/admin/comment-delete/{$value.id}.php' class="edit">Borrar</a>{/if}</span>
 							</cite>
 							
 							<div class="comment-text">

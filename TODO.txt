@@ -8,9 +8,6 @@ terminar instalación
 ---------------- 
 validar la versión
 
-administrar comentarios
- - borrar
-
 configuracion general
 configuración de shoutbox
 configuración de SEO

@@ -111,6 +111,7 @@ Class AdminCore
      */
   Public Function cat_delete ($target)
    {
+    // borramos la categoría
     $this->db->delete('categorias', array('cat_id' => $target), false);
    }
 
@@ -125,6 +126,7 @@ Class AdminCore
      */
   Public Function cat_add ($nombre)
    {
+    // insertamos la categoría nueva
     $this->db->insert('categorias', array('cat_nombre' => $nombre, 'cat_seo' => $this->set_seo($nombre)), false);
    }
 

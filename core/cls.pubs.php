@@ -323,6 +323,27 @@ Class Pubs
    }
 
    /**
+     * aquitar un comentario.
+     *
+     * @param: int $idcomment id del comentario
+     *
+     * @link WIKI NO DISPONIBLE POR EL MOMENTO
+     *
+     * @return string
+     */
+  Public Function delete_comment($idcomment)
+   {
+    // obtenemos los datos para armar el link de la publicación
+    $values = $this->db->query('SELECT p.pub_id, p.seo_title, p.pub_comentario FROM comentarios AS c LEFT JOIN publicaciones AS p ON p.pub_id = c.pub WHERE c.id = ?',array($idcomment),true);
+    // borramos el comentario
+    $this->db->delete('comentarios', array('id' => $idcomment),false);
+    // actualizamos el contador de comentarios del post
+    $this->db->update('publicaciones', array('pub_comentario' => $values['pub_comentario']-1), array('pub_id' => $values['pub_id']), false);
+    // devolvemos el link de la publicación a la que se le borró el comentario
+    return '/publicacion/'.$values['pub_id'].'/'.$values['seo_title'].'/';
+   }
+
+   /**
      * Configura los BBcode para los comentarios y demaces.
      *
      * @link WIKI NO DISPONIBLE POR EL MOMENTO

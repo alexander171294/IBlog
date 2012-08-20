@@ -80,7 +80,8 @@ $db->connect();
                      'art-edit' => 'edit-art',
                      'cats' => 'categorias',
                      'cats-del' => '',
-                     'cats-new' => ''
+                     'cats-new' => '',
+                     'comment-delete' => '',
                  );
 
   // lista de páginas a ignorar draw
