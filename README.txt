@@ -24,11 +24,9 @@ Versiones Beta:
 1.0-b[x] : éstas versiones pueden tener fallas, son de prueba, versiones aún no finalizadas por completo
 
 Versiones Release Candidate:
-
 1.0-rc[x] : éstas versiones están casi listas, son las posibles finales.
 
 Versiones Releaste To Magnufacturate:
-
 1.0-RTM : ésta es la versión final.
 
 |-------------> Sobre la versión:
