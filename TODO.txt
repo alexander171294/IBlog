@@ -8,21 +8,12 @@ terminar instalación
 ---------------- 
 validar la versión
 
-administrar articulos
- - borrar
- - modificar
-
 administrar comentarios
  - borrar
 
 configuracion general
 configuración de shoutbox
 configuración de SEO
-
-administrar categorias
- - crear nueva
- - modificar
- - borrar
 
 crear nueva página
 
