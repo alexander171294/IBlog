@@ -1,12 +1,6 @@
-** ajustarlo con LittleDB (contador de respuestas en publicacion)
-
-botones de edicion rápida
-terminar instalación
-
 ----------------
- administración
+ por hacer...
 ---------------- 
-validar la versión
 
 nuevo menú
 editar menú
@@ -16,19 +10,49 @@ configuracion general
 configuración de shoutbox
 configuración de SEO
 
+------------------ a3
+
 crear nueva página
 
 administrar páginas
  - modificar
  - borrar
 
-Subir imagenes
-borrar imágenes
-
 agregar emoticono
 quitar emoticono
 
 agregar palabra censurada
 quitar palabra censurada
+
+--------- b1
+
+administración de usuarios.
+
+Subir imagenes
+borrar imágenes
+
+*** arreglar busqueda de tabla de instalación
+
+--------- b2
+
+guardar ip al comentar
+bannear ip de un comentario
+no poder comentar si tu ip está banneada
+
+--------- rc1
+
+validar la versión
+
+--------- rc2 
+
+terminar instalación
+
+--------- RTM
+
+** ajustarlo con LittleDB (contador de respuestas en publicacion)
+
+---> aquí queremos llegar con la 1.0-RTM <---
+
+================================================================================
 
 crear wiki con funciones y agregarlas al código los links
