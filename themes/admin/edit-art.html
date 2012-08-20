@@ -128,66 +128,8 @@ $(document).ready(function()	{
 				<a href='/index.php' title="Ver el blog">Ver Blog</a> | <a href='/salir/' title="Salir">Salir</a>
 			</div>        
 			
-			<ul id="main-nav">  <!-- Accordion Menu -->
-				
-				<li>
-					<a href='/admin/' class="nav-top-item no-submenu {if="$action=='home'"}current{/if}"> <!-- Add the class "no-submenu" to menu items with no sub menu -->
-          Inicio
-					</a>       
-				</li>
-				
-        <li>
-					<a class="nav-top-item {if="$action=='new' || $action=='edit-art' || $action=='cats'"}current{/if}"> <!-- Add the class "current" to current menu item -->
-					Articulos
-					</a>
-					<ul>
-						<li><a href='/admin/new/' {if="$action=='new' || $action=='edit-art'"}class="current"{/if}>Escribir un art&iacute;culo</a></li>
-						<li><a href='/admin/cats/' {if="$action=='cats'"}class="current"{/if}>Administrar Categorias</a></li>
-					</ul>
-				</li>
-				
-				<li>
-					<a class="nav-top-item {if="$action=='add-page' || $action=='admin-pages'"}current{/if}">
-						P&aacute;ginas
-					</a>
-					<ul>
-						<li><a href='/admin/add-page/' {if="$action=='add-page'"}class="current"{/if}>Crear una nueva P&aacute;gina</a></li>
-					</ul>
-				</li>
-				
-        <li>
-					<a class="nav-top-item {if="$action=='add-menu' || $action=='edit-menu' || $action=='del-menu'"}current{/if}">
-            Men&uacute;
-					</a>
-					<ul>
-						<li><a href='/admin/add-menu/' {if="$action=='add-menu'"}class="current"{/if}>Nuevo Men&uacute;</a></li>
-            <li><a href='/admin/edit-menu/' {if="$action=='edit-menu'"}class="current"{/if}>Editar Men&uacute;</a></li>
-						<li><a href='/admin/del-menu/' {if="$action=='del-menu'"}class="current"{/if}>Borrar Men&uacute;</a></li>
-					</ul>
-				</li>
-				
-				<li>
-					<a class="nav-top-item {if="$action=='upld-image' || $action=='del-image'"}current{/if}">
-            Archivos
-					</a>
-					<ul>
-						<li><a href='/admin/upld-image/' {if="$action=='upld-image'"}class="current"{/if}>Subir im&aacute;genes</a></li>
-						<li><a href='/admin/del-image/' {if="$action=='del-image'"}class="current"{/if}>Borrar im&aacute;genes</a></li>
-					</ul>
-				</li>
-				
-				<li>
-					<a class="nav-top-item {if="$action=='set-gral' || $action=='set-box' || $action=='set-seo'"}current{/if}">
-            Configuraciones
-					</a>
-					<ul>
-						<li><a href='/admin/set-gral/' {if="$action=='set-gral'"}class="current"{/if}>General</a></li>
-						<li><a href='/admin/set-box/' {if="$action=='set-box'"}class="current"{/if}>ShoutBox</a></li>
-						<li><a href='/admin/set-seo/' {if="$action=='set-seo'"}class="current"{/if}>SEO</a></li>
-					</ul>
-				</li>      
-				
-			</ul> <!-- End #main-nav -->
+      <!-- menu -->
+      {include="menu"}
 			
 		</div></div> <!-- End #sidebar -->
 		

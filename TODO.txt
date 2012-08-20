@@ -8,6 +8,10 @@ terminar instalación
 ---------------- 
 validar la versión
 
+nuevo menú
+editar menú
+borrar menú
+
 configuracion general
 configuración de shoutbox
 configuración de SEO
@@ -18,11 +22,13 @@ administrar páginas
  - modificar
  - borrar
 
-nuevo menú
-editar menú
-borrar menú
-
 Subir imagenes
 borrar imágenes
+
+agregar emoticono
+quitar emoticono
+
+agregar palabra censurada
+quitar palabra censurada
 
 crear wiki con funciones y agregarlas al código los links
