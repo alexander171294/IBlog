@@ -154,4 +154,45 @@ Class AdminCore
    {
     return preg_replace('/[^\-a-zA-Z0-9]/', '', preg_replace('/\s+/', '-',$string));
    }
+
+   /**
+     * devuelve la configuración exigida por config
+     *
+     * @param string $config clave a devolver configuración
+     *
+     * @link WIKI NO DISPONIBLE POR EL MOMENTO
+     *
+     * @return string
+     */
+  Public Function config_get($config)
+   {
+    // obtenemos la clave
+    $obj = $this->db->query('SELECT valor FROM settings Where clave = ?',array($config),true);
+    // la devolvemos
+    return $obj['valor'];
+   }
+
+   /**
+     * actualiza la configuración utilizando las variables recividas
+     *
+     * @param string $title titulo del blog
+     * @param string $subtitulo subtitulo del blog
+     * @param string $footer pié de página del blog
+     * @param string $pubsforpage publicaciónes por página
+     *
+     * @link WIKI NO DISPONIBLE POR EL MOMENTO
+     *
+     * @return string
+     */
+  Public Function update_settings($title, $subtitulo, $footer, $pubsforpage)
+   {
+    // actualizamos el título
+    $this->db->update('settings',array('valor' => $title),array('clave' => 'titulo'));
+    // actualizamos el subtitulo
+    $this->db->update('settings',array('valor' => $subtitulo),array('clave' => 'subtitulo'));
+    // actualizamos el footer
+    $this->db->update('settings',array('valor' => $footer),array('clave' => 'footer'));
+    // actualizamos las publicaciones por página
+    $this->db->update('settings',array('valor' => $pubsforpage),array('clave' => 'pubsforpage'));
+   }
  }

@@ -84,7 +84,8 @@ $db->connect();
                      'comment-delete' => '',
                      'add-menu' => 'add-menu',
                      'edit-menu' => 'edit-menu',
-                     'del-menu' => 'del-menu'
+                     'del-menu' => 'del-menu',
+                     'set-gral' => 'setgral'
                  );
 
   // lista de páginas a ignorar draw

@@ -2,7 +2,6 @@
  por hacer...
 ---------------- 
 
-configuracion general
 configuración de shoutbox
 configuración de SEO
 
