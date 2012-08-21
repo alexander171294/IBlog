@@ -26,14 +26,13 @@
 				</li>
 
 				<li>
-					<a class="nav-top-item {if="$action=='add-menu' || $action=='edit-menu' || $action=='del-menu'"}current{/if}">
+					<a class="nav-top-item {if="$action=='add-menu' || $action=='edit-menu'"}current{/if}">
             Men&uacute;
 					</a>
 					<ul>
 						<li><a href='/admin/add-menu/' {if="$action=='add-menu'"}class="current"{/if}>Nuevo Men&uacute;</a></li>
-            <li><a href='/admin/edit-menu/' {if="$action=='edit-menu'"}class="current"{/if}>Editar Men&uacute;</a></li>
-						<li><a href='/admin/del-menu/' {if="$action=='del-menu'"}class="current"{/if}>Borrar Men&uacute;</a></li>
-					</ul>
+            <li><a href='/admin/edit-menu/' {if="$action=='edit-menu'"}class="current"{/if}>Controlar Men&uacute;</a></li>
+            </ul>
 				</li>
 
 				<li>

@@ -2,7 +2,6 @@
  por hacer...
 ---------------- 
 
-nuevo menú
 editar menú
 borrar menú
 
@@ -10,7 +9,7 @@ configuracion general
 configuración de shoutbox
 configuración de SEO
 
------------------- a3
+------------------ a2
 
 crear nueva página
 
@@ -24,34 +23,73 @@ quitar emoticono
 agregar palabra censurada
 quitar palabra censurada
 
---------- b1
-
-administración de usuarios.
+--------- a3
 
 Subir imagenes
 borrar imágenes
 
 *** arreglar busqueda de tabla de instalación
 
---------- b2
+--------- b1
 
 guardar ip al comentar
 bannear ip de un comentario
 no poder comentar si tu ip está banneada
 
---------- rc1
+--------- b2
 
 validar la versión
 
---------- rc2 
+--------- rc1 
 
 terminar instalación
 
---------- RTM
+--------- rc2
 
 ** ajustarlo con LittleDB (contador de respuestas en publicacion)
+link seo al paginador
 
 ---> aquí queremos llegar con la 1.0-RTM <---
+
+borrar usuarios
+modificar usuarios
+dar rango a usuarios
+
+---> 1.1-RTM
+
+mensaje de error en administración
+aceptar rango redactor
+
+---> 1.2-RTM
+
+poder cerrar comentarios solo para registrados desde administración
+poder cerrar registro
+
+---> 1.3-RTM
+
+nuevo usuario desde administración
+
+---> 1.4-RTM
+
+fb connect
+
+---> 2.0-a1 (Blue ice)
+
+fb comment
+
+---> 2.0-a2
+
+compartir en fb
+
+---> 2.0-a3
+
+poner una página como home
+poner ver lista :P
+directorio
+
+---> 2.0-b1
+
+
 
 ================================================================================
 

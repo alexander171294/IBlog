@@ -82,6 +82,7 @@ $db->connect();
                      'cats-del' => '',
                      'cats-new' => '',
                      'comment-delete' => '',
+                     'add-menu' => 'add-menu'
                  );
 
   // lista de páginas a ignorar draw

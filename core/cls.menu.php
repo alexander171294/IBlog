@@ -84,4 +84,22 @@ class Menu
     return $resort;
    }
 
+  /**
+     * Retorna la lista de menu, del tipo requerido.
+     *
+     * @param string $titulo titulo del menu
+     * @param string $url link del menu
+     * @param int $tipo tipo de menu
+     *
+     * @link WIKI NO DISPONIBLE POR EL MOMENTO
+     *
+     * @return void
+     */
+  Public function add( $titulo, $url, $tipo)
+   {
+    // pasamos a numero el tipo
+    $tipo = (int) $tipo;
+    // insertamos el nuevo menú
+    $this->db->insert('menu',array('nombre' => $titulo, 'link' => $url, 'menu' => $tipo),false);
+   }
  }
