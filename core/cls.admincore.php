@@ -60,6 +60,8 @@ Class AdminCore
      * @link WIKI NO DISPONIBLE POR EL MOMENTO
      *
      * @return string
+     *
+     *   TODO: mover a una clase a parte cuando sean bastantes acciones con cats
      */
   Public Function get_cats_select()
    {
@@ -83,6 +85,8 @@ Class AdminCore
      * @link WIKI NO DISPONIBLE POR EL MOMENTO
      *
      * @return array
+     *
+     *   TODO: mover a una clase a parte cuando sean bastantes acciones con cats
      */
   Public Function get_cats_list()
    {
@@ -108,6 +112,8 @@ Class AdminCore
      * @link WIKI NO DISPONIBLE POR EL MOMENTO
      *
      * @return void
+     *
+     *   TODO: mover a una clase a parte cuando sean bastantes acciones con cats
      */
   Public Function cat_delete ($target)
    {
@@ -116,6 +122,7 @@ Class AdminCore
    }
 
    /**
+    *
      * agrega una nueva categoría.     .
      *
      * @param: string $nombre: nombre de la nueva categoría.
@@ -123,6 +130,8 @@ Class AdminCore
      * @link WIKI NO DISPONIBLE POR EL MOMENTO
      *
      * @return void
+     *
+     *   TODO: mover a una clase a parte cuando sean bastantes acciones con cats
      */
   Public Function cat_add ($nombre)
    {

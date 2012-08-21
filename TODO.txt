@@ -2,12 +2,11 @@
  por hacer...
 ---------------- 
 
-editar menú
-borrar menú
-
 configuracion general
 configuración de shoutbox
 configuración de SEO
+
+mover a clase los cats
 
 ------------------ a2
 

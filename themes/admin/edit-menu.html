@@ -1,0 +1,265 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+ 
+	<head>
+		
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		
+		<title>I-Blog Panel de Admin...</title>
+		
+		<!--                       CSS                       -->
+	  
+		<!-- Reset Stylesheet -->
+		<link rel="stylesheet" href="resources/css/reset.css" type="text/css" media="screen" />
+	  
+		<!-- Main Stylesheet -->
+		<link rel="stylesheet" href="resources/css/style.css" type="text/css" media="screen" />
+		
+		<!-- Invalid Stylesheet. This makes stuff look pretty. Remove it if you want the CSS completely valid -->
+		<link rel="stylesheet" href="resources/css/invalid.css" type="text/css" media="screen" />	
+		
+		<!-- Colour Schemes
+	  
+		Default colour scheme is green. Uncomment prefered stylesheet to use it.
+		
+		<link rel="stylesheet" href="resources/css/blue.css" type="text/css" media="screen" />
+		
+		<link rel="stylesheet" href="resources/css/red.css" type="text/css" media="screen" />  
+	 
+		-->
+		
+		<!-- Internet Explorer Fixes Stylesheet -->
+		
+		<!--[if lte IE 7]>
+			<link rel="stylesheet" href="resources/css/ie.css" type="text/css" media="screen" />
+		<![endif]-->
+		
+		<!--                       Javascripts                       -->
+  
+		<!-- jQuery -->
+		<script type="text/javascript" src="resources/scripts/jquery-1.3.2.min.js"></script>
+		
+		<!-- jQuery Configuration -->
+		<script type="text/javascript" src="resources/scripts/simpla.jquery.configuration.js"></script>
+		
+		<!-- Facebox jQuery Plugin -->
+		<script type="text/javascript" src="resources/scripts/facebox.js"></script>
+		
+		<!-- jQuery WYSIWYG Plugin -->
+		<script type="text/javascript" src="resources/scripts/jquery.wysiwyg.js"></script>
+		
+		<!-- jQuery Datepicker Plugin -->
+		<script type="text/javascript" src="resources/scripts/jquery.datePicker.js"></script>
+		<script type="text/javascript" src="resources/scripts/jquery.date.js"></script>
+		<!--[if IE]><script type="text/javascript" src="resources/scripts/jquery.bgiframe.js"></script><![endif]-->
+
+		
+		<!-- Internet Explorer .png-fix -->
+		
+		<!--[if IE 6]>
+			<script type="text/javascript" src="resources/scripts/DD_belatedPNG_0.0.7a.js"></script>
+			<script type="text/javascript">
+				DD_belatedPNG.fix('.png_bg, img, li');
+			</script>
+		<![endif]-->
+
+
+<!-- markItUp! -->
+<script type="text/javascript" src="markitup/jquery.markitup.js"></script>
+<!-- markItUp! toolbar settings -->
+<script type="text/javascript" src="markitup/sets/default/set.js"></script>
+<!-- markItUp! skin -->
+<link rel="stylesheet" type="text/css" href="markitup/skins/markitup/style.css" />
+<!--  markItUp! toolbar skin -->
+<link rel="stylesheet" type="text/css" href="markitup/sets/default/style.css" />
+</head>
+<body>
+<script type="text/javascript">
+<!--
+$(document).ready(function()	{
+	// Add markItUp! to your textarea in one line
+	// $('textarea').markItUp( { Settings }, { OptionalExtraSettings } );
+	$('#markItUp').markItUp(mySettings);
+
+	// You can add content from anywhere in your page
+	// $.markItUp( { Settings } );
+	$('.add').click(function() {
+ 		$.markItUp( { 	openWith:'[opening tag]',
+						closeWith:'[\/closing tag]',
+						placeHolder:"New content"
+					}
+				);
+ 		return false;
+	});
+
+	// And you can add/remove markItUp! whenever you want
+	// $(textarea).markItUpRemove();
+	$('.toggle').click(function() {
+		if ($("#markItUp.markItUpEditor").length === 1) {
+ 			$("#markItUp").markItUpRemove();
+			$("span", this).text("get markItUp! back");
+		} else {
+			$('#markItUp').markItUp(mySettings);
+			$("span", this).text("remove markItUp!");
+		}
+ 		return false;
+	});
+});
+-->
+</script>
+		
+	</head>
+  
+	<body><div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->
+		
+		<div id="sidebar"><div id="sidebar-wrapper"> <!-- Sidebar with logo and menu -->
+			
+			<h1 id="sidebar-title"><a href="#">I-Blog Admin</a></h1>
+		  
+			<!-- Logo (221px wide) -->
+			<a href="#"><img id="logo" src="resources/images/logo.png" alt="Simpla Admin logo" /></a>
+		  
+			<!-- Sidebar Profile links -->
+			<div id="profile-links">
+				Hola, <a href="#" title="Ver mis publicaciones">{$UName.u_nombre}</a>, Administrador.<br />
+				<br />
+				<a href='/index.php' title="Ver el blog">Ver Blog</a> | <a href='/salir/' title="Salir">Salir</a>
+			</div>        
+			
+<!-- menu -->
+      {include="menu"}
+
+		</div></div> <!-- End #sidebar -->
+		
+		<div id="main-content"> <!-- Main Content Section with everything -->
+			
+			<noscript> <!-- Show a notification if the user has disabled javascript -->
+				<div class="notification error png_bg">
+					<div>
+						Javascript is disabled or is not supported by your browser. Please <a href="http://browsehappy.com/" title="Upgrade to a better browser">upgrade</a> your browser or <a href="http://www.google.com/support/bin/answer.py?answer=23852" title="Enable Javascript in your browser">enable</a> Javascript to navigate the interface properly.
+					</div>
+				</div>
+			</noscript>
+			
+			<!-- Page Head -->
+			<h2>Control de Menu</h2>
+
+			<div class="clear"></div> <!-- End .clear -->
+			
+			<div class="content-box"><!-- Start Content Box -->
+				
+				<div class="content-box-header">
+					
+					<h3>Listado de menues</h3>
+					
+					<ul class="content-box-tabs">
+						<li><a href='#tab1' class="default-tab">Lista</a></li> <!-- href must be unique and match the id of target div -->
+					</ul>
+					
+					<div class="clear"></div>
+					
+				</div> <!-- End .content-box-header -->
+				
+				<div class="content-box-content">
+					
+					<div class="tab-content default-tab" id="tab1"> <!-- This is the target div. id must match the href of this div's tab -->
+            <table>
+
+							<thead>
+								<tr>
+								   <th><input class="check-all" type="checkbox" /></th>
+								   <th>ID</th>
+								   <th>Nombre</th>
+                   <th>tipo</th>
+								   <th>Acciones</th>
+								</tr>
+
+							</thead>
+
+							<tfoot>
+								<tr>
+                   <td colspan="6">
+										<div class="bulk-actions align-left">
+											<a href='/admin/add-menu/' class="button" title="Agregar" />Agregar Menu</a>
+										</div>
+										<div class="clear"></div>
+									</td>
+                </tr>
+               </tfoot>
+
+               <tbody>
+               {loop="$menu"}
+								<tr>
+									<td><input type="checkbox" /></td>
+									<td>{$value.id}</td>
+									<td>{$value.nombre}</td>
+                  <td>{$value.menu}</td>
+									<td>
+										<!-- Icons -->
+                     <a href='/admin/del-menu/{$value.id}.php' title="Eliminar"><img src="resources/images/icons/cross.png" alt="Delete" /></a>
+										 <!--<a href='/admin/cats-edit/{$value.cat_id}.php' title="Editar"><img src="resources/images/icons/hammer_screwdriver.png" alt="Edit Meta" /></a> -->
+									</td>
+								</tr>
+               {/loop}
+               </tbody>
+              </table>
+					</div> <!-- End #tab1 -->
+					
+				</div> <!-- End .content-box-content -->
+				
+			</div> <!-- End .content-box -->
+			
+			<div class="content-box column-left">
+				
+				<div class="content-box-header">
+					
+					<h3>Menu</h3>
+					
+				</div> <!-- End .content-box-header -->
+				
+				<div class="content-box-content">
+					
+					<div class="tab-content default-tab">
+					
+            <h4>No hay informaci&oacute;n</h4>
+						<p>
+            Puede buscar informaci&oacute;n sobre los Menues en nuestra wikipedia<br>
+            <a href="https://github.com/alexander171294/IBlog/wiki">GIT HUB WIKI</a>.
+						</p>
+						
+					</div> <!-- End #tab3 -->        
+					
+				</div> <!-- End .content-box-content -->
+				
+			</div> <!-- End .content-box -->
+			
+			<div class="content-box column-right">
+				
+				<div class="content-box-header"> <!-- Add the class "closed" to the Content box header to have it closed by default -->
+					
+				</div> <!-- End .content-box-header -->
+				
+				<div class="content-box-content">
+					
+					<div class="tab-content default-tab">
+						
+					</div> <!-- End #tab3 -->        
+					
+				</div> <!-- End .content-box-content -->
+				
+			</div> <!-- End .content-box -->
+			<div class="clear"></div>
+			
+			<div id="footer">
+        <small> <!-- Remove this notice or replace it with whatever you want -->
+						&#169; Copyright {function="date('Y')"} <a href='http://alebcorp.com.ar'>AlEb Corporation</a> | Powered by <a href='https://github.com/alexander171294/IBlog' title="Ver Repositorio">I-Blog</a> | <a href='https://www.facebook.com/AlEbCorporation'>AlEb Corporation en Facebook</a> | Otro producto de Alexander1712
+				</small>
+			</div><!-- End #footer -->
+			
+		</div> <!-- End #main-content -->
+		
+	</div></body>
+  
+</html>

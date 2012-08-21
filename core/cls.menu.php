@@ -102,4 +102,41 @@ class Menu
     // insertamos el nuevo menú
     $this->db->insert('menu',array('nombre' => $titulo, 'link' => $url, 'menu' => $tipo),false);
    }
+
+   /**
+     * Retorna la lista de menu.
+     *
+     * @link WIKI NO DISPONIBLE POR EL MOMENTO
+     *
+     * @return array
+     */
+  Public function get_menu_list()
+   {
+    // realizamos la consulta para obtener las categorías
+    $obj = $this->db->query('SELECT id, nombre, menu FROM menu',false,false);
+    // seteamos la variable
+    $retorno = array();
+    // obtenemos cada uno de los registros (categorías) y agregamos un índice
+    while($value = $obj->fetchrow())
+     {
+      $retorno[]=$value;
+     }
+    // retornamos el listado en html.
+    return $retorno;
+   }
+
+   /**
+     * Elimina un menu.
+     *
+     * @param int $id id del menu
+     *
+     * @link WIKI NO DISPONIBLE POR EL MOMENTO
+     *
+     * @return array
+     */
+  Public function del($id)
+   {
+    // realizamos la consulta correspondiente
+    $this->db->delete('menu', array('id' => $id), false);
+   }
  }
