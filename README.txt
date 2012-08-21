@@ -11,6 +11,8 @@
 
 3º administre su blog desde administración.-
 
+puede cambiar su diseño subiendo el nuevo a la carpeta themes, y cambiando el nombre del theme en el archivo settings.
+
 ================================================================================
 
 |--------> Estados de las versiones:

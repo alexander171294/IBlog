@@ -24,18 +24,14 @@ quitar palabra censurada
 
 --------- a3
 
+gestion de themes
+
 Subir imagenes
 borrar imágenes
 
 *** arreglar busqueda de tabla de instalación
 
 --------- b1
-
-guardar ip al comentar
-bannear ip de un comentario
-no poder comentar si tu ip está banneada
-
---------- b2
 
 validar la versión
 
@@ -46,9 +42,10 @@ terminar instalación
 --------- rc2
 
 ** ajustarlo con LittleDB (contador de respuestas en publicacion)
-link seo al paginador
 
 ---> aquí queremos llegar con la 1.0-RTM <---
+
+link seo al paginador
 
 borrar usuarios
 modificar usuarios
@@ -88,7 +85,9 @@ directorio
 
 ---> 2.0-b1
 
-
+guardar ip al comentar
+bannear ip de un comentario
+no poder comentar si tu ip está banneada
 
 ================================================================================
 
