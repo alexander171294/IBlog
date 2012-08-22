@@ -381,7 +381,17 @@ Class Pubs
   Public Function insert($tags, $title, $seotitle, $contenido, $categoria)
    {
     // insertamos el nuevo artículo y devolvemos su id
-    return $this->db->insert('publicaciones',array('pub_keys' => $tags, 'pub_nombre' => htmlentities($title), 'pub_preview' => substr(htmlentities($contenido),0,600), 'pub_contenido' => htmlentities($contenido), 'pub_autor' => $_SESSION['id'], 'pub_categoria' => (int) $categoria, 'pub_fecha' => time(), 'seo_title' => $seotitle),true);
+    return $this->db->insert('publicaciones',array
+     (
+      'pub_keys' => htmlentities($tags),
+      'pub_nombre' => htmlentities($title),
+      'pub_preview' => substr(htmlentities($contenido),0,600),
+      'pub_contenido' => htmlentities($contenido),
+      'pub_autor' => $_SESSION['id'],
+      'pub_categoria' => (int) $categoria,
+      'pub_fecha' => time(),
+      'seo_title' => $seotitle
+     ),true);
    }
 
    /**
@@ -417,6 +427,14 @@ Class Pubs
      */
    Public Function edit($tags, $title, $seo, $cont, $cat, $target)
     {
-     $this->db->update('publicaciones',array('pub_keys'=>$tags, 'pub_nombre' => htmlentities($title), 'pub_preview'  => substr(htmlentities($cont),0,600) , 'pub_contenido' => htmlentities($cont), 'pub_categoria' => (int) $cat, 'pub_fecha' => time(), 'seo_title' => $seo), array('pub_id' => $target));
+     $this->db->update('publicaciones',array
+      (
+       'pub_keys'=>htmlentities($tags),
+       'pub_nombre' => htmlentities($title),
+       'pub_preview'  => substr(htmlentities($cont),0,600),
+       'pub_contenido' => htmlentities($cont),
+       'pub_categoria' => (int) $cat, 'pub_fecha' => time(),
+       'seo_title' => $seo
+      ), array('pub_id' => $target) );
     }
  }
