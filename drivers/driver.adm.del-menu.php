@@ -32,7 +32,7 @@
 $menu = new Menu($db);
 
 // forzamos el tipo entero.
-$id = $_GET['target'];
+$id = (int) $_GET['target'];
 
 // borramos el menu en cuestion
 $menu->del($id);
