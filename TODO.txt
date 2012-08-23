@@ -2,10 +2,11 @@
  por hacer...
 ---------------- 
 
-configuración de shoutbox
 configuración de SEO
 
 mover a clase los cats
+
+actualizar el instalador a bbc
 
 ------------------ a2
 
