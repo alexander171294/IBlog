@@ -64,8 +64,6 @@ Class Pubs
      */
   Public Function get_last_pubs($max)
    {
-    // seteamos el bbcode
-    $this->set_bbcode();
     // obtenemos las ultimas publicaciones limitando segun el contenido de $max
     $result = $this->db->query('SELECT p.pub_id, p.seo_title, c.cat_seo, c.cat_id, c.cat_nombre, u.u_nombre, u.u_id, p.pub_nombre, p.pub_preview, p.pub_comentario, p.pub_fecha FROM publicaciones AS p LEFT JOIN users AS u ON u.u_id = p.pub_autor LEFT JOIN categorias AS c ON c.cat_id = p.pub_categoria ORDER BY pub_id DESC LIMIT '.$max,false,false);
 
@@ -201,8 +199,6 @@ Class Pubs
     $retorno = $this->db->query('SELECT p.pub_id, p.seo_title, p.pub_nombre, u.u_nombre, u.u_id, c.cat_nombre, c.cat_id, c.cat_seo, p.pub_contenido, p.pub_keys, p.pub_comentario, p.pub_fecha FROM publicaciones AS p LEFT JOIN users AS u ON u.u_id = p.pub_autor LEFT JOIN categorias AS c ON c.cat_id = p.pub_categoria WHERE p.pub_id = ?',array($id),true);
     if ( $return_parsers == TRUE )
      {
-      // seteamos el bbcode
-      $this->set_bbcode();
       // filtramos y parseamos bbcode
       $retorno['pub_contenido'] = nl2br(Parser::Parsear_bbcc(Parser::Parsear_bbcn($retorno['pub_contenido'])));
       // pasamos la censura de palabras desde la db
@@ -284,8 +280,6 @@ Class Pubs
      */
   Public Function set_comment()
    {
-    // seteamos el bbcode
-    $this->set_bbcode();
     // creamos una instancia de la clase captcha
     $captcha = new Captcha('files/');
     // filtramos el id que ingresa
@@ -341,31 +335,6 @@ Class Pubs
     $this->db->update('publicaciones', array('pub_comentario' => $values['pub_comentario']-1), array('pub_id' => $values['pub_id']), false);
     // devolvemos el link de la publicación a la que se le borró el comentario
     return '/publicacion/'.$values['pub_id'].'/'.$values['seo_title'].'/';
-   }
-
-   /**
-     * Configura los BBcode para los comentarios y demaces.
-     *
-     * @link WIKI NO DISPONIBLE POR EL MOMENTO
-     *
-     * @return void
-     */
-  Private Function set_bbcode()
-   {
-    // establecemos los bbc a parsear
-    Parser::$BBCN = array(
-                          '[b]'=>'<b>',
-                          '[/b]'=>'</b>',
-                          '[strong]'=>'<b>',
-                          '[/strong]'=>'</b>',
-                          '[del]'=>'<del>',
-                          '[/del]'=>'</del>'
-                          );
-    // establecemos los bbc complejos a parsear
-    Parser::$BBCC = array(
-                          '[url=?]?[/url]'=>'<a href=\'$1\'>$2</a>',
-                          '[img]?[/img]'=>'<img src=\'$1\'>'
-                         );
    }
 
    /**

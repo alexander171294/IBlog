@@ -47,5 +47,7 @@ unset($menu);
 
 // creamos la instancia de la clase pasandole la db
 $page = new pages($db);
+// seteamos el BBCode
+$Core->setbbc();
 // asignamos los datos de la publicación
-$rain->assign('pubdata',$page->get_pag($_GET['id']));
+$rain->assign('pubdata',$page->get_pag($_GET['id'], TRUE));

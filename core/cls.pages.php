@@ -61,10 +61,30 @@ Class Pages
      *
      * @return array( valores de la db )
      */
-  Public Function get_pag($id)
+  Public Function get_pag($id, $return_parsers)
    {
     // retornamos los valores de la página con id = $id
-    return $this->db->query('SELECT p.pag_id, p.seo_title, p.pag_nombre, u.u_nombre, u.u_id, p.pag_contenido, p.pag_keys, p.pag_fecha FROM paginas AS p LEFT JOIN users AS u ON u.u_id = p.pag_autor WHERE p.pag_id = ?',array($id),true);
+    $retorno = $this->db->query('SELECT p.pag_id, p.seo_title, p.pag_nombre, u.u_nombre, u.u_id, p.pag_contenido, p.pag_keys, p.pag_fecha FROM paginas AS p LEFT JOIN users AS u ON u.u_id = p.pag_autor WHERE p.pag_id = ?',array($id),true);
+    // si hay que parsearlo o no
+    if ( $return_parsers == TRUE )
+     {
+      // filtramos y parseamos bbcode
+      $retorno['pag_contenido'] = nl2br(Parser::Parsear_bbcc(Parser::Parsear_bbcn($retorno['pag_contenido'])));
+      // pasamos la censura de palabras desde la db
+      $retorno['pag_contenido'] = Parser::DB_BBCN_Parser ($retorno['pag_contenido'], array(
+                                   'table'=>'censura',
+                                   'column_search'=>'bad',
+                                   'column_replace'=>'good'
+                                   ));
+      // pasamos emoticonos desde la db
+      $retorno['pag_contenido'] = Parser::DB_BBCN_Parser ($retorno['pag_contenido'], array(
+                                   'table'=>'emoticonos',
+                                   'column_search'=>'bbc',
+                                   'column_replace'=>'html'
+                                   ));
+     }
+    // retornar valor
+    return $retorno;
    }
    
   /**

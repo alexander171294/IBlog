@@ -45,6 +45,9 @@ $rain->assign('menu_inferior',$menu->get_menu(4));
 unset($menu);
 //////////////////////////////////////////////////////////
 
+// configuramos el bbcode
+$Core->setbbc();
+
 // creamos una instancia de la clase pubs
 $pubs = new Pubs($db);
 // guardamos el comentario

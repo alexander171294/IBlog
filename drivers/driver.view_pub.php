@@ -45,6 +45,9 @@ $rain->assign('menu_inferior',$menu->get_menu(4));
 unset($menu);
 //////////////////////////////////////////////////////////
 
+// configuramos el bbcode
+$Core->setbbc();
+
 // creamos la instancia de la clase pasandole la db
 $pub = new pubs($db);
 // creamos una instancia para el captcha para los comentarios

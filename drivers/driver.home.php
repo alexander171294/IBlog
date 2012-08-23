@@ -46,6 +46,9 @@ $rain->assign('menu_inferior',$menu->get_menu(4));
 unset($menu);
 //////////////////////////////////////////////////////////
 
+// configuramos el bbcode
+$Core->setbbc();
+
 // creamos una clase para las publicaciones
 $pub = new pubs($db);
 // listamos y mandamos a rain, las ultimas publicaciones

@@ -169,6 +169,19 @@ Class Core
      // devolvemos desde donde tiene que empezar y hasta donde tiene que terminar.
      return $comienzo.','.$max;
     }
+    
+   /**
+     * Ésta función inicia el seo
+     *
+     * @link WIKI NO DISPONIBLE POR EL MOMENTO
+     *
+     * @return boolean
+     */
+   Public Function setbbc()
+    {
+     // incluimos el archivo de configuración
+     include('extras/ext.bbcode.php');
+    }
 
    /**
      * Ésta función se ejecuta cuando se verifica la instalación
