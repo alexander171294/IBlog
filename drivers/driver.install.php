@@ -10,7 +10,7 @@
  * El repositorio oficial del proyecto lo puedes encontrar un poco más abajo,
  * iblog fué diseñado para blogs alojados en servidores pequeños
  * que no cuenten con tantos recursos para tener un blog pesado como son otros
- * sistemas de blog. .
+ * sistemas de blog.
  *
  * @author    Alexander Eberle Renzulli <alexander171294@live.com>
  * @copyright 2012 AlEb Corporation / (http://www.alebcorp.com.ar)
@@ -117,13 +117,14 @@ if(isset($_POST['tit']))
   $db->insert('publicaciones',array(
                                     'pub_keys' => 'publicacion, prueba, ejemplo, iblog',
                                     'pub_nombre' => 'Publicaci&oacute;n de ejemplo',
-                                    'pub_preview' => 'Bienvenido a <b>I-blog</b> <br> Esta es una publicaci&oacute;n de ejemplo... puede leer m&aacute;s haciendo click donde dice leer m&aacute;s',
+                                    'pub_preview' => 'Bienvenido a [b]I-blog[/b]
+                                     Esta es una publicaci&oacute;n de ejemplo... puede leer m&aacute;s haciendo click donde dice leer m&aacute;s',
                                     'pub_contenido' => '<p>como dec&iacute;a, &eacute;sta es una publicaci&oacute;n de ejemplo, tu puedes editarla accediendo al panel de administraci&oacute;n.</p>
-<p><strong>I-blog 1.0</strong></p>
-<p>Gracias por elegirnos....</p>
-<p>Recuerda revisar <a href=\'https://github.com/alexander171294/IBlog\'>nuestro repositorio Git</a> para encontrar actualizaci&oacute;nes y dem&aacute;s... (tambi&eacute;n encontrar&aacute;s una wiki para satisfacer tus dudas).</p>
-<p>I-Blog es otro producto de <a href=\'http://alebcorp.com.ar\'>AlEb Corporation - 2012  </a><br />
-Desarrollado por alexander1712</p>',
+[p][strong]I-blog 1.0[/strong][/p]
+[p]Gracias por elegirnos....[/p]
+[p]Recuerda revisar [url="https://github.com/alexander171294/IBlog"]nuestro repositorio Git[/url] para encontrar actualizaci&oacute;nes y dem&aacute;s... (tambi&eacute;n encontrar&aacute;s una wiki para satisfacer tus dudas).[/p]
+[p]I-Blog es otro producto de [url="http://alebcorp.com.ar"]AlEb Corporation - 2012[/url]
+Desarrollado por alexander1712[/p]',
                                     'pub_autor' => '1',
                                     'pub_comentario' => '0',
                                     'pub_categoria' => '1',

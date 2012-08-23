@@ -2,10 +2,6 @@
  por hacer...
 ---------------- 
 
-mover a clase los cats
-
-actualizar el instalador a bbc
-
 ------------------ a2
 
 crear nueva página
