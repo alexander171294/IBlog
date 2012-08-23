@@ -97,7 +97,7 @@ if(isset($_POST['tit']))
              )',false,false);
   // insertamos una página de ejemplo
   $db->query('INSERT INTO `paginas` (`pag_id`, `seo_title`, `pag_keys`, `pag_nombre`, `pag_contenido`, `pag_autor`, `pag_fecha`) VALUES
-             (1, \'pagina-de-prueba\', \'pagina, prueba, iblog\', \'P&aacute;gina de Prueba\', \'Esto es una p&aacute;gina de ejemplo<br>\r\puedes editarla desde el panel de administraci&oaucte;n<br>\r\nesto es una prueba jjeje\', 1, 0);
+             (1, \'pagina-de-prueba\', \'pagina, prueba, iblog\', \'P&aacute;gina de Prueba\', \'Esto es una p&aacute;gina de ejemplo<br>\r\puedes editarla desde el panel de administraci&oacute;n<br>\r\nesto es una prueba jjeje\', 1, 0);
             ',false,false);
   // creamos la tabla pulicaciones
   $db->query('CREATE TABLE `publicaciones` (

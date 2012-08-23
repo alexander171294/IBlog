@@ -66,5 +66,27 @@ Class Pages
     // retornamos los valores de la página con id = $id
     return $this->db->query('SELECT p.pag_id, p.seo_title, p.pag_nombre, u.u_nombre, u.u_id, p.pag_contenido, p.pag_keys, p.pag_fecha FROM paginas AS p LEFT JOIN users AS u ON u.u_id = p.pag_autor WHERE p.pag_id = ?',array($id),true);
    }
-
+   
+  /**
+     * crea una nueva página.
+     *
+     * @param string $tags, string $title, string $seotitle, string $contenido
+     *
+     * @link WIKI NO DISPONIBLE POR EL MOMENTO
+     *
+     * @return int
+     */
+  Public Function insert($tags, $title, $seotitle, $contenido, $categoria)
+   {
+    // insertamos el nuevo artículo y devolvemos su id
+    return $this->db->insert('paginas',array
+     (
+      'pag_keys' => htmlentities($tags),
+      'pag_nombre' => htmlentities($title),
+      'pag_contenido' => htmlentities($contenido),
+      'pag_autor' => $_SESSION['id'],
+      'pag_fecha' => time(),
+      'seo_title' => $seotitle
+     ),true);
+   }
  }
