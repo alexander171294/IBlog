@@ -58,4 +58,4 @@ $rain->assign('paginate','');
 if(empty($lista)) { $ERROR_NF = TRUE; }
 
 // borramos la variable que contiene la instancia de la clase pub
-unset($pub);
+unset($pubs);

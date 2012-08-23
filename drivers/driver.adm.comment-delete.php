@@ -39,3 +39,6 @@ header('Location:' . $puburl);
 
 // fianlizamos aquí el código
 die();
+
+// borramos la variable que contiene la clase pubs
+unset($pubs);

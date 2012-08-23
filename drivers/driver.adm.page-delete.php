@@ -37,5 +37,8 @@ $pages->delete($_GET['target']);
 // volvemos al inicio del script (home) puesto que no hay que mostrar plantilla
 header('Location: /index.php');
 
+// borramos la variable que contiene la instancia de la clase Pages
+unset($pages);
+
 // finalizamos la ejecución aquí
 die();

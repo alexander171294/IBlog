@@ -54,6 +54,8 @@ if($_SERVER['REQUEST_METHOD']=='POST')
         $id = $page->insert($_POST['tags'], $_POST['titulo'], $seo, $_POST['contenido']);
         // redirigimos al artículo
         header('Location: /pagina/'.$id.'/'.$seo.'/');
+        // borramos la variable que contiene la instancia de la clase Pages
+        unset($page);
        }
       else
        {

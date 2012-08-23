@@ -39,3 +39,6 @@ $menu->del($id);
 
 // redireccionamos a la lista.
 header('Location: /admin/edit-menu/');
+
+// borramos la variable que contiene la clase $menu
+unset($menu);

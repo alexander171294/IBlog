@@ -58,3 +58,6 @@ $rain->assign('pubdata',$pagina);
 
 // si no existe la pagina, activamos el error not found.
 if(empty($pagina['pag_contenido'])) { $ERROR_NF = TRUE; }
+
+// borramos la variable con la instancia de la clase page
+unset($page);

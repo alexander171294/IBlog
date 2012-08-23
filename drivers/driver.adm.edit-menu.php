@@ -34,3 +34,5 @@ $menu = new menu($db);
 // obtenemos las categorias
 $rain->assign('menu',$menu->get_menu_list());
 
+// borramos la variable que contiene la clase $menu
+unset($menu);

@@ -34,3 +34,5 @@ $cats = new Cats($db);
 // obtenemos las categorias
 $rain->assign('categorias',$cats->get_cats_list());
 
+// borramos la variable que contiene la clase Cats
+unset($cats);

@@ -87,3 +87,6 @@ if($_SERVER['REQUEST_METHOD']=='POST')
     $error = NULL;
    }
  }
+
+// borramos la variable de la instancia de la clase $pages
+unset($pages);

@@ -93,3 +93,9 @@ if($_SERVER['REQUEST_METHOD']=='POST')
     $error = NULL;
    }
  }
+
+// borramos la variable que contiene la clase Cats
+unset($cats);
+
+// borramos la variable que contiene la clase Pubs
+unset($pubs);

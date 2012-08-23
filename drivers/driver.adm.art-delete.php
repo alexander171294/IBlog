@@ -37,5 +37,8 @@ $pubs->delete($_GET['target']);
 // volvemos al inicio del script (home) puesto que no hay que mostrar plantilla
 header('Location: /index.php');
 
+// borramos la variable que contiene la clase Pubs
+unset($pubs);
+
 // finalizamos la ejecución aquí
 die();

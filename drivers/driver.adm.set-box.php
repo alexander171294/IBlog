@@ -66,3 +66,6 @@ if($_SERVER['REQUEST_METHOD']=='POST')
   // finalizamos aquí el script para no levantar el diseño y perder recursos
   die();
  }
+
+// borramos la variable que contiene la instancia shoutbox
+unset($shoutbox);

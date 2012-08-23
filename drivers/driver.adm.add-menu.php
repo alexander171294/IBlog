@@ -48,6 +48,8 @@ if($_SERVER['REQUEST_METHOD']=='POST')
       $menu = new Menu($db);
       // agregamos el nuevo menu
       $menu->add($titulo,$url,$_POST['tipo']);
+      // borramos la variable que contiene la clase Menu
+      unset($menu);
       // realizamos la redirección
       header('Location: /index.php');
      }

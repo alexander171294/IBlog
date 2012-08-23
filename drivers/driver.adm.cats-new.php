@@ -40,5 +40,8 @@ $cats->cat_add($name);
 // volvemos al inicio del script (home) puesto que no hay que mostrar plantilla
 header('Location: /admin/cats/');
 
+// borramos la variable que contiene la clase Cats
+unset($cats);
+
 // finalizamos la ejecución aquí
 die();

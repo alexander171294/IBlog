@@ -94,3 +94,5 @@ if($_SERVER['REQUEST_METHOD']=='POST')
    }
  }
 
+// borramos la variable que contiene la instancia de la clase
+unset ($cats);
