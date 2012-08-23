@@ -31,6 +31,9 @@
 // creamos la instancia de la clase pub
 $pubs = new Pubs($db);
 
+// obtenemos la instancia de la clase que administra categorías
+$cats = new Cats($db);
+
 // obtenemos los datos de la publicación
 $dats = $pubs->get_pub($_GET['target'], FALSE);
 
@@ -46,7 +49,7 @@ $rain->assign('tags',$dats['pub_keys']);
 $rain->assign('idpub',$_GET['target']);
 
 // obtenemos las categorias
-$rain->assign('categorias',$Core->get_cats_select());
+$rain->assign('categorias',$cats->get_cats_select());
 
 // si se realizó el post del artículo editado
 if($_SERVER['REQUEST_METHOD']=='POST')
