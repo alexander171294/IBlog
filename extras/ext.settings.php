@@ -42,10 +42,10 @@ return array(
             'db_user' => 'root', // usuario de la base de datos
             # 'db_user' => 'root',
 
-            'db_pass' => '', // contraseña de la base de datos
+            'db_pass' => 'vertrigo', // contraseña de la base de datos
             # 'db_pass' => 'pasword',
 
-            'db_name' => 'ibloginstall', // nombre de la base de datos
+            'db_name' => 'iblog', // nombre de la base de datos
             # 'db_name' => 'iblog',
 
             // configuración general //

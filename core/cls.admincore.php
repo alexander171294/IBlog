@@ -171,6 +171,22 @@ Class AdminCore
     // la devolvemos
     return $obj['valor'];
    }
+   
+  /**
+     * actualiza la configuración exigida por config
+     *
+     * @param string $clave clave a actualizar configuración
+     * @param string $valor valor a actualizar la configuración     
+     *
+     * @link WIKI NO DISPONIBLE POR EL MOMENTO
+     *
+     * @return void
+     */
+  Public Function config_upd($clave, $valor)
+   {
+    // obtenemos la clave
+    $obj = $this->db->update('settings', array('valor' => $valor), array('clave' => $clave), false);
+   }
 
    /**
      * actualiza la configuración utilizando las variables recividas
