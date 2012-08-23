@@ -49,5 +49,12 @@ unset($menu);
 $page = new pages($db);
 // seteamos el BBCode
 $Core->setbbc();
+
+// obtenemos los datos de la publicación
+$pagina = $page->get_pag($_GET['id'], TRUE);
+
 // asignamos los datos de la publicación
-$rain->assign('pubdata',$page->get_pag($_GET['id'], TRUE));
+$rain->assign('pubdata',$pagina);
+
+// si no existe la pagina, activamos el error not found.
+if(empty($pagina['pag_contenido'])) { $ERROR_NF = TRUE; }

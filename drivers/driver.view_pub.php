@@ -52,14 +52,19 @@ $Core->setbbc();
 $pub = new pubs($db);
 // creamos una instancia para el captcha para los comentarios
 $captcha = new Captcha('files/');
+// obtenemos los datos de la publicacion
+$publicacion = $pub->get_pub($_GET['id'], TRUE);
 // asignamos los datos de la publicación
-$rain->assign('pubdata',$pub->get_pub($_GET['id'], TRUE));
+$rain->assign('pubdata',$publicacion);
 // asignamos la lista de comentarios
 $rain->assign('coments',$pub->get_comments($_GET['id']));
 // seteamos un nuevo captcha
 $captcha->set_value();
 // lo creamos
 $captcha->create();
+
+// si no existe la pagina, activamos el error not found.
+if(empty($publicacion['pub_contenido'])) { $ERROR_NF = TRUE; }
 
 // borramos la variable que contiene la instancia del captcha
 unset($captcha);

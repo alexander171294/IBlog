@@ -57,10 +57,12 @@ $Core = new Core ( $rain, $Settings , $db , IBLOGVERSION );
 // conectamos a la db
 $db->connect();
 
+// declaramos el error de NOT FOUND (no encontrado) en falso
+$ERROR_NF = FALSE;
+
 // $core->install devuelve true si está instalado y false si no.
 if($Core->install())
  {
-
   // islogged
   $rain->assign('islogged',$cuenta->IsLogged());
   // rango
@@ -108,7 +110,7 @@ if($Core->install())
   // dibujamos el archivo correspondiente a la sección siempre que no sea comentario
   if(!isset($draw_ignore[$action]))
    {
-    $rain->draw(isset( $valid[$action] ) ? $valid[$action] : 'notfound');
+    $rain->draw(isset( $valid[$action] ) && $ERROR_NF == FALSE ? $valid[$action] : 'notfound');
    }
  }
 else

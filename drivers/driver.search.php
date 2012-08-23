@@ -47,9 +47,15 @@ unset($menu);
 
 // creamos una instancia de la clase pubs
 $pubs = new Pubs($db);
+// obtenemos el listado de publicaciones encontradas
+$lista = $pubs->search($_POST['texto'],$Core->mesettings['pubsforpage']);
 // asignamos el listado de publicaciones encontradas
-$rain->assign('list',$pubs->search($_POST['texto'],$Core->mesettings['pubsforpage']));
+$rain->assign('list',$lista);
 // asignamos el paginado para que no de errores
 $rain->assign('paginate','');
+
+// si no se encontró nada enviamos mensaje de error
+if(empty($lista)) { $ERROR_NF = TRUE; }
+
 // borramos la variable que contiene la instancia de la clase pub
 unset($pub);
