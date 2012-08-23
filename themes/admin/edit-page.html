@@ -128,7 +128,7 @@ $(document).ready(function()	{
 				<a href='/index.php' title="Ver el blog">Ver Blog</a> | <a href='/salir/' title="Salir">Salir</a>
 			</div>        
 			
-   <!-- menu -->
+      <!-- menu -->
       {include="menu"}
 			
 		</div></div> <!-- End #sidebar -->
@@ -152,10 +152,10 @@ $(document).ready(function()	{
 				
 				<div class="content-box-header">
 					
-					<h3>Nueva p&aacute;gina</h3>
+					<h3>Editar p&aacute;ginas</h3>
 					
 					<ul class="content-box-tabs">
-						<li><a href='#tab1' class="default-tab">Nuevo</a></li> <!-- href must be unique and match the id of target div -->
+						<li><a href='#tab1' class="default-tab">Editar</a></li> <!-- href must be unique and match the id of target div -->
 					</ul>
 					
 					<div class="clear"></div>
@@ -173,14 +173,14 @@ $(document).ready(function()	{
 				</div>
 			</div>
             {/if}
-            <form method="post" action='/admin/add-page/'>
+            <form method="post" action='/admin/page-edit/{$idpag}.php'>
             Titulo: <br> <input type="text" value="{$titulo}" name="titulo" size="50"> <br>
             Contenido: <br> <textarea id="markItUp" cols="50" rows="20" name="contenido">
 {$contenido}</textarea> <br>
             Tags:<br>
             <input type="text" name="tags" size="50" value="{$tags}"> <br>
             ej: &quot;juego, gta, mediafire&quot;<br>
-            <input type="submit" name="enviar" class="button" value="Publicar">
+            <input type="submit" name="enviar" value="Publicar"  class="button">
             </form>
 					</div> <!-- End #tab1 -->
 					
@@ -188,52 +188,52 @@ $(document).ready(function()	{
 				
 			</div> <!-- End .content-box -->
 			
-			<div class="content-box column-left">
-				
+   <div class="content-box column-left">
+
 				<div class="content-box-header">
-					
+
 					<h3>P&aacute;ginas</h3>
-					
+
 				</div> <!-- End .content-box-header -->
-				
+
 				<div class="content-box-content">
-					
+
 					<div class="tab-content default-tab">
-					
+
 						<h4>Qu&eacute; son las p&aacute;ginas?</h4>
 						<p>
             Las p&aacute;ginas son publicaci&oacute;nes est&aacute;ticas.<br>
             No aparecen en inicio, ni tampoco en las publicaciones del usuario<br>
             No tienen categoria.
 						</p>
-						
-					</div> <!-- End #tab3 -->        
-					
+
+					</div> <!-- End #tab3 -->
+
 				</div> <!-- End .content-box-content -->
-				
+
 			</div> <!-- End .content-box -->
-			
+
 			<div class="content-box column-right">
-				
+
 				<div class="content-box-header"> <!-- Add the class "closed" to the Content box header to have it closed by default -->
-					
+
 					<h3>M&aacute;s informaci&oacute;n</h3>
-					
+
 				</div> <!-- End .content-box-header -->
-				
+
 				<div class="content-box-content">
-					
+
 					<div class="tab-content default-tab">
-					
+
 						<h4>d&oacute;nde consigo m&aacute;s informaci&oacute;n?</h4>
 						<p>
              Para conseguir m&aacute;s informaci&oacute;n, usted puede visitar nuestra WIKI.
             </p>
-						
-					</div> <!-- End #tab3 -->        
-					
+
+					</div> <!-- End #tab3 -->
+
 				</div> <!-- End .content-box-content -->
-				
+
 			</div> <!-- End .content-box -->
 			<div class="clear"></div>
 			

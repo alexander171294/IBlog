@@ -124,4 +124,29 @@ Class Pages
     // borramos la página
     $this->db->delete('paginas', array('pag_id' => $id), false);
    }
+
+  /**
+    * edita una publicación.
+    *
+    * @param string $tags los tags de la publicación
+    * @param string $title el titulo de la publicación
+    * @param string $seo el titulo en formato amigable para links
+    * @param string $cont el contenido de la publicación
+    * @param int $cat la categoría de la publicación (id de la categoría)
+    * @param int $target el id de la publicación a editar.
+    *
+    * @link WIKI NO DISPONIBLE POR EL MOMENTO
+    *
+    * @return void
+    */
+  Public Function edit($tags, $title, $seo, $cont, $target)
+   {
+    $this->db->update('paginas',array
+     (
+      'pag_keys'=>htmlentities($tags),
+      'pag_nombre' => htmlentities($title),
+      'pag_contenido' => htmlentities($cont),
+      'seo_title' => $seo
+     ), array('pag_id' => $target) );
+   }
  }
