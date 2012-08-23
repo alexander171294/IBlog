@@ -181,7 +181,7 @@ $(document).ready(function()	{
             <input type="text" value="{$sh1_titulo}" name="sh1_titulo" size="50"> <br>
             Contenido: (se permite HTML por publicidad y otras cosas) <br>
             <textarea name="sh1_content">{$sh1_content}</textarea> <br>
-            <input type="submit" name="enviar" value="Guardar">
+            <input class="button" type="submit" name="enviar" value="Guardar">
 
 					</div>
 
@@ -200,14 +200,14 @@ $(document).ready(function()	{
             <input type="text" value="{$sh2_titulo}" name="sh2_titulo" size="50"> <br>
             Contenido: (se permite HTML por publicidad y otras cosas) <br>
             <textarea name="sh2_content">{$sh2_content}</textarea> <br>
-            <input type="submit" name="enviar" value="Guardar">
+            <input class="button" type="submit" name="enviar" value="Guardar">
 
 					</div>
 
           	<div class="tab-content" id="tab3"> <!-- This is the target div. id must match the href of this div's tab -->
             <h2>Acerca De...</h2>
             {if="$error.about"}
-            <div class="notification error png_bg">
+            <div class="button" class="notification error png_bg">
 				<a href="#" class="close"><img src="resources/images/icons/cross_grey_small.png" title="Close this notification" alt="close" /></a>
 				<div>
          {$error.about}
@@ -217,7 +217,7 @@ $(document).ready(function()	{
 
             Contenido: (se permite HTML por publicidad y otras cosas) <br>
             <textarea name="about_content">{$about_content}</textarea> <br>
-            <input type="submit" name="enviar" value="Guardar">
+            <input class="button" type="submit" name="enviar" value="Guardar">
 
 					</div> <!-- End #tab1 -->
 
