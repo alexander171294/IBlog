@@ -4,11 +4,10 @@
 
 ------------------ a2
 
-crear nueva página
+control de errores 404
 
 administrar páginas
  - modificar
- - borrar
 
 agregar emoticono
 quitar emoticono

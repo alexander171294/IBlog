@@ -89,6 +89,8 @@ $db->connect();
                      'set-box' => 'setshout',
                      'set-seo' => 'setseo',
                      'add-page' => 'add-page',
+                     'page-edit' => 'edit-page',
+                     'page-delete' => ''
                  );
 
   // lista de páginas a ignorar draw

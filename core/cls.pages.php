@@ -109,4 +109,19 @@ Class Pages
       'seo_title' => $seotitle
      ),true);
    }
+
+  /**
+     * borra una página.
+     *
+     * @param int $id id de la página a eliminar
+     *
+     * @link WIKI NO DISPONIBLE POR EL MOMENTO
+     *
+     * @return void
+     */
+  Public Function delete($id)
+   {
+    // borramos la página
+    $this->db->delete('paginas', array('pag_id' => $id), false);
+   }
  }

@@ -64,7 +64,7 @@
 				
 					<p class="postmeta">		
 					<span class="date">{function="date('d/m/Y h:s',$pubdata.pag_fecha)"}</span>
-          {if="$rango==3"}<a href="" class="edit">Modificar</a> | <a href="" class="edit">Borrar</a>{/if}
+          {if="$rango==3"}<a href='/admin/page-edit/{$pubdata.pag_id}.php' class="edit">Modificar</a> | <a href='/admin/page-delete/{$pubdata.pag_id}.php' class="edit">Borrar</a>{/if}
 					</p>
 			
 
