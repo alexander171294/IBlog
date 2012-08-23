@@ -28,21 +28,21 @@
  * @link    https://github.com/alexander171294/IBlog
  */
 
-// creamos la instancia de la clase pub
+// creamos la instancia de la clase pages
 $pages = new Pages($db);
 
-// obtenemos los datos de la publicación
+// obtenemos los datos de la página
 $dats = $pages->get_pag($_GET['target'], FALSE);
 
 // asignamos variables base
 $rain->assign('error','');
-// titulo de la publicación
+// titulo de la página
 $rain->assign('titulo',$dats['pag_nombre']);
-// contenido de la publicación
+// contenido de la página
 $rain->assign('contenido',$dats['pag_contenido']);
-// tags de la publicación
+// tags de la página
 $rain->assign('tags',$dats['pag_keys']);
-// id de la publicación
+// id de la página
 $rain->assign('idpag',$_GET['target']);
 
 // si se realizó el post del artículo editado
@@ -58,9 +58,9 @@ if($_SERVER['REQUEST_METHOD']=='POST')
        {
         // creamos el seotitle
         $seo = $Core->set_seo($_POST['titulo']);
-        // insertamos un nuevo articulo
+        // actualizamos la página
         $pages->edit($_POST['tags'], $_POST['titulo'], $seo, $_POST['contenido'], $_GET['target']);
-        // redirigimos al artículo
+        // redirigimos a la página
         header('Location: /pagina/'.$_GET['target'].'/'.$seo.'/');
        }
       else

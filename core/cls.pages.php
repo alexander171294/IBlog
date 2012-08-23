@@ -126,14 +126,13 @@ Class Pages
    }
 
   /**
-    * edita una publicación.
+    * edita una página.
     *
-    * @param string $tags los tags de la publicación
-    * @param string $title el titulo de la publicación
+    * @param string $tags los tags
+    * @param string $title el titulo
     * @param string $seo el titulo en formato amigable para links
-    * @param string $cont el contenido de la publicación
-    * @param int $cat la categoría de la publicación (id de la categoría)
-    * @param int $target el id de la publicación a editar.
+    * @param string $cont el contenido
+    * @param int $target el id a editar.
     *
     * @link WIKI NO DISPONIBLE POR EL MOMENTO
     *

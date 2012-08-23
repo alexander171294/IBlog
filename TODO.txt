@@ -6,9 +6,6 @@
 
 control de errores 404
 
-administrar páginas
- - modificar
-
 agregar emoticono
 quitar emoticono
 
