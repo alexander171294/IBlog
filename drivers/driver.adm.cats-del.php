@@ -28,8 +28,11 @@
  * @link    https://github.com/alexander171294/IBlog
  */
 
+// crear una instancia de la clase controladora de categorías
+$cats = new Cats($db);
+
 // eliminamos la publicación.-
-$Core->cat_delete($_GET['target']);
+$cats->cat_delete($_GET['target']);
 
 // volvemos al inicio del script (home) puesto que no hay que mostrar plantilla
 header('Location: /admin/cats/');

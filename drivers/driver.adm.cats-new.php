@@ -27,9 +27,15 @@
  * @license http://www.gnu.org/copyleft/gpl.html
  * @link    https://github.com/alexander171294/IBlog
  */
+ 
+// crear una instancia de la clase controladora de categorías
+$cats = new Cats($db);
+
+// realizamos SEO al nombre
+$name = $Core->set_seo($_POST['nombre']);
 
 // eliminamos la publicación.-
-$Core->cat_add($_POST['nombre']);
+$cats->cat_add($name);
 
 // volvemos al inicio del script (home) puesto que no hay que mostrar plantilla
 header('Location: /admin/cats/');

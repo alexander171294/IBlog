@@ -2,8 +2,6 @@
  por hacer...
 ---------------- 
 
-configuración de SEO
-
 mover a clase los cats
 
 actualizar el instalador a bbc

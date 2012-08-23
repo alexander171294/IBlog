@@ -34,8 +34,11 @@ $rain->assign('titulo','');
 $rain->assign('contenido','');
 $rain->assign('tags','');
 
+// crear una instancia de la clase controladora de categorías
+$cats = new Cats($db);
+
 // obtenemos las categorias
-$rain->assign('categorias',$Core->get_cats_select());
+$rain->assign('categorias',$cats->get_cats_select());
 
 // si se realizó el post del nuevo artículo
 if($_SERVER['REQUEST_METHOD']=='POST')

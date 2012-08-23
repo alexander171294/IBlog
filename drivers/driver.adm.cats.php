@@ -28,6 +28,9 @@
  * @link    https://github.com/alexander171294/IBlog
  */
 
+// crear una instancia de la clase controladora de categorías
+$cats = new Cats($db);
+
 // obtenemos las categorias
-$rain->assign('categorias',$Core->get_cats_list());
+$rain->assign('categorias',$cats->get_cats_list());
 
