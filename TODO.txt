@@ -4,7 +4,8 @@
 
 ------------------ a2
 
-control de errores 404
+gestion de themes
+nuevo theme default
 
 agregar emoticono
 quitar emoticono
@@ -13,8 +14,6 @@ agregar palabra censurada
 quitar palabra censurada
 
 --------- a3
-
-gestion de themes
 
 Subir imagenes
 borrar imágenes

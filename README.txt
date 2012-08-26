@@ -7,11 +7,13 @@
 
 1º cree una báse de datos para su blog.
 
-2º configure los datos de la báse de datos en el archivo que se encuentra en extras/ext.settings.php
+2º de atributos 777 a la carpeta caché y files
 
-3º acceda a su página web con el sistema de blogs y comenzará la instalación.
+3º configure los datos de la báse de datos en el archivo que se encuentra en extras/ext.settings.php
 
-4º administre su blog desde administración.-
+4º acceda a su página web con el sistema de blogs y comenzará la instalación.
+
+5º administre su blog desde administración.-
 
 puede cambiar su diseño subiendo el nuevo a la carpeta themes, y cambiando el nombre del theme en el archivo settings.
 
