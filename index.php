@@ -65,10 +65,14 @@ if($Core->install())
  {
   // islogged
   $rain->assign('islogged',$cuenta->IsLogged());
-  // asignamos el nombre
-  $rain->assign('UName',$cuenta->Get_Name());
-  // rango
-  $rain->assign('rango',$cuenta->Rango());
+  // si está loggeado
+  if($cuenta->IsLogged())
+   {
+    // asignamos el nombre
+    $rain->assign('UName',$cuenta->Get_Name());
+    // rango
+    $rain->assign('rango',$cuenta->Rango());
+   }
 
   // configuramos rainTPL //
   // la url base
