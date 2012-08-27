@@ -65,6 +65,8 @@ if($Core->install())
  {
   // islogged
   $rain->assign('islogged',$cuenta->IsLogged());
+  // asignamos el nombre
+  $rain->assign('UName',$cuenta->Get_Name());
   // rango
   $rain->assign('rango',$cuenta->Rango());
 
