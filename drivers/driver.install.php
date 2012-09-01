@@ -150,7 +150,10 @@ Desarrollado por alexander1712[/p]',
              (9, \'boxfooter1\', \'ejemplo de caja, usted puede poner cualquier c&oacute;digo aqu&iacute;<br>hasta publicidad\'),
              (10, \'titlefooter1\', \'Caja de ejemplo\'),
              (11, \'titlefooter2\', \'Caja 2\'),
-             (12, \'boxfooter2\', \'en estas cajas puedes poner cualquier cosa, hasta publicidad...\')',false,false);
+             (12, \'boxfooter2\', \'en estas cajas puedes poner cualquier cosa, hasta publicidad...\'),
+             (13, \'fb\', \'#\'),
+             (14, \'twt\', \'#\'),
+             (15, \'rss\', \'#\')',false,false);
   // creamos la tabla usuarios
   $db->query('CREATE TABLE `users` (
              `u_id` int(10) NOT NULL AUTO_INCREMENT,
