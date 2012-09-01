@@ -83,6 +83,8 @@ Class Pages
                                    'column_replace'=>'html'
                                    ));
      }
+     // separamos los tags para hacer la lista.
+     $retorno['pag_keys'] = explode(',',$retorno['pag_keys']);
     // retornar valor
     return $retorno;
    }

@@ -72,7 +72,9 @@
                <div class="post-meta">
                     <h4>Palabras claves</h4>
 					<ul class="tags">
-			         	<li>{$pubdata.pub_keys}</li>
+                {loop="$pubdata.pub_keys"}
+			         	<li>{$value}</li>
+                {/loop}
 			         </ul>
                </div>
 

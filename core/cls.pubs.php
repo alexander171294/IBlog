@@ -212,6 +212,8 @@ Class Pubs
                                    'column_replace'=>'html'
                                    ));
      }
+     // separamos los tags para hacer la lista.
+     $retorno['pub_keys'] = explode(',',$retorno['pub_keys']);
     // retornamos el valor
     return $retorno;
    }
