@@ -2,7 +2,6 @@
  por hacer...
 ---------------- 
 
-* de la instalación el menú inferior cambiarlo por otra cosa
 * unir los includes
 * cambiar notfound
 

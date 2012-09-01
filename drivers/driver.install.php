@@ -81,8 +81,8 @@ if(isset($_POST['tit']))
   $db->query('INSERT INTO `menu` (`id`, `nombre`, `link`, `menu`) VALUES
              (1, \'prueba\', \'/pagina/1/pagina-de-prueba/\', 1),
              (2, \'I-Blog\', \'https://github.com/alexander171294/IBlog\', 3),
-             (3, \'Acceder\', \'/acceder/\', 4),
-             (4, \'Registrarse\', \'/registro/\', 4);',false,false);
+             (3, \'Iblog Proyect\', \'https://github.com/alexander171294/IBlog\', 4),
+             (4, \'AlEb Corporation\', \'/http://alebcorp.com.ar/\', 4);',false,false);
   // creamos la tabla para las páginas
   $db->query('CREATE TABLE `paginas` (
              `pag_id` int(11) NOT NULL AUTO_INCREMENT,
