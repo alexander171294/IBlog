@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!--[if IE 7 ]>    <html class="ie7 oldie"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8 oldie"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html> <!--<![endif]-->
+
+<head>
+
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="author" content="{$presets.author}" />
+<meta name="description" content="{$presets.description}" />
+<meta name="keywords" content="{$presets.keyword}" />
+<meta name="robots" content="index, follow, all" />
+
+    <title>{$presets.titulo}</title>
+
+    <link rel="stylesheet" type="text/css" media="screen" href="css/coolblue.css" />
+
+    <!--[if lt IE 9]>
+	    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.6.1.min.js"><\/script>')</script>
+
+    <script src="js/scrollToTop.js"></script>
+
+</head>
+
+{include="ext/header"}
+</header></div>
+	
+<!-- content-wrap -->
+<div id="content-wrap">
+
+    <!-- content -->
+    <div id="content" class="clearfix">
+
+   	    <!-- main -->
+        <div id="main">
+
+            <!-- post -->
+      	    <article class="post single">
+
+                <!-- primary -->
+         	    <div class="primary">
+
+            	    <h2><a href='/pagina/{$pubdata.pag_id}/{$pubdata.seo_title}/'>{$pubdata.pag_nombre}</a></h2>
+
+        {$pubdata.pag_contenido}
+
+                <!-- /primary -->
+                </div>
+
+
+            <aside>
+
+             <p class="dateinfo">{function="date('M',$pubdata.pag_fecha)"}<span>{function="date('d',$pubdata.pag_fecha)"}</span></p>
+
+                <div class="post-meta">
+               	    <h4>Post Info</h4>
+                    <ul>
+                  	    <li class="user"><a href='/usuario/{$pubdata.u_id}/{$pubdata.u_nombre}/'>{$pubdata.u_nombre}</a></li>
+                        <li class="time"><a>{function="date('h:s',$pubdata.pag_fecha)"} hs.</a></li>
+                        {if="$rango==3"}<li class="permalink"><a href='/admin/page-edit/{$pubdata.pag_id}.php' class="edit">Modificar</a> | <a href='/admin/page-delete/{$pubdata.pag_id}.php' class="edit">Borrar</a></li>{/if}
+                    </ul>
+                </div>
+
+               <div class="post-meta">
+                    <h4>Palabras claves</h4>
+					<ul class="tags">
+			         	<li>{$pubdata.pag_keys}</li>
+			         </ul>
+               </div>
+
+            </aside>
+
+        <!-- /post -->
+        </article>
+        <!-- /main -->
+        </div>
+
+        <!-- sidebar -->
+        {include="ext/sidebar"}
+        <!-- /sidebar -->
+		</div>
+
+    <!-- content -->
+	</div>
+
+<!-- /content-out -->
+</div>
+		
+<!-- extra -->
+  {include="ext/footer"}
+
+</body>
+</html>

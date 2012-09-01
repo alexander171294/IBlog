@@ -63,8 +63,8 @@
                	    <h4>Post Info</h4>
                     <ul>
                   	    <li class="user"><a href='/usuario/{$pubdata.u_id}/{$pubdata.u_nombre}/'>{$pubdata.u_nombre}</a></li>
-                        <li class="time"><a href="#">{function="date('h:s',$pubdata.pub_fecha)"} hs.</a></li>
-                        <li class="comment"><a href="#">{$pubdata.pub_comentario} Comments</a></li>
+                        <li class="time"><a>{function="date('h:s',$pubdata.pub_fecha)"} hs.</a></li>
+                        <li class="comment"><a>{$pubdata.pub_comentario} Comments</a></li>
                         {if="$rango==3"}<li class="permalink"><a href='/admin/art-edit/{$pubdata.pub_id}.php' class="edit">Modificar</a> | <a href='/admin/art-delete/{$pubdata.pub_id}.php' class="edit">Borrar</a></li>{/if}
                     </ul>
                 </div>
@@ -90,211 +90,23 @@
 
             	<ol class="commentlist">
 
-						<li class="depth-1">
+            {loop="$coments"}
+						<li class="depth-{$value.id}">
 
 							<div class="comment-info">
 								<img alt="" src="images/gravatar.jpg" class="avatar" height="42" width="42" />
 								<cite>
-									<a href="index.html">Erwin</a> Says: <br />
-									<span class="comment-data"><a href="#comment-63" title="">January 31st, 2010 at 10:00 pm</a></span>
+									<a href='{$value.web}'>{$value.name}</a> dijo: <br />
+									<span class="comment-data"><a href="#comment-{$value.id}" title="">{function="date('d/m/Y h:s',$value.fecha)"}</a> {if="$rango==3"}| <a href='/admin/comment-delete/{$value.id}.php' class="edit">Borrar</a>{/if}</span>
 								</cite>
 							</div>
 
 							<div class="comment-text">
-								<p>Comments are great!</p>
-
-								<div class="reply">
-									<a rel="nofollow" class="comment-reply-link" href="index.html">Reply</a>
-		 						</div>
+								{$value.coment}
 							</div>
-
-							<ul class="children">
-
-								<li class="depth-2">
-
-									<div class="comment-info">
-										<img alt="" src="images/gravatar.jpg" class="avatar" height="42" width="42" />
-										<cite>
-											<a href="index.html">Erwin</a> Says: <br />
-											<span class="comment-data"><a href="#" title="">January 31st, 2010 at 8:15 pm</a></span>
-										</cite>
-									</div>
-
-									<div class="comment-text">
-										<p>And here is a threaded comment.</p>
-										<div class="reply">
-											<a rel="nofollow" class="comment-reply-link" href="index.html">Reply</a>
-		 								</div>
-									</div>
-
-								</li>
-
-								<li class="depth-2">
-
-									<div class="comment-info">
-										<img alt="" src="images/gravatar.jpg" class="avatar" height="42" width="42" />
-										<cite>
-											<a href="index.html">Erwin</a> Says: <br />
-											<span class="comment-data"><a href="#" title="">January 31st, 2010 at 8:15 pm</a></span>
-										</cite>
-									</div>
-
-									<div class="comment-text">
-										<p>And here is another threaded comment.</p>
-
-										<div class="reply">
-											<a rel="nofollow" class="comment-reply-link" href="index.html">Reply</a>
-		 								</div>
-									</div>
-
-									<ul class="children">
-
-										<li class="depth-3">
-
-											<div class="comment-info">
-												<img alt="" src="images/gravatar.jpg" class="avatar" height="42" width="42" />
-												<cite>
-													<a href="index.html">Erwin</a> Says: <br />
-													<span class="comment-data"><a href="#" title="">January 31st, 2010 at 8:10 pm</a></span>
-												</cite>
-											</div>
-
-											<div class="comment-text">
-												<p>Threaded comments are cool!</p>
-
-												<div class="reply">
-													<a rel="nofollow" class="comment-reply-link" href="index.html">Reply</a>
-		 										</div>
-											</div>
-
-										</li>
-
-									</ul>
-
-								</li>
-
-							</ul>
 
 						</li>
-
-						<li class="thread-alt depth-1">
-
-							<div class="comment-info">
-								<img alt="" src="images/gravatar.jpg" class="avatar" height="42" width="42" />
-								<cite>
-									<a href="index.html">Erwin</a> Says: <br />
-									<span class="comment-data"><a href="#comment-63" title="">January 31st, 2010 at 8:00 pm</a></span>
-								</cite>
-							</div>
-
-							<div class="comment-text">
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero.
-								Suspendisse bibendum.</p>
-
-								<div class="reply">
-									<a rel="nofollow" class="comment-reply-link" href="index.html">Reply</a>
-		 						</div>
-							</div>
-
-							<ul class="children">
-
-								<li class="depth-2">
-
-									<div class="comment-info">
-										<img alt="" src="images/gravatar.jpg" class="avatar" height="42" width="42" />
-										<cite>
-											<a href="index.html">Erwin</a> Says: <br />
-											<span class="comment-data"><a href="#" title="">January 31st, 2010 7:35 pm</a></span>
-										</cite>
-									</div>
-
-									<div class="comment-text">
-										<p>Donec libero. Suspendisse bibendum.</p>
-
-										<div class="reply">
-											<a rel="nofollow" class="comment-reply-link" href="index.html">Reply</a>
-		 								</div>
-									</div>
-
-                           <ul class="children">
-
-										<li class="depth-3">
-
-											<div class="comment-info">
-												<img alt="" src="images/gravatar.jpg" class="avatar" height="42" width="42" />
-												<cite>
-													<a href="index.html">Erwin</a> Says: <br />
-													<span class="comment-data"><a href="#" title="">January 31st, 2010 at 7:20 pm</a></span>
-												</cite>
-											</div>
-
-											<div class="comment-text">
-												<p>Threaded comments are cool!</p>
-
-												<div class="reply">
-													<a rel="nofollow" class="comment-reply-link" href="index.html">Reply</a>
-		 										</div>
-											</div>
-
-										</li>
-
-									</ul>
-
-
-
-								</li>
-
-							</ul>
-
-						</li>
-
-						<li class="depth-1">
-
-							<div class="comment-info">
-								<img alt="" src="images/gravatar.jpg" class="avatar" height="42" width="42" />
-								<cite>
-									<a href="index.html">Erwin</a> Says: <br />
-									<span class="comment-data"><a href="#comment-63" title="">January 31st, 2010  at 6:08 pm</a></span>
-								</cite>
-							</div>
-
-							<div class="comment-text">
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum.
-								Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu
-								posuere nunc justo tempus leo.</p>
-
-								<div class="reply">
-									<a rel="nofollow" class="comment-reply-link" href="index.html">Reply</a>
-		 						</div>
-
-							</div>
-
-							<ul class="children">
-
-								<li class="depth-2">
-
-									<div class="comment-info">
-										<img alt="" src="images/gravatar.jpg" class="avatar" height="42" width="42" />
-										<cite>
-											<a href="index.html">Erwin</a> Says: <br />
-											<span class="comment-data"><a href="#comment-63" title="">January 31st, 2010 at 6:08 pm</a> </span>
-										</cite>
-									</div>
-
-									<div class="comment-text">
-										<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
-
-										<div class="reply">
-											<a rel="nofollow" class="comment-reply-link" href="index.html">Reply</a>
-		 								</div>
-									</div>
-
-								</li>
-
-							</ul>
-
-						</li>
-
+            {/loop}
                 <!-- /comment-list -->
 				</ol>
 
@@ -305,30 +117,35 @@
 
          <div class="post-bottom-section">
 
-		    <h4>Leave a Reply</h4>
+		    <h4>Dejar un comentario</h4>
 
             <div class="primary">
 
-            	<form action="index.html" method="post" id="commentform">
-
+            	<form action="/index.php?action=comment" method="post" id="commentform">
+                <input type="hidden" name="id" value="{$pubdata.pub_id}" id="id">
                	    <div>
-					    <label for="name">Name <span>*</span></label>
-						<input id="name" name="name" value="Your Name" type="text" tabindex="1" />
+					    <label for="name">Nombre <span>(requerido)</span></label>
+						<input id="name" name="name" value="Tu Nombre" type="text" tabindex="1" />
 					</div>
                     <div>
-						<label for="email">Email Address <span>*</span></label>
-						<input id="email" name="email" value="Your Email" type="text" tabindex="2" />
+						<label for="email">Email <span>(requerido)</span></label>
+						<input id="email" name="email" value="Tu Email" type="text" tabindex="2" />
 					</div>
                     <div>
 						<label for="website">Website</label>
-						<input id="website" name="website" value="Your Website" type="text" tabindex="3" />
+						<input id="website" name="website" value="Tu Website" type="text" tabindex="3" />
 					</div>
                     <div>
-						<label for="message">Your Message <span>*</span></label>
+						<label for="message">Tu Mensaje <span>(requerido)</span></label>
 						<textarea id="message" name="message" rows="10" cols="18" tabindex="4"></textarea>
 					</div>
+                   <div>
+                   <label for="captcha">Ingresa los caracteres tal cual est&aacute;n abajo</label><br />
+                   <img src='/files/captcha.jpeg'><br />
+                   <input type="text" name="captcha">
+                   </div>
                     <div class="no-border">
-					    <input class="button" type="submit" value="Submit Comment" tabindex="5" />
+					    <input class="button" type="submit" value="Enviar Comentario" tabindex="5" />
 					</div>
 
                </form>
