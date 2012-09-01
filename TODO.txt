@@ -2,7 +2,6 @@
  por hacer...
 ---------------- 
 
-* borrar de la instalación el menú inicio
 * de la instalación el menú inferior cambiarlo por otra cosa
 * unir los includes
 * cambiar notfound

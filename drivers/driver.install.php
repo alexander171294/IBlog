@@ -80,10 +80,9 @@ if(isset($_POST['tit']))
   // insertamos los ejemplos:
   $db->query('INSERT INTO `menu` (`id`, `nombre`, `link`, `menu`) VALUES
              (1, \'prueba\', \'/pagina/1/pagina-de-prueba/\', 1),
-             (2, \'Inicio\', \'/index.php\', 2),
-             (3, \'I-Blog\', \'https://github.com/alexander171294/IBlog\', 3),
-             (4, \'Acceder\', \'/acceder/\', 4),
-             (5, \'Registrarse\', \'/registro/\', 4);',false,false);
+             (2, \'I-Blog\', \'https://github.com/alexander171294/IBlog\', 3),
+             (3, \'Acceder\', \'/acceder/\', 4),
+             (4, \'Registrarse\', \'/registro/\', 4);',false,false);
   // creamos la tabla para las páginas
   $db->query('CREATE TABLE `paginas` (
              `pag_id` int(11) NOT NULL AUTO_INCREMENT,
