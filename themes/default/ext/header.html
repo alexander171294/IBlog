@@ -66,10 +66,10 @@
         <span>Bienvenido:</span> {if="$islogged"}<a>{$UName.u_nombre}</a> | <a href='/salir/'>Salir</a>{else}<a href="#">visitante</a>{/if}
     </div>
 
-   <form id="quick-search" method="post" action="/index.php?action=search">
+   <form id="quick-search" method="post" action='/index.php?action=search'>
       <fieldset class="search">
          <label for="qsearch">Search:</label>
-         <input class="tbox" id="qsearch" type="text" name="qsearch" value="Search..." title="Start typing and hit ENTER" />
+         <input class="tbox" id="qsearch" type="text" name="texto" value="Buscar..." title="Start typing and hit ENTER" />
          <button class="btn" title="Submit Search">Search</button>
       </fieldset>
    </form>
