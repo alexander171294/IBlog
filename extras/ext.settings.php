@@ -56,7 +56,10 @@ return array(
             'tema' => 'default', // diseño del sitio
             # 'tema' => 'default',
 
-            'cache' => 'cache' // carpeta donde se guardará el caché
-            # 'cache' => 'cache'
+            'cache' => 'cache', // carpeta donde se guardará el caché
+            # 'cache' => 'cache',
+
+            'dev-mode' => TRUE // modo de desarrollo, muestra errores y el consumo.
+            # 'dev-mode' => TRUE
 
             );

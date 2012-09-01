@@ -34,6 +34,18 @@
 $timestart = microtime( true );
 $memstart = memory_get_usage();
 
+// muestreo de errores
+if($Settings['dev-mode'] == TRUE)
+ {
+  // mostrar errores
+  ini_set('display_errors', TRUE);
+ }
+else
+ {
+  // no mostrar errores
+  ini_set('display_errors', FALSE);
+ }
+
 // cargamos funciones básicas
 require( 'extras/ext.functions.php' );
 
@@ -133,5 +145,6 @@ else
 // requerimos el driver.destruct.php para borrar lo que está de mas
 require( 'drivers/driver.destruct.php' );
 
-// mostramos el consumo.
-echo('<div class="clear" />Memoria usada: <b>'.roundsize((memory_get_usage() - $memstart), true).'</b> - Tiempo de ejecucion: <b>'.round(microtime(true)-$timestart, 2).' segundos</b></div>');
+// mostramos el consumo si estamos en modo developer.
+if($Settings['dev-mode'] == TRUE) { echo('<div class="clear" />Memoria usada: <b>'.roundsize((memory_get_usage() - $memstart), true).'</b> - Tiempo de ejecucion: <b>'.round(microtime(true)-$timestart, 2).' segundos</b></div>'); }
+
