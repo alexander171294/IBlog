@@ -29,7 +29,7 @@
  */
 
 // versión
-define( 'IBLOGVERSION', '1.0-a2' );
+define( 'IBLOGVERSION', '1.0-a3' );
 
 //retornamos la configuración
 return array(
@@ -53,7 +53,7 @@ return array(
             'site_path' => '/', // carpeta donde se encuentra tu sitio a partir del raiz
             # 'site_path' => '/',
 
-            'tema' => 'freshpick', // diseño del sitio
+            'tema' => 'default', // diseño del sitio
             # 'tema' => 'default',
 
             'cache' => 'cache' // carpeta donde se guardará el caché

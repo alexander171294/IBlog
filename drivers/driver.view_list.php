@@ -46,6 +46,9 @@ $rain->assign('menu_inferior',$menu->get_menu(4));
 unset($menu);
 //////////////////////////////////////////////////////////
 
+// configuramos el bbcode
+$Core->setbbc();
+
 // creamos la instancia de la clase pasandole la db
 $pub = new pubs($db);
 // asignamos la lista de publicaciones de la categoría o usuario que se pidió

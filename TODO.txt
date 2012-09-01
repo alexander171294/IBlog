@@ -2,8 +2,6 @@
  por hacer...
 ---------------- 
 
------------------- a2
-
 gestion de themes
 nuevo theme default
 

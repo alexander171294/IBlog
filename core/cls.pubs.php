@@ -118,8 +118,6 @@ Class Pubs
      */
   Public Function get_last_pubs_for($max)
    {
-    // seteamos el bbcode
-    $this->set_bbcode();
     // si la variable foruser está definida
     if(isset($_GET['foruser']))
      {
