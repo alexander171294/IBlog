@@ -73,6 +73,11 @@ if($Core->install())
     // rango
     $rain->assign('rango',$cuenta->Rango());
    }
+  else
+   {
+    // rango
+    $rain->assign('rango',0);
+   }
 
   // configuramos rainTPL //
   // la url base

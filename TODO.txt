@@ -7,6 +7,8 @@
 * unir los includes
 * cambiar notfound
 
+poder dar de baja el control de consumo.
+
 gestion de themes
 nuevo theme default
 
