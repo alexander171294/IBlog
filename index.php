@@ -34,25 +34,17 @@
 $timestart = microtime( true );
 $memstart = memory_get_usage();
 
-// muestreo de errores
-if($Settings['dev-mode'] == TRUE)
- {
-  // mostrar errores
-  ini_set('display_errors', TRUE);
- }
-else
- {
-  // no mostrar errores
-  ini_set('display_errors', FALSE);
- }
-
 // cargamos funciones básicas
 require( 'extras/ext.functions.php' );
 
 // Iniciamos el proceso de carga automatica de clases para el nucleo.
 spl_autoload_register( 'autoLoadClass' );
 
+// incluímos la configuración
 $Settings = include ( 'extras/ext.settings.php' );
+
+// mostrar errores o no mostrarlos
+ini_set('display_errors', $Settings['dev-mode']);
 
 // creamos una instancia de la db
 $db = new LittleDB ( $Settings['db_host'] , $Settings['db_user'] , $Settings['db_pass'] , $Settings['db_name'] );
