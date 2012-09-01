@@ -4,9 +4,6 @@
 
 * cambiar notfound
 
-gestion de themes
-nuevo theme default
-
 agregar emoticono
 quitar emoticono
 
@@ -14,7 +11,6 @@ agregar palabra censurada
 quitar palabra censurada
 
 404 a las páginas
-links sociales
 
 --------- a3
 

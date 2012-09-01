@@ -114,7 +114,7 @@ Class AdminCore
      *
      * @return string
      */
-  Public Function update_settings($title, $subtitulo, $footer, $pubsforpage)
+  Public Function update_settings($title, $subtitulo, $footer, $pubsforpage, $fb, $twt, $rss)
    {
     // actualizamos el título
     $this->db->update('settings',array('valor' => $title),array('clave' => 'titulo'));
@@ -124,5 +124,11 @@ Class AdminCore
     $this->db->update('settings',array('valor' => $footer),array('clave' => 'footer'));
     // actualizamos las publicaciones por página
     $this->db->update('settings',array('valor' => $pubsforpage),array('clave' => 'pubsforpage'));
+    // actualizamos el facebook
+    $this->db->update('settings',array('valor' => $fb),array('clave' => 'fb'));
+    // actualizamos el twitter
+    $this->db->update('settings',array('valor' => $twt),array('clave' => 'twt'));
+    // actualizamos el rss
+    $this->db->update('settings',array('valor' => $rss),array('clave' => 'rss'));
    }
  }
