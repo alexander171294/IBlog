@@ -1,0 +1,75 @@
+<!-- extra -->
+<div id="extra-wrap"><div id="extra" class="clearfix">
+
+	    <div id="gallery" class="clearfix">
+
+		    <h3>Nuestro Blog </h3>
+
+		    <p class="thumbs">
+            </p>
+
+        </div>
+
+	    <div class="col first">
+
+            <h3>Social</h3>
+
+            <ul class="subscribe-stuff">
+      	        <li><a title="RSS" href="#" rel="nofollow">
+				<img alt="RSS" title="RSS" src="../images/social_rss.png" /></a>
+			    </li>
+      	        <li><a title="Facebook" href="#" rel="nofollow">
+				<img alt="Facebook" title="Facebook" src="../images/social_facebook.png" /></a>
+			    </li>
+			    <li><a title="Twitter" href="#" rel="nofollow">
+				<img alt="Twitter" title="Twitter" src="../images/social_twitter.png" /></a>
+			    </li>
+            </ul>
+
+	    </div>
+
+	    <div class="col">
+
+   	         <h3>{$presets.titlefooter1}</h3>
+
+		    <div class="footer-list">
+			    {$presets.boxfooter1}
+		    </div>
+
+	    </div>
+
+        <div class="col">
+
+        <h3>{$presets.titlefooter2}</h3>
+
+		    <div class="footer-list">
+			    {$presets.boxfooter2}
+		    </div>
+
+        </div>
+
+        <div class="col">
+
+
+	    </div>
+
+<!-- /extra -->
+</div></div>
+
+<!-- footer -->
+<footer>
+
+	<p class="footer-left">
+		&copy; {function="date('Y')"} Copyright <b>{$presets.footer}</b> &nbsp; &nbsp; &nbsp;
+		Design by <a href='http://www.styleshout.com/'>styleshout</a> - Powered by <a href='https://github.com/alexander171294/IBlog'>I-blog</a> {$version}</a><br> Theme default, <a href='http://fb.com/variux'>Adapted by Variux</a>
+	</p>
+
+	<p class="footer-right">
+  {loop="$menu_inferior"}
+<a href='{$value.link}'>{$value.nombre}</a> |
+{/loop}
+        <a href="#top" class="back-to-top">Back to Top</a>
+    </p>
+
+<!-- /footer -->
+</footer>

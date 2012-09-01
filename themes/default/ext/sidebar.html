@@ -1,0 +1,54 @@
+<div id="sidebar">
+
+      	    <div class="about-me">
+   {if="$presets.about"}
+         	    <h3>Acerca de nosotros</h3>
+
+                <p>
+		        <a href="index.html"><img src="../images/gravatar.jpg" width="42" height="42" alt="firefox" class="align-left" /></a>
+
+
+
+			<p>
+      {$presets.about}
+			</p>
+		{/if}
+
+            </div>
+{if="$islogged"}
+			<div class="sidemenu">
+
+				<h3>Acciones</h3>
+                <ul>
+				{if="$rango==3"}<li><a href='/admin/'>Administraci&oacute;n</a></li>
+           <li><a href='/admin/new/'>Nueva publicaci&oacute;n</a></li>
+           {/if}
+		              <li><a href='/salir/'>Salir</a></li>
+				</ul>
+
+			</div>
+
+{/if}
+
+			<div class="sidemenu">
+
+				<h3>Menu</h3>
+                <ul>
+    {loop="$menu_lateral"}
+				<li><a href='{$value.link}'>{$value.nombre}</a></li>
+      {/loop}
+				</ul>
+
+			</div>
+
+			<div class="sidemenu">
+
+				<h3>Sponsors</h3>
+
+                <ul>
+			       {loop="$menu_afiliados"}
+				<li><a href='{$value.link}'>{$value.nombre}</a></li>
+      {/loop}
+				</ul>
+
+			</div>
