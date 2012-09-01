@@ -30,12 +30,14 @@
 
 // establecemos los bbc a parsear
     Parser::$BBCN = array(
-                          '[b]'=>'<b>',
-                          '[/b]'=>'</b>',
-                          '[strong]'=>'<b>',
-                          '[/strong]'=>'</b>',
-                          '[del]'=>'<del>',
-                          '[/del]'=>'</del>'
+                          '[b]' => '<b>',
+                          '[/b]' => '</b>',
+                          '[strong]' => '<b>',
+                          '[/strong]' => '</b>',
+                          '[del]' => '<del>',
+                          '[/del]' => '</del>',
+                          '[p]' => '<p>',
+                          '[/p]' => '</p>'
                           );
 // establecemos los bbc complejos a parsear
     Parser::$BBCC = array(
