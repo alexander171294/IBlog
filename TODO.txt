@@ -2,6 +2,11 @@
  por hacer...
 ---------------- 
 
+* borrar de la instalación el menú inicio
+* de la instalación el menú inferior cambiarlo por otra cosa
+* unir los includes
+* cambiar notfound
+
 gestion de themes
 nuevo theme default
 
@@ -10,6 +15,9 @@ quitar emoticono
 
 agregar palabra censurada
 quitar palabra censurada
+
+404 a las páginas
+links sociales
 
 --------- a3
 
