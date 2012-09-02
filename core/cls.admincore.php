@@ -114,7 +114,7 @@ Class AdminCore
      *
      * @return string
      */
-  Public Function update_settings($title, $subtitulo, $footer, $pubsforpage, $fb, $twt, $rss)
+  Public Function update_settings($title, $subtitulo, $footer, $pubsforpage, $fb, $twt, $rss, $design)
    {
     // actualizamos el título
     $this->db->update('settings',array('valor' => $title),array('clave' => 'titulo'));
@@ -130,5 +130,7 @@ Class AdminCore
     $this->db->update('settings',array('valor' => $twt),array('clave' => 'twt'));
     // actualizamos el rss
     $this->db->update('settings',array('valor' => $rss),array('clave' => 'rss'));
+    // actualizamos el rss
+    $this->db->update('settings',array('valor' => $design),array('clave' => 'design'));
    }
  }

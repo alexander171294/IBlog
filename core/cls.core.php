@@ -94,7 +94,7 @@ Class Core
      // asignamos la variable con la configuración básica
      $this->rain->assign('presets',$settings);
      // asignamos el tema
-     $this->rain->assign('tema',$this->Settings['tema']);
+     $this->rain->assign('tema',$settings['design']);
      // guardamos la configuración en la variable interna, por si luego lo necesitamos
      $this->mesettings = $settings;
      // asignamos la versión ya que estamos

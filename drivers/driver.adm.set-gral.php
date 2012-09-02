@@ -43,6 +43,7 @@ $rain->assign('config_pubsforpage',$Core->config_get('pubsforpage'));
 $rain->assign('config_rss',$Core->config_get('rss'));
 $rain->assign('config_twt',$Core->config_get('twt'));
 $rain->assign('config_fb',$Core->config_get('fb'));
+$rain->assign('config_design',$Core->config_get('design'));
 
 // si se realizó el post del artículo editado
 if($_SERVER['REQUEST_METHOD']=='POST')
@@ -55,6 +56,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
   $fb = $_POST['fb'];
   $twt = $_POST['twt'];
   $rss = $_POST['rss'];
+  $design = $_POST['design'];
 
   // si el titulo es mayor a 3 caracteres
   if(!empty($title) && strlen($title) > 3)
@@ -64,7 +66,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
      {
       if($pubsforpage >= 1)
        {
-        $Core->update_settings($title, $subtitulo, $footer, $pubsforpage, $fb, $twt, $rss);
+        $Core->update_settings($title, $subtitulo, $footer, $pubsforpage, $fb, $twt, $rss, $design);
         header ('Location: /index.php');
        } else { $rain->assign('error','por lo menos debe mostrarse 1 publicaci&oacute;n por p&aacute;gina'); }
      } else { $rain->assign('error','debe haber un pi&eacute; de p&aacute;gina'); }

@@ -83,19 +83,19 @@ if($Core->install())
     $rain->assign('rango',0);
    }
 
+  // seteamos configuración básica
+  $Core->Set_Settings();
+
   // configuramos rainTPL //
   // la url base
   raintpl::configure( 'base_url', $Core->Settings['site_path'] );
   // la dirección del theme
-  raintpl::configure( 'tpl_dir', 'themes/'.$Core->Settings['tema'].'/' );
+  raintpl::configure( 'tpl_dir', 'themes/'.$Core->mesettings['design'].'/' );
   // la dirección del caché del theme
-  raintpl::configure( 'cache_dir', $Core->Settings['cache'].'/'.$Core->Settings['tema'].'/' );
+  raintpl::configure( 'cache_dir', $Core->Settings['cache'].'/'.$Core->mesettings['design'].'/' );
 
   // guardamos la acción en una variable, y si no existe ponemos home.
   $action = isset( $_GET['action'] ) ? $_GET['action'] : 'home' ;
-
-  // seteamos configuración básica
-  $Core->Set_Settings();
 
   // aciones validas definidas en un array
   $valid = array ( // nombre => php
