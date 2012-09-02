@@ -53,7 +53,8 @@ return array(
             'site_path' => '/', // carpeta donde se encuentra tu sitio a partir del raiz
             # 'site_path' => '/',
 
-            'tema' => 'default', // diseño del sitio
+            // esta configuración ya no es utilizada.
+            #'tema' => 'default', // diseño del sitio
             # 'tema' => 'default',
 
             'cache' => 'cache', // carpeta donde se guardará el caché

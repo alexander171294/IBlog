@@ -153,7 +153,8 @@ Desarrollado por alexander1712[/p]',
              (12, \'boxfooter2\', \'en estas cajas puedes poner cualquier cosa, hasta publicidad...\'),
              (13, \'fb\', \'#\'),
              (14, \'twt\', \'#\'),
-             (15, \'rss\', \'#\')',false,false);
+             (15, \'rss\', \'#\'),
+             (16, \'design\', \'default\')',false,false);
   // creamos la tabla usuarios
   $db->query('CREATE TABLE `users` (
              `u_id` int(10) NOT NULL AUTO_INCREMENT,

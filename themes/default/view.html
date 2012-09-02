@@ -8,11 +8,10 @@
 
 <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
 <meta name="author" content="{$presets.author}" />
-<meta name="description" content="{$presets.description}" />
-<meta name="keywords" content="{$presets.keyword}" />
+<meta name="keywords" content="{$pubdata.pub_keys}" />
 <meta name="robots" content="index, follow, all" />
 
-    <title>{$presets.titulo}</title>
+    <title>{$pubdata.pub_nombre} - {$presets.titulo}</title>
 
     <link rel="stylesheet" type="text/css" media="screen" href="css/coolblue.css" />
 
@@ -50,10 +49,8 @@
                     <p class="post-info">Categor&iacute;a: <a href='/categoria/{$pubdata.cat_id}/{$pubdata.cat_seo}/'>{$pubdata.cat_nombre}</a></p>
 
         {$pubdata.pub_contenido}
-
                 <!-- /primary -->
                 </div>
-
 
             <aside>
 
@@ -77,6 +74,12 @@
                 {/loop}
 			         </ul>
                </div>
+
+               <div class="post-meta">
+                    <h4>Compartir</h4>
+               <ul>
+                   <li><a name="fb_share" type="box_count" share_url="/publicacion/{$pubdata.pub_id}/{$pubdata.seo_title}/"></a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script></li>
+               </ul>
 
             </aside>
 
