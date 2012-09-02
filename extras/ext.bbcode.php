@@ -37,7 +37,23 @@
                           '[del]' => '<del>',
                           '[/del]' => '</del>',
                           '[p]' => '<p>',
-                          '[/p]' => '</p>'
+                          '[/p]' => '</p>',
+                          '[center]' => '<center>',
+                          '[/center]' => '</center>',
+                          '[marquee]' => '<marquee>',
+                          '[/marquee]' => '</marquee>',
+                          '[h1]' => '<h1>',
+                          '[/h1]' => '</h1>',
+                          '[h2]' => '<h2>',
+                          '[/h2]' => '</h2>',
+                          '[h3]' => '<h3>',
+                          '[/h3]' => '</h3>',
+                          '[h4]' => '<h4>',
+                          '[/h4]' => '</h4>',
+                          '[h5]' => '<h5>',
+                          '[/h5]' => '</h5>',
+                          '[hr]' => '<hr>',
+
                           );
 // establecemos los bbc complejos a parsear
     Parser::$BBCC = array(
