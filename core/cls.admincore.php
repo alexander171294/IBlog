@@ -66,7 +66,7 @@ Class AdminCore
      */
   Public Function set_seo($string)
    {
-    return preg_replace('/[^\-a-zA-Z0-9]/', '', preg_replace('/\s+/', '-',$string));
+    return preg_replace('/[^\-a-zA-Z0-9]/', '', preg_replace('/\s+/', '-',strtolower($string)));
    }
 
    /**
