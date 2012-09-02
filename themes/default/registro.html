@@ -27,7 +27,17 @@
 			<div id="left">			
          <div class="post">
          <h2><a href="index.php">Crear una cuenta</a></h2>
-         <p><form method="POST" action=''>Crea una cuenta completando el formulario:<br>Usuario:<br><input type="text" name="user"><br>Password:<br><input type="password" name="pass"><br>Repite Password:<br><input type="password" name="pass2"><br><img src='/files/captcha.jpeg'><br><input type="text" name="captcha"><br><input type="submit" value="Registrarse" name="posteado"></form></p>
+         <form method="POST" action='' id='commentform'>
+         Crea una cuenta completando el formulario:
+         <div><label>Usuario: <span>(4 caracteres minimo)</span></label>
+         <input type="text" name="user"> </div>
+         <div><label>Password: <span>(8)</span></label>
+         <input type="password" name="pass"></div>
+         <div><label>Repite Password:</label>
+         <input type="password" name="pass2"> </div>
+         <div class="captcha"><img src='/files/captcha.jpeg'>
+         <input type="text" name="captcha"><br>   </div>
+         <div><input type="submit" value="Registrarse" name="posteado"></div></form>
           </div>
 
 			</div>

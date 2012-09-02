@@ -257,7 +257,12 @@ form {
 }
 input, select {
     vertical-align: middle;
+    width: 425px;
 }
+.captcha img
+ {
+  background-color:#FFFFFF;
+ }
 form div {
 	border-bottom: 1px solid #D8DAE0;
 	padding: 12px 0 5px 0;	margin: 0;
