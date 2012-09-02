@@ -24,6 +24,18 @@
 
     <script src="js/scrollToTop.js"></script>
 
+    <!-- BOTON +1 google -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'es'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+    <!-- FIN BOTON +1! -->
+
 </head>
 
 {include="ext/header"}
@@ -78,7 +90,8 @@
                <div class="post-meta">
                     <h4>Compartir</h4>
                <ul>
-                   <li><a name="fb_share" type="box_count" share_url="/publicacion/{$pubdata.pub_id}/{$pubdata.seo_title}/"></a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script></li>
+                   <li style="text-align:center"><a name="fb_share" type="button" share_url="/publicacion/{$pubdata.pub_id}/{$pubdata.seo_title}/"></a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script></li>
+                   <li><g:plusone></g:plusone></li>
                </ul>
 
             </aside>
