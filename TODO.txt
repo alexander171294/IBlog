@@ -6,11 +6,9 @@ agregar emoticono
 quitar emoticono
 agregar palabra censurada
 quitar palabra censurada
-404 a las páginas
 Subir imagenes
 borrar imágenes
 *** arreglar busqueda de tabla de instalación
-validar la versión
 terminar instalación
 ** ajustarlo con LittleDB (contador de respuestas en publicacion)
 link seo al paginador
