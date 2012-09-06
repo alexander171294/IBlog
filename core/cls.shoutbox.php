@@ -100,7 +100,7 @@ Class ShoutBox
     // actualizamos el contenido del shoutbox 2
     $this->db->update('settings',array('valor'=>$c_sh2),array('clave'=>'boxfooter2'));
     // actualizamos el contenido de about
-    $this->db->update('settings',array('valor'=>$c_ab),array('clave'=>'about'));
+    $this->db->update('settings',array('valor'=>nl2br(htmlentities($c_ab))),array('clave'=>'about'));
    }
 
  }
