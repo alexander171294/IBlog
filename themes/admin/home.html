@@ -55,7 +55,6 @@
 		<script type="text/javascript" src="resources/scripts/jquery.date.js"></script>
 		<!--[if IE]><script type="text/javascript" src="resources/scripts/jquery.bgiframe.js"></script><![endif]-->
 
-		
 		<!-- Internet Explorer .png-fix -->
 		
 		<!--[if IE 6]>
@@ -149,25 +148,25 @@
 					
 					<div class="tab-content default-tab" id="tab1"> <!-- This is the target div. id must match the href of this div's tab -->
 						
-						<div class="notification attention png_bg">
+						<div class="notification attention png_bg" style="{if="$version=='si'"}display:none{/if}">
 							<a href="#" class="close"><img src="resources/images/icons/cross_grey_small.png" title="Close this notification" alt="close" /></a>
 							<div>
                Tienes una versi&oacute;n desactualizada del sistema...<br>
-               Versi&oacute;n actual: x<br>
-               &Uacute;ltima versi&oacute;n: x<br>
+               Versi&oacute;n actual: {$version}<br>
+               Tu versi&oacute;n: {$real_version}<br>
                <b>Actualiza tu versi&oacute;n gratuitamente</b><br>
 							</div>
 						</div>
 
-            <div class="notification success png_bg">
+            <div class="notification success png_bg"  style="{if="$version!='si'"}display:none{/if}">
 							<a href="#" class="close"><img src="resources/images/icons/cross_grey_small.png" title="Close this notification" alt="close" /></a>
 							<div>
-               Tu versi&oacute;n de I-Blog est&aacute; Actualizada
+               Tu versi&oacute;n de I-Blog {$real_version} est&aacute; Actualizada
 							</div>
 						</div>
 
             <br>
-            Bienvenido a I-Blog x, este es tu panel de administraci&oacute;n, desde aqu&iacute; podr&aacute;s administrar tu blog de manera sencilla y f&aacute;cil...
+            Bienvenido a I-Blog {$real_version}, este es tu panel de administraci&oacute;n, desde aqu&iacute; podr&aacute;s administrar tu blog de manera sencilla y f&aacute;cil...
 					</div> <!-- End #tab1 -->
 					
 					<div class="tab-content" id="tab2">

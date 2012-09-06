@@ -27,3 +27,8 @@
  * @license http://www.gnu.org/copyleft/gpl.html
  * @link    https://github.com/alexander171294/IBlog
  */
+
+echo '<center>';
+$rain->assign('version',$Core->get_version_status(IBLOGVERSION));
+echo '</center>';
+$rain->assign('real_version',IBLOGVERSION);

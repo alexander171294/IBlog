@@ -133,4 +133,13 @@ Class AdminCore
     // actualizamos el rss
     $this->db->update('settings',array('valor' => $design),array('clave' => 'design'));
    }
+
+  Public Function get_version_status($version)
+   {
+    echo $version.'@';
+    echo 'http://iblog.alebcorp.com.ar/version.php?v='.$version.' ?=? ';
+    $var = file_get_contents('http://iblog.alebcorp.com.ar/version.php?v='.$version);
+    echo $var;
+    return $var;
+   }
  }
