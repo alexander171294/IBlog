@@ -147,7 +147,7 @@
 				<div class="content-box-content">
 					
 					<div class="tab-content default-tab" id="tab1"> <!-- This is the target div. id must match the href of this div's tab -->
-						
+						{if="$version"}
 						<div class="notification attention png_bg" style="{if="$version=='si'"}display:none{/if}">
 							<a href="#" class="close"><img src="resources/images/icons/cross_grey_small.png" title="Close this notification" alt="close" /></a>
 							<div>
@@ -164,7 +164,14 @@
                Tu versi&oacute;n de I-Blog {$real_version} est&aacute; Actualizada
 							</div>
 						</div>
-
+            {else}
+            <div class="notification error png_bg">
+							<a href="#" class="close"><img src="resources/images/icons/cross_grey_small.png" title="Close this notification" alt="close" /></a>
+							<div>
+               Su servidor no soporte file_get_contents, por favor verifique manualmente su versi&oacute;n <a href="https://github.com/alexander171294/IBlog/downloads">aqu&iacute;</a>.
+							</div>
+						</div>
+            {/if}
             <br>
             Bienvenido a I-Blog {$real_version}, este es tu panel de administraci&oacute;n, desde aqu&iacute; podr&aacute;s administrar tu blog de manera sencilla y f&aacute;cil...
 					</div> <!-- End #tab1 -->

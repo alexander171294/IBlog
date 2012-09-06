@@ -117,21 +117,21 @@ Class AdminCore
   Public Function update_settings($title, $subtitulo, $footer, $pubsforpage, $fb, $twt, $rss, $design)
    {
     // actualizamos el título
-    $this->db->update('settings',array('valor' => $title),array('clave' => 'titulo'));
+    $this->db->update('settings',array('valor' => htmlentities($title)),array('clave' => 'titulo'));
     // actualizamos el subtitulo
-    $this->db->update('settings',array('valor' => $subtitulo),array('clave' => 'subtitulo'));
+    $this->db->update('settings',array('valor' => htmlentities($subtitulo)),array('clave' => 'subtitulo'));
     // actualizamos el footer
-    $this->db->update('settings',array('valor' => $footer),array('clave' => 'footer'));
+    $this->db->update('settings',array('valor' => htmlentities($footer)),array('clave' => 'footer'));
     // actualizamos las publicaciones por página
-    $this->db->update('settings',array('valor' => $pubsforpage),array('clave' => 'pubsforpage'));
+    $this->db->update('settings',array('valor' => htmlentities($pubsforpage)),array('clave' => 'pubsforpage'));
     // actualizamos el facebook
-    $this->db->update('settings',array('valor' => $fb),array('clave' => 'fb'));
+    $this->db->update('settings',array('valor' => htmlentities($fb)),array('clave' => 'fb'));
     // actualizamos el twitter
-    $this->db->update('settings',array('valor' => $twt),array('clave' => 'twt'));
+    $this->db->update('settings',array('valor' => htmlentities($twt)),array('clave' => 'twt'));
     // actualizamos el rss
-    $this->db->update('settings',array('valor' => $rss),array('clave' => 'rss'));
+    $this->db->update('settings',array('valor' => htmlentities($rss)),array('clave' => 'rss'));
     // actualizamos el rss
-    $this->db->update('settings',array('valor' => $design),array('clave' => 'design'));
+    $this->db->update('settings',array('valor' => htmlentities($design)),array('clave' => 'design'));
    }
 
    /**
