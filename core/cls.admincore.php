@@ -134,12 +134,18 @@ Class AdminCore
     $this->db->update('settings',array('valor' => $design),array('clave' => 'design'));
    }
 
+   /**
+     * devolver si el sistema está al día
+     *
+     * @param string $version versión actual del sistema
+     *
+     * @link WIKI NO DISPONIBLE POR EL MOMENTO
+     *
+     * @return string
+     */
   Public Function get_version_status($version)
    {
-    echo $version.'@';
-    echo 'http://iblog.alebcorp.com.ar/version.php?v='.$version.' ?=? ';
-    $var = file_get_contents('http://iblog.alebcorp.com.ar/version.php?v='.$version);
-    echo $var;
-    return $var;
+    // obtener version desde el servidor (devuelve "si" si está actualizado)
+    return file_get_contents('http://iblog.alebcorp.com.ar/version.php?v='.$version);
    }
  }
