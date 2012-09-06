@@ -108,7 +108,8 @@ if($Core->install())
                      'search' => 'index',
                      'comment' => '',
                      'page' => 'page',
-                     'logout' => ''
+                     'logout' => '',
+                     'rss' => 'rss'
                  );
 
   // lista de páginas a ignorar draw

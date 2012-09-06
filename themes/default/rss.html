@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+ <rss version="2.0">
+
+  <channel>
+
+   <title>{$presets.titulo}</title>
+
+   <link>{$urlbase}</link>
+
+   <description>{$presets.subtitulo}</description>
+   {loop="$list"}
+   <item>
+
+    <title>{$value.pub_nombre}</title>
+
+    <link>{$urlbase}publicacion/{$value.pub_id}/{$value.seo_title}/</link>
+
+    <description>{$value.pub_preview}</description>
+
+   </item>
+   {/loop}
+  </channel>
+
+ </rss>
