@@ -53,7 +53,12 @@
                           '[h5]' => '<h5>',
                           '[/h5]' => '</h5>',
                           '[hr]' => '<hr>',
-
+                          '[ul]' => '<ul>',
+                          '[/ul]' => '</ul>',
+                          '[ol]' => '<ol>',
+                          '[/ol]' => '</ol>',
+                          '[li]' => '<li>',
+                          '[/li]' => '</li>'
                           );
 // establecemos los bbc complejos a parsear
     Parser::$BBCC = array(
