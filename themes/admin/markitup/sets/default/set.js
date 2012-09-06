@@ -22,7 +22,7 @@ var mySettings = {
 		{name:'Numeric List', openWith:'[li]', closeWith:'[/li]', multiline:true, openBlockWith:'[ol]', closeBlockWith:'[/ol]'},
 		{separator:'---------------' },
 		{name:'Picture', key:'P', replaceWith:'[img][![Source:!:http://]!][/img]' },
-		{name:'Link', key:'L', openWith:'[url="[![Link:!:http://]!]"]', closeWith:'[/url]', placeHolder:'Link...' },
+		{name:'Link', key:'L', openWith:'[url=[![Link:!:http://]!]]', closeWith:'[/url]', placeHolder:'Link...' },
 		{separator:'---------------' },
 		{name:'Clean', className:'clean', replaceWith:function(markitup) { return markitup.selection.replace(/<(.*?)>/g, "") } },		
 	]
