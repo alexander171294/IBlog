@@ -31,6 +31,9 @@
 // versión
 define( 'IBLOGVERSION', '1.0-a3' );
 
+// url de su página web
+define( 'URLBASE', 'http://iblog.alebcorp.com.ar/');
+
 //retornamos la configuración
 return array(
 
