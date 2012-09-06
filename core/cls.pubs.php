@@ -211,9 +211,9 @@ Class Pubs
                                    'column_search'=>'bbc',
                                    'column_replace'=>'html'
                                    ));
+      // separamos los tags para hacer la lista.
+      $retorno['pub_keys'] = explode(',',$retorno['pub_keys']);
      }
-     // separamos los tags para hacer la lista.
-     $retorno['pub_keys'] = explode(',',$retorno['pub_keys']);
     // retornamos el valor
     return $retorno;
    }
