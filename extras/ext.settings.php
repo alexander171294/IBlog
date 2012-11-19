@@ -48,7 +48,7 @@ return array(
             'db_pass' => '', // contraseña de la base de datos
             # 'db_pass' => 'pasword',
 
-            'db_name' => 'ibloginstall', // nombre de la base de datos
+            'db_name' => 'iblog', // nombre de la base de datos
             # 'db_name' => 'iblog',
 
             // configuración general //

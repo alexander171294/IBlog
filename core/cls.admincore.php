@@ -146,6 +146,7 @@ Class AdminCore
   Public Function get_version_status($version)
    {
     // obtener version desde el servidor (devuelve "si" si está actualizado)
-    return file_get_contents('http://iblog.alebcorp.com.ar/version.php?v='.$version);
+    return 'si'; // devolvemos si hasta que tengamos un server funcional
+    #return file_get_contents('http://iblog.alebcorp.com.ar/version.php?v='.$version);
    }
  }
